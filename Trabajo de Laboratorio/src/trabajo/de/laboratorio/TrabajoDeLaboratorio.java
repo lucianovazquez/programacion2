@@ -14,9 +14,6 @@ public class TrabajoDeLaboratorio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.print("Esto es una prueba");
-        System.out.print("Esto es una prueba");
-        System.out.print("Esto es una prueba");
-        
+         
     }
 }
