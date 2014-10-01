@@ -9,14 +9,14 @@ import java.time.LocalDate;
  *
  * @author RoqueG
  */
-public class DatosPersonales {
+public abstract class Persona {
     private String nombre;
     private String apellido;
     private Domicilio domicilio;
     private int dni;
     private LocalDate fecha;
     
-    public DatosPersonales(String nombre, String apellido, String calle, int numero, int dni, int diaNac, int mesNac, int añoNac){
+    public Persona(String nombre, String apellido, String calle, int numero, int dni, int diaNac, int mesNac, int añoNac){
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = new Domicilio(calle,numero);
