@@ -14,7 +14,7 @@ public abstract class Empleado extends Persona {
     private int nro_legajo;
     private LocalDate fec_ingreso;
     
-    List familiares = new ArrayList();
+    private ArrayList <Familiar> familiares = new ArrayList();
     
         public Empleado(String nombre, String apellido,String calle, int numero, int dni,int diaNac,int mesNac,int añoNac, String tipo_cargo, int nro_legajo, LocalDate fec_ingreso){
             
