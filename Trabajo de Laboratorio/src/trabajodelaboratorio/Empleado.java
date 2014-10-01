@@ -16,13 +16,14 @@ public abstract class Empleado extends Persona {
     
     private ArrayList <Familiar> familiares = new ArrayList();
     
-        public Empleado(String nombre, String apellido,String calle, int numero, int dni,int diaNac,int mesNac,int añoNac, String tipo_cargo, int nro_legajo, LocalDate fec_ingreso){
+        public Empleado(String nombre, String apellido,String calle, int numero, int dni,int diaNac,int mesNac,int añoNac, String tipo_cargo, int nro_legajo, LocalDate fec_ingreso, ArrayList familiares){
             
         super(nombre,apellido,calle,numero,dni,diaNac,mesNac,añoNac);
         this.tipo_cargo=tipo_cargo;
         this.nro_legajo=nro_legajo;
         this.fec_ingreso=fec_ingreso;
-        
+        this.familiares=(ArrayList<Familiar>)familiares;
+               
     }
 
     /**
@@ -66,5 +67,7 @@ public abstract class Empleado extends Persona {
     public void setFec_ingreso(LocalDate fec_ingreso) {
         this.fec_ingreso = fec_ingreso;
     }
+
+    
     
 }
