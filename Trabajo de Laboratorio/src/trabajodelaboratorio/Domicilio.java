@@ -14,4 +14,32 @@ public class Domicilio {
         this.calle = calle;
         this.numero = numero;
     }
+
+    /**
+     * @return the calle
+     */
+    public String getCalle() {
+        return calle;
+    }
+
+    /**
+     * @param calle the calle to set
+     */
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    /**
+     * @return the numero
+     */
+    public int getNumero() {
+        return numero;
+    }
+
+    /**
+     * @param numero the numero to set
+     */
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 }

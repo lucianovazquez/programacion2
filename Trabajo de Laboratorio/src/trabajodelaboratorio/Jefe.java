@@ -26,4 +26,18 @@ public class Jefe extends Empleado{
         this.empleados=empleados;
         
     }   
+
+    /**
+     * @return the area
+     */
+    public String getArea() {
+        return area;
+    }
+
+    /**
+     * @param area the area to set
+     */
+    public void setArea(String area) {
+        this.area = area;
+    }
 }

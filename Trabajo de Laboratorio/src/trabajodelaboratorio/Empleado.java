@@ -24,5 +24,47 @@ public abstract class Empleado extends Persona {
         this.fec_ingreso=fec_ingreso;
         
     }
+
+    /**
+     * @return the tipo_cargo
+     */
+    public String getTipo_cargo() {
+        return tipo_cargo;
+    }
+
+    /**
+     * @param tipo_cargo the tipo_cargo to set
+     */
+    public void setTipo_cargo(String tipo_cargo) {
+        this.tipo_cargo = tipo_cargo;
+    }
+
+    /**
+     * @return the nro_legajo
+     */
+    public int getNro_legajo() {
+        return nro_legajo;
+    }
+
+    /**
+     * @param nro_legajo the nro_legajo to set
+     */
+    public void setNro_legajo(int nro_legajo) {
+        this.nro_legajo = nro_legajo;
+    }
+
+    /**
+     * @return the fec_ingreso
+     */
+    public LocalDate getFec_ingreso() {
+        return fec_ingreso;
+    }
+
+    /**
+     * @param fec_ingreso the fec_ingreso to set
+     */
+    public void setFec_ingreso(LocalDate fec_ingreso) {
+        this.fec_ingreso = fec_ingreso;
+    }
     
 }

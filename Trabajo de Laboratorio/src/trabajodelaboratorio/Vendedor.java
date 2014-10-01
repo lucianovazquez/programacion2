@@ -20,4 +20,32 @@ public class Vendedor extends Empleado {
        this.sucursal=sucursal;
        this.porcentaje_com=porcentaje_com;
    }
+
+    /**
+     * @return the sucursal
+     */
+    public int getSucursal() {
+        return sucursal;
+    }
+
+    /**
+     * @param sucursal the sucursal to set
+     */
+    public void setSucursal(int sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    /**
+     * @return the porcentaje_com
+     */
+    public int getPorcentaje_com() {
+        return porcentaje_com;
+    }
+
+    /**
+     * @param porcentaje_com the porcentaje_com to set
+     */
+    public void setPorcentaje_com(int porcentaje_com) {
+        this.porcentaje_com = porcentaje_com;
+    }
 }
