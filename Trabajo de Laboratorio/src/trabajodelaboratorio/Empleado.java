@@ -10,59 +10,59 @@ import java.util.List;
  */
 public abstract class Empleado extends Persona {
     
-    private String tipo_cargo;
-    private int nro_legajo;
-    private LocalDate fec_ingreso;
+    private String tipoCargo;
+    private int nroLegajo;
+    private LocalDate fecIngreso;
     
     private ArrayList<Familiar> familiares = new ArrayList<>();
     
     public Empleado(String nombre, String apellido,Domicilio domicilio, int dni,LocalDate fec_nacimiento, int nro_legajo, LocalDate fec_ingreso){
             
         super(nombre,apellido,domicilio,dni,fec_nacimiento);
-        this.nro_legajo=nro_legajo;
-        this.fec_ingreso=fec_ingreso;               
+        this.nroLegajo=nro_legajo;
+        this.fecIngreso=fec_ingreso;               
     }
 
     /**
-     * @return the tipo_cargo
+     * @return the tipoCargo
      */
-    public String getTipo_cargo() {
-        return tipo_cargo;
+    public String getTipoCargo() {
+        return tipoCargo;
     }
 
     /**
-     * @param tipo_cargo the tipo_cargo to set
+     * @param tipoCargo the tipoCargo to set
      */
-    public void setTipo_cargo(String tipo_cargo) {
-        this.tipo_cargo = tipo_cargo;
+    public void setTipoCargo(String tipoCargo) {
+        this.tipoCargo = tipoCargo;
     }
 
     /**
-     * @return the nro_legajo
+     * @return the nroLegajo
      */
-    public int getNro_legajo() {
-        return nro_legajo;
+    public int getNroLegajo() {
+        return nroLegajo;
     }
 
     /**
-     * @param nro_legajo the nro_legajo to set
+     * @param nroLegajo the nroLegajo to set
      */
-    public void setNro_legajo(int nro_legajo) {
-        this.nro_legajo = nro_legajo;
+    public void setNroLegajo(int nroLegajo) {
+        this.nroLegajo = nroLegajo;
     }
 
     /**
-     * @return the fec_ingreso
+     * @return the fecIngreso
      */
-    public LocalDate getFec_ingreso() {
-        return fec_ingreso;
+    public LocalDate getFecIngreso() {
+        return fecIngreso;
     }
 
     /**
-     * @param fec_ingreso the fec_ingreso to set
+     * @param fecIngreso the fecIngreso to set
      */
-    public void setFec_ingreso(LocalDate fec_ingreso) {
-        this.fec_ingreso = fec_ingreso;
+    public void setFecIngreso(LocalDate fecIngreso) {
+        this.fecIngreso = fecIngreso;
     }
 
      /**
