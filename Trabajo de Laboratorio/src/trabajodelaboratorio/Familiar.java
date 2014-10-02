@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package trabajodelaboratorio;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,9 +14,9 @@ public class Familiar extends Persona {
     
     private String parentezco;
     
-    public Familiar (String nombre, String apellido,String calle, int numero, int dni,int diaNac,int mesNac,int añoNac, String parentezco){
-    
-        super(nombre,apellido,calle,numero,dni,diaNac,mesNac,añoNac);
+    public Familiar (String nombre,String apellido,Domicilio domicilio,int dni,LocalDate fechaNacimiento, String parentezco){
+   
+        super(nombre,apellido,domicilio,dni,fechaNacimiento);
         this.parentezco=parentezco;
     }
 
