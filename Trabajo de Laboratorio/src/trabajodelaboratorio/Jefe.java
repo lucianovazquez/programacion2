@@ -20,7 +20,7 @@ public class Jefe extends Empleado{
     public Jefe(String nombre, String apellido,Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String area){
         super(nombre,apellido,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso);
         this.area=area;
-        setTipo_cargo("Jefe de area");
+        setTipoCargo("Jefe de area");
     }   
 
     /**
@@ -32,7 +32,7 @@ public class Jefe extends Empleado{
     
     public void addEmpleadoANomina(Empleado emp1) throws TipoEmpleadoNoValidoException{
         
-        if("Operario".equals(emp1.getTipo_cargo())||"Administrativo".equals(emp1.getTipo_cargo())){
+        if("Operario".equals(emp1.getTipoCargo())||"Administrativo".equals(emp1.getTipoCargo())){
             nominaEmpleados.add(emp1);
         }
         else{
