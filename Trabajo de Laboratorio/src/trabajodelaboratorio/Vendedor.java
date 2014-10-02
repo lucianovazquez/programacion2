@@ -15,12 +15,11 @@ public class Vendedor extends Empleado {
     private int sucursal; //Sucursal de venta
     private Float porcentajeCom; //Porcentaje de Comision de Venas
     
-   public Vendedor(String nombre, String apellido,Domicilio domicilio, int dni, LocalDate fechaNacimiento,int nro_legajo, LocalDate fec_ingreso,int sucursal,Float porcentaje_com){
+   public Vendedor(String nombre, String apellido,char sexo,Domicilio domicilio, int dni, LocalDate fechaNacimiento,int nro_legajo, LocalDate fec_ingreso,int sucursal,Float porcentaje_com){
        
-       super(nombre,apellido,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso);
+       super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Vendedor");
        this.sucursal=sucursal;
        this.porcentajeCom=porcentaje_com;
-       setTipoCargo("Vendedor");
    }
 
     /**
@@ -49,5 +48,11 @@ public class Vendedor extends Empleado {
      */
     public void setPorcentajeCom(Float porcentajeCom) {
         this.porcentajeCom = porcentajeCom;
+    }
+    
+    @Override
+    public void imprimirDatos(){
+        super.imprimirDatos();
+        System.out.println("Sucursal:"+sucursal+" Porcentaje de comision: "+porcentajeCom);
     }
 }
