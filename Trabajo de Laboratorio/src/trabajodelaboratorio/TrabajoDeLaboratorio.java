@@ -1,5 +1,6 @@
 package trabajodelaboratorio;
 
+import Excepciones.TipoEmpleadoNoValidoException;
 import java.time.LocalDate;
 /**
  *
