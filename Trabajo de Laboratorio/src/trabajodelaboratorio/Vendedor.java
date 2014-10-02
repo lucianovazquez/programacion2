@@ -13,13 +13,14 @@ import java.util.ArrayList;
  */
 public class Vendedor extends Empleado {
     private int sucursal;
-    private int porcentaje_com;
+    private int porcentajeCom;
     
-   public Vendedor(String nombre, String apellido,String calle, int numero, int dni,int diaNac,int mesNac,int añoNac, String tipo_cargo, int nro_legajo, LocalDate fec_ingreso,int sucursal,int porcentaje_com, ArrayList familiares){
+   public Vendedor(String nombre, String apellido,Domicilio domicilio, int dni, LocalDate fechaNacimiento,int nro_legajo, LocalDate fec_ingreso,int sucursal,int porcentaje_com, ArrayList familiares){
        
-       super(nombre,apellido,calle,numero,dni,diaNac,mesNac,añoNac,tipo_cargo,nro_legajo,fec_ingreso, familiares);
+       super(nombre,apellido,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso);
        this.sucursal=sucursal;
-       this.porcentaje_com=porcentaje_com;
+       this.porcentajeCom=porcentaje_com;
+       setTipoCargo("Vendedor");
    }
 
     /**
@@ -37,16 +38,16 @@ public class Vendedor extends Empleado {
     }
 
     /**
-     * @return the porcentaje_com
+     * @return the porcentajeCom
      */
-    public int getPorcentaje_com() {
-        return porcentaje_com;
+    public int getPorcentajeCom() {
+        return porcentajeCom;
     }
 
     /**
-     * @param porcentaje_com the porcentaje_com to set
+     * @param porcentajeCom the porcentajeCom to set
      */
-    public void setPorcentaje_com(int porcentaje_com) {
-        this.porcentaje_com = porcentaje_com;
+    public void setPorcentajeCom(int porcentajeCom) {
+        this.porcentajeCom = porcentajeCom;
     }
 }
