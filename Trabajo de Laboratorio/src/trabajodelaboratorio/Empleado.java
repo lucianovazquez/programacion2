@@ -14,16 +14,13 @@ public abstract class Empleado extends Persona {
     private int nro_legajo;
     private LocalDate fec_ingreso;
     
-    private ArrayList <Familiar> familiares = new ArrayList();
+    private ArrayList<Familiar> familiares = new ArrayList<>();
     
-        public Empleado(String nombre, String apellido,String calle, int numero, int dni,int diaNac,int mesNac,int añoNac, String tipo_cargo, int nro_legajo, LocalDate fec_ingreso, ArrayList familiares){
+    public Empleado(String nombre, String apellido,Domicilio domicilio, int dni,LocalDate fec_nacimiento, int nro_legajo, LocalDate fec_ingreso){
             
-        super(nombre,apellido,calle,numero,dni,diaNac,mesNac,añoNac);
-        this.tipo_cargo=tipo_cargo;
+        super(nombre,apellido,domicilio,dni,fec_nacimiento);
         this.nro_legajo=nro_legajo;
-        this.fec_ingreso=fec_ingreso;
-        this.familiares=(ArrayList<Familiar>)familiares;
-               
+        this.fec_ingreso=fec_ingreso;               
     }
 
     /**
@@ -68,6 +65,11 @@ public abstract class Empleado extends Persona {
         this.fec_ingreso = fec_ingreso;
     }
 
-    
+     /**
+      *  @param familiar el familiar a cargo a agregar
+      */
+     public void addFamiliar(Familiar familiar){
+        familiares.add(familiar);
+    }
     
 }
