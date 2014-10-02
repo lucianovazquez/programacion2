@@ -16,12 +16,12 @@ public abstract class Persona {
     private int dni;
     private LocalDate fecha;
     
-    public Persona(String nombre, String apellido, String calle, int numero, int dni, int diaNac, int mesNac, int añoNac){
+    public Persona(String nombre, String apellido, Domicilio domicilio, int dni,LocalDate fechaNacimiento){
         this.nombre = nombre;
         this.apellido = apellido;
-        this.domicilio = new Domicilio(calle,numero);
+        this.domicilio = domicilio;
         this.dni = dni;
-        this.fecha = LocalDate.of(añoNac,mesNac,diaNac);
+        this.fecha = fechaNacimiento;
     }
 
     /**
