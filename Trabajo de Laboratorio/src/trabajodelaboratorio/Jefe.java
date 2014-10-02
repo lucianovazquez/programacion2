@@ -17,10 +17,9 @@ public class Jefe extends Empleado{
     private String area; //Area de la cual es Jefe
     private ArrayList<Empleado> nominaEmpleados  = new ArrayList();  // ArrayList con todos los empleados a cargo
    
-    public Jefe(String nombre, String apellido,Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String area){
-        super(nombre,apellido,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso);
+    public Jefe(String nombre, String apellido,char sexo,Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String area){
+        super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Jefe de area");
         this.area=area;
-        setTipoCargo("Jefe de area");
     }   
 
     /**
@@ -46,4 +45,11 @@ public class Jefe extends Empleado{
     public void setArea(String area) {
         this.area = area;
     }
+    
+    @Override
+    public void imprimirDatos(){
+        super.imprimirDatos();
+        System.out.println("Area a cargo: "+area+"");
+    }
+
 }
