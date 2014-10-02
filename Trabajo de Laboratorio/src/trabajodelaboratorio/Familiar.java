@@ -14,9 +14,9 @@ public class Familiar extends Persona {
     
     private String parentezco;
     
-    public Familiar (String nombre,String apellido,Domicilio domicilio,int dni,LocalDate fechaNacimiento, String parentezco){
+    public Familiar (String nombre,String apellido,char sexo,Domicilio domicilio,int dni,LocalDate fechaNacimiento, String parentezco){
    
-        super(nombre,apellido,domicilio,dni,fechaNacimiento);
+        super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento);
         this.parentezco=parentezco;
     }
 
@@ -32,5 +32,11 @@ public class Familiar extends Persona {
      */
     public void setParentezco(String parentezco) {
         this.parentezco = parentezco;
+    }
+    
+    @Override
+    public void imprimirDatos(){
+        super.imprimirDatos();
+        System.out.println("Parentezco: "+parentezco);
     }
 }
