@@ -14,17 +14,13 @@ import java.util.List;
  */
 public class Jefe extends Empleado{
     
-    private String area;
-    private ArrayList <Empleado> empleados  = new ArrayList(); 
-    /* Crear una excepción que controle que los unicos que se pueden acceder al array  "Empleados"
-    son empleados de tipo operarios o administrativos, utilizar atributo "tipo_cargo" */
+    private String area; //Area de la cual es Jefe
+    private ArrayList<Empleado> nominaEmpleados  = new ArrayList();  // ArrayList con todos los empleados a cargo
    
-    public Jefe(String nombre, String apellido,String calle, int numero, int dni,int diaNac,int mesNac,int añoNac, String tipo_cargo, int nro_legajo, LocalDate fec_ingreso, String area, ArrayList empleados, ArrayList familiares){
-     
-        super(nombre,apellido,calle,numero,dni,diaNac,mesNac,añoNac,tipo_cargo,nro_legajo,fec_ingreso,familiares);
+    public Jefe(String nombre, String apellido,Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String area){
+        super(nombre,apellido,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso);
         this.area=area;
-        this.empleados=(ArrayList<Empleado>) empleados;
-        
+        setTipo_cargo("Jefe de area");
     }   
 
     /**
@@ -33,7 +29,17 @@ public class Jefe extends Empleado{
     public String getArea() {
         return area;
     }
-
+    
+    public void addEmpleadoANomina(Empleado emp1) throws TipoEmpleadoNoValidoException{
+        
+        if("Operario".equals(emp1.getTipo_cargo())||"Administrativo".equals(emp1.getTipo_cargo())){
+            nominaEmpleados.add(emp1);
+        }
+        else{
+            throw new  TipoEmpleadoNoValidoException("El empleado debe ser Administrativo o Operario");
+        }
+    }
+    
     /**
      * @param area the area to set
      */
