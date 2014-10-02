@@ -14,14 +14,16 @@ public abstract class Persona {
     private String apellido;
     private Domicilio domicilio;
     private int dni;
-    private LocalDate fecha;
+    private LocalDate fechaNacimiento;
+    private char sexo;
     
-    public Persona(String nombre, String apellido, Domicilio domicilio, int dni,LocalDate fechaNacimiento){
+    public Persona(String nombre, String apellido,char sexo, Domicilio domicilio, int dni,LocalDate fechaNacimiento){
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
         this.dni = dni;
-        this.fecha = fechaNacimiento;
+        this.fechaNacimiento = fechaNacimiento;
+        this.sexo = sexo;
     }
 
     /**
@@ -81,17 +83,36 @@ public abstract class Persona {
     }
 
     /**
-     * @return the fecha
+     * @return the fechaNacimiento
      */
-    public LocalDate getFecha() {
-        return fecha;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
     /**
-     * @param fecha the fecha to set
+     * @param fechaNacimiento the fechaNacimiento to set
      */
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    /**
+     * @return the sexo
+     */
+    public char getSexo() {
+        return sexo;
+    }
+
+    /**
+     * @param sexo the sexo to set
+     */
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }
+    
+    public void imprimirDatos(){
+        System.out.println("Apellido y nombre:"+apellido+" "+nombre+" Sexo: "+sexo+" Fecha nacimiento: "+fechaNacimiento);
+        System.out.println("Domicilio: "+domicilio.getCalle()+" "+domicilio.getNumero());
     }
     
 }
