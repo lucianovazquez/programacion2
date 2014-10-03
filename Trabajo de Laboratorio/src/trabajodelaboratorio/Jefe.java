@@ -32,7 +32,7 @@ public class Jefe extends Empleado{
     
     public void addEmpleadoANomina(Empleado emp1) throws TipoEmpleadoNoValidoException{
         
-        if("Operario".equals(emp1.getTipoCargo())||"Administrativo".equals(emp1.getTipoCargo())){
+        if(emp1 instanceof Operario || emp1 instanceof Administrativo){
             nominaEmpleados.add(emp1);
         }
         else{
