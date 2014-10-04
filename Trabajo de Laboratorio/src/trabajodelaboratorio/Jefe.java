@@ -16,7 +16,7 @@ import java.util.List;
 public class Jefe extends Empleado{
     
     private String area; //Area de la cual es Jefe
-    private ArrayList<Empleado> nominaEmpleados  = new ArrayList();  // ArrayList con todos los empleados a cargo
+    private ArrayList<Empleado> nominaEmpleados  = new ArrayList<>();  // ArrayList con todos los empleados a cargo
    
     public Jefe(String nombre, String apellido,char sexo,Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String area){
         super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Jefe de area");
