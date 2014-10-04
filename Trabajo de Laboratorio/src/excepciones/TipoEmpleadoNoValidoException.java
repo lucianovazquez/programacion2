@@ -2,7 +2,7 @@ package excepciones;
 
 /**
  *
- * @author RoqueG
+ * @author Luciano
  */
 public class TipoEmpleadoNoValidoException extends Exception {
     public TipoEmpleadoNoValidoException(String s){
