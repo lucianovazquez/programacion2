@@ -1,7 +1,10 @@
 package trabajodelaboratorio;
 
-import Excepciones.TipoEmpleadoNoValidoException;
+import excepciones.TipoEmpleadoNoValidoException;
+import excepciones.YaTieneUnConyugeException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Luciano
@@ -19,7 +22,13 @@ public class TrabajoDeLaboratorio {
         Empleado empleado3 = new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2));
         Empleado empleado4 = new Administrativo("Marcelo","Vazquez",'M',new Domicilio("Rivadavia",44),24573293,LocalDate.of(1982,6,23),103,LocalDate.of(2012,8,12));
         
-        empleado1.addFamiliar(new Familiar("Teresita","Condori",'F',new Domicilio("Av.SiempreViva",123),32405326,LocalDate.of(1993,8,4),"Esposa"));
+        try {
+            empleado1.addFamiliar((Familiar)new Conyuge("Teresita","Condori",'F',new Domicilio("Av.SiempreViva",123),32405326,LocalDate.of(1993,8,4)));
+            empleado1.addFamiliar((Familiar)new Hijo("Maria","Condori",'F',new Domicilio("Av.SiempreViva",123),45402326,LocalDate.of(2014,8,4)));
+        } catch (YaTieneUnConyugeException ex) {
+            System.out.println(ex.getMessage());
+        }
+       
         Jefe jef1=(Jefe)empleado1;
         
         try{
