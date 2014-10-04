@@ -10,33 +10,6 @@ import java.time.LocalDate;
  *
  * @author Luciano
  */
-public class Familiar extends Persona {
+public interface Familiar {
     
-    private String parentezco;
-    
-    public Familiar (String nombre,String apellido,char sexo,Domicilio domicilio,int dni,LocalDate fechaNacimiento, String parentezco){
-   
-        super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento);
-        this.parentezco=parentezco;
-    }
-
-    /**
-     * @return the parentezco
-     */
-    public String getParentezco() {
-        return parentezco;
-    }
-
-    /**
-     * @param parentezco the parentezco to set
-     */
-    public void setParentezco(String parentezco) {
-        this.parentezco = parentezco;
-    }
-    
-    @Override
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("Parentezco: "+parentezco);
-    }
 }
