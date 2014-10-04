@@ -1,8 +1,8 @@
 package trabajodelaboratorio;
 
+import excepciones.YaTieneUnConyugeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -69,7 +69,13 @@ public abstract class Empleado extends Persona {
      /**
       *  @param familiar el familiar a cargo a agregar
       */
-    public void addFamiliar(Familiar familiar){
+    public void addFamiliar(Familiar familiar) throws YaTieneUnConyugeException{
+        if(familiar instanceof Conyuge){
+            for(int i=0; i<familiares.size();i++){
+                if(familiares.get(i) instanceof Conyuge)
+                throw new YaTieneUnConyugeException("Error: ya tiene un conyuge asingnado");
+            }
+        }     
         familiares.add(familiar);
     }
     
@@ -78,7 +84,7 @@ public abstract class Empleado extends Persona {
         System.out.println("DATOS DEL CARGO: Cargo: "+tipoCargo+" Legajo: "+nroLegajo+" Ingreso"+fecIngreso);
         System.out.println("FAMILIARES A CARGO: ");
         for(int i=0; i<familiares.size();i++){
-            Familiar f = familiares.get(i);
+            Persona f = (Persona)familiares.get(i);
             f.imprimirDatos();
         }
     }
