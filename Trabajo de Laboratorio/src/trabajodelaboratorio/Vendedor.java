@@ -16,7 +16,7 @@ public class Vendedor extends Empleado {
     private int sucursal; //Sucursal de venta
     private Float porcentajeCom; //Porcentaje de Comision de Ventas
     
-   public Vendedor(String nombre, String apellido,char sexo,Domicilio domicilio, int dni, LocalDate fechaNacimiento,int nro_legajo, Date fec_ingreso){
+   public Vendedor(String nombre, String apellido,char sexo,Domicilio domicilio, int dni, LocalDate fechaNacimiento,int nro_legajo, LocalDate fec_ingreso){
        
        super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Vendedor");      
    } 

@@ -14,11 +14,11 @@ public abstract class Empleado extends Persona {
     
     private String tipoCargo;
     private int nroLegajo;
-    private Date fecIngreso;
+    private LocalDate fecIngreso;
     
     private ArrayList<Familiar> familiares = new ArrayList<>();
     
-    public Empleado(String nombre, String apellido,char sexo, Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, Date fec_ingreso, String tipoCargo){
+    public Empleado(String nombre, String apellido,char sexo, Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String tipoCargo){
             
         super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento);
         this.nroLegajo=nro_legajo;
@@ -57,7 +57,7 @@ public abstract class Empleado extends Persona {
     /**
      * @return the fecIngreso
      */
-    public Date getFecIngreso() {
+    public LocalDate getFecIngreso() {
         return fecIngreso;
     }
 
@@ -94,7 +94,5 @@ public abstract class Empleado extends Persona {
     /**
      * @param fecIngreso the fecIngreso to set
      */
-    public void setFecIngreso(Date fecIngreso) {
-        this.fecIngreso = fecIngreso;
-    }
+    
 }

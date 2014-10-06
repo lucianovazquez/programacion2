@@ -25,7 +25,7 @@ public abstract class Persona {
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
     }
-
+    public Persona(){}
     /**
      * @return the nombre
      */

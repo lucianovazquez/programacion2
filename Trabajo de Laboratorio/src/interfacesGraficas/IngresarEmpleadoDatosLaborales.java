@@ -222,7 +222,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jDateChooser1ActionPerformed(java.awt.event.ActionEvent evt){  
-        emp.setFecIngreso(jDateChooser1.getDate());
+        emp.setFecIngreso(LocalDate.of(jDateChooser1.getDate().getDay(), jDateChooser1.getDate().getMonth(), jDateChooser1.getDate().getYear()));
    
     }
     

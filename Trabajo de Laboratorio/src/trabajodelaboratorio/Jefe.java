@@ -22,6 +22,7 @@ public class Jefe extends Empleado{
         super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Jefe de area");
         this.area=area;
     }   
+    public Jefe(){}
 
     /**
      * @return the area
