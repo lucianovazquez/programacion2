@@ -3,6 +3,8 @@ package trabajodelaboratorio;
 import excepciones.YaTieneUnConyugeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 /**
  *
@@ -12,18 +14,18 @@ public abstract class Empleado extends Persona {
     
     private String tipoCargo;
     private int nroLegajo;
-    private LocalDate fecIngreso;
+    private Date fecIngreso;
     
     private ArrayList<Familiar> familiares = new ArrayList<>();
     
-    public Empleado(String nombre, String apellido,char sexo, Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String tipoCargo){
+    public Empleado(String nombre, String apellido,char sexo, Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, Date fec_ingreso, String tipoCargo){
             
         super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento);
         this.nroLegajo=nro_legajo;
         this.fecIngreso=fec_ingreso;  
         this.tipoCargo=tipoCargo;
     }
-
+    public Empleado(){}
     /**
      * @return the tipoCargo
      */
@@ -55,7 +57,7 @@ public abstract class Empleado extends Persona {
     /**
      * @return the fecIngreso
      */
-    public LocalDate getFecIngreso() {
+    public Date getFecIngreso() {
         return fecIngreso;
     }
 
@@ -63,7 +65,7 @@ public abstract class Empleado extends Persona {
      * @param fecIngreso the fecIngreso to set
      */
     public void setFecIngreso(LocalDate fecIngreso) {
-        this.fecIngreso = fecIngreso;
+        this.setFecIngreso(fecIngreso);
     }
 
      /**
@@ -81,11 +83,18 @@ public abstract class Empleado extends Persona {
     
     public void imprimirDatos(){
         super.imprimirDatos();
-        System.out.println("DATOS DEL CARGO: Cargo: "+tipoCargo+" Legajo: "+nroLegajo+" Ingreso"+fecIngreso);
+        System.out.println("DATOS DEL CARGO: Cargo: "+tipoCargo+" Legajo: "+nroLegajo+" Ingreso"+getFecIngreso());
         System.out.println("FAMILIARES A CARGO: ");
         for(int i=0; i<familiares.size();i++){
             Persona f = (Persona)familiares.get(i);
             f.imprimirDatos();
         }
+    }
+
+    /**
+     * @param fecIngreso the fecIngreso to set
+     */
+    public void setFecIngreso(Date fecIngreso) {
+        this.fecIngreso = fecIngreso;
     }
 }

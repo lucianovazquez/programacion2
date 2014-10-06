@@ -6,6 +6,7 @@ package trabajodelaboratorio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -13,15 +14,19 @@ import java.util.ArrayList;
  */
 public class Vendedor extends Empleado {
     private int sucursal; //Sucursal de venta
-    private Float porcentajeCom; //Porcentaje de Comision de Venas
+    private Float porcentajeCom; //Porcentaje de Comision de Ventas
     
-   public Vendedor(String nombre, String apellido,char sexo,Domicilio domicilio, int dni, LocalDate fechaNacimiento,int nro_legajo, LocalDate fec_ingreso,int sucursal,Float porcentaje_com){
+   public Vendedor(String nombre, String apellido,char sexo,Domicilio domicilio, int dni, LocalDate fechaNacimiento,int nro_legajo, Date fec_ingreso){
        
-       super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Vendedor");
-       this.sucursal=sucursal;
-       this.porcentajeCom=porcentaje_com;
-   }
+       super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Vendedor");      
+   } 
 
+    public Vendedor(int sucursal,Float porcentaje_com) {   
+        this.sucursal=sucursal;
+        this.porcentajeCom=porcentaje_com;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public Vendedor(){}
     /**
      * @return the sucursal
      */

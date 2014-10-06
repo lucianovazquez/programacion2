@@ -5,7 +5,13 @@
  */
 package interfacesGraficas;
 
+import static java.lang.Integer.parseInt;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.Jefe;
+import trabajodelaboratorio.Operario;
 import trabajodelaboratorio.Vendedor;
 
 /**
@@ -20,7 +26,15 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     public IngresarEmpleadoDatosLaborales() {
         initComponents();
     }
-     
+    Empleado emp;
+    
+    /*
+    Empleado empVen = new Vendedor();
+    Empleado empAdm = new Administrativo();
+    Empleado empOpe = new Operario();
+    Empleado empJef = new Jefe();
+    */
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +47,8 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
+        jDialog1 = new javax.swing.JDialog();
+        popupMenu1 = new java.awt.PopupMenu();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
@@ -43,12 +59,25 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jCalendarButton2 = new org.jbundle.thin.base.screen.jcalendarbutton.JCalendarButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Nuevo Empleado");
 
         jLabel13.setText("Datos Personales");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        popupMenu1.setLabel("popupMenu1");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nuevo Empleado");
@@ -58,12 +87,22 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         jLabel3.setText("Cargo:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Administrativo", "Operario", "Vendedor", "Jefe de Área" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Fecha de Ingreso:");
 
         jLabel5.setText("Legajo N°:");
 
         jTextField1.setText("                  ");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,8 +112,11 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         });
 
         jButton2.setText("Siguiente");
-
-        jCalendarButton2.setText("jCalendarButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -100,16 +142,16 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCalendarButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,11 +163,12 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCalendarButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,12 +185,53 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        if (jComboBox1.getSelectedItem().toString().equals("Vendedor")) {
+            emp.setTipoCargo("Vendedor");
+        }
+
+        if (jComboBox1.getSelectedItem().toString().equals("Jefe de Area")) {
+           emp.setTipoCargo("Jefe de Area");
+        }
+
+        if (jComboBox1.getSelectedItem().toString().equals("Administrativo")) {
+            emp.setTipoCargo("Administrativo");
+        }
+
+        if (jComboBox1.getSelectedItem().toString().equals("Operario")) {
+           emp.setTipoCargo("Operario");
+        }
+        
+         new IngresarEmpleadoDatosPersonales(emp).setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        jComboBox1.addItem("Vendedor");
+        jComboBox1.addItem("Jefe de Area");
+        jComboBox1.addItem("Administrativo");
+        jComboBox1.addItem("Operario");
+
+        jComboBox1.setSelectedItem("Vendedor");
+        
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        emp.setNroLegajo(parseInt(jTextField1.getText()));
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jDateChooser1ActionPerformed(java.awt.event.ActionEvent evt){  
+        emp.setFecIngreso(jDateChooser1.getDate());
+   
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private org.jbundle.thin.base.screen.jcalendarbutton.JCalendarButton jCalendarButton2;
     private javax.swing.JComboBox jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -158,5 +242,6 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
+    private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables
 }
