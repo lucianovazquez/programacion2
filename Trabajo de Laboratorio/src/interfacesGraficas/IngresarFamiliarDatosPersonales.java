@@ -5,8 +5,11 @@
  */
 package interfacesGraficas;
 
+import excepciones.YaTieneUnConyugeException;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import trabajodelaboratorio.Conyuge;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
@@ -334,6 +337,11 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
         else 
         fliar.setSexo('F');
         
+        try {
+            emp.addFamiliar((Familiar) fliar);
+        } catch (YaTieneUnConyugeException ex) {
+            Logger.getLogger(IngresarFamiliarDatosPersonales.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
