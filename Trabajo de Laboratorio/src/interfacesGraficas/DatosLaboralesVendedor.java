@@ -19,7 +19,9 @@ public class DatosLaboralesVendedor extends javax.swing.JFrame {
     /**
      * Creates new form DatosLaboralesVendedor
      */
-    public DatosLaboralesVendedor() {
+    Vendedor emp;
+    public DatosLaboralesVendedor(Vendedor emp) {
+        
         initComponents();
     }
 
@@ -180,7 +182,7 @@ public class DatosLaboralesVendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DatosLaboralesVendedor().setVisible(true);
+               
             }
         });
     }

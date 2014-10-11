@@ -188,6 +188,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         if (jComboBox1.getSelectedItem().toString().equals("Vendedor")) {
+            emp = new Vendedor();
             emp.setTipoCargo("Vendedor");
         }
 
@@ -203,7 +204,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
            emp.setTipoCargo("Operario");
         }
         
-         new IngresarEmpleadoDatosPersonales(emp).setVisible(true);
+         new IngresarEmpleadoDatosPersonales((Empleado) emp).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

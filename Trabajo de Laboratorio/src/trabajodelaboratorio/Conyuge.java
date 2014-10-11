@@ -11,4 +11,5 @@ public class Conyuge extends Persona implements Familiar{
    
         super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento);
     }
+    public Conyuge(){}
 }

@@ -5,6 +5,8 @@
  */
 package interfacesGraficas;
 
+import trabajodelaboratorio.Empleado;
+
 /**
  *
  * @author Luciano
@@ -14,8 +16,10 @@ public class IngresarFamilia extends javax.swing.JFrame {
     /**
      * Creates new form IngresarFamilia
      */
-    public IngresarFamilia() {
+    Empleado emp;
+    public IngresarFamilia(Empleado emp) {
         initComponents();
+     this.emp=emp;
     }
 
     /**
@@ -73,6 +77,11 @@ public class IngresarFamilia extends javax.swing.JFrame {
         });
 
         jButton2.setText("Agregar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Eliminar");
 
@@ -135,6 +144,10 @@ public class IngresarFamilia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    new IngresarFamiliarDatosPersonales(emp).setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -165,7 +178,7 @@ public class IngresarFamilia extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresarFamilia().setVisible(true);
+                
             }
         });
     }

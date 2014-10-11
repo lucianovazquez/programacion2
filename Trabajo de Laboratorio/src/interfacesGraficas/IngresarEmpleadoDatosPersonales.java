@@ -9,6 +9,7 @@ import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.Vendedor;
 /**
  *
  * @author Luciano
@@ -19,19 +20,15 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
      * Creates new form IngresarEmpleado
     
      */
+    
+    Empleado emp;
+    
     public IngresarEmpleadoDatosPersonales(Empleado emp) {
         
         initComponents();
         
-        emp.setApellido(jTextField1.getText());
-        emp.setNombre(jTextField2.getText());
-        emp.setDni(parseInt(jTextField3.getText()));
-        emp.setFechaNacimiento(LocalDate.of(jDateChooser1.getDate().getDay(), jDateChooser1.getDate().getMonth(), jDateChooser1.getDate().getYear()));
-        emp.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText())));
-        if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
-        emp.setSexo('M');
-        else 
-        emp.setSexo('F');
+        this.emp = emp;
+        
     }
 
     /**
@@ -332,11 +329,22 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- 
+        
+        emp.setApellido(jTextField1.getText());
+        emp.setNombre(jTextField2.getText());
+        emp.setDni(parseInt(jTextField3.getText()));
+        emp.setFechaNacimiento(LocalDate.of(jDateChooser1.getDate().getDay(), jDateChooser1.getDate().getMonth(), jDateChooser1.getDate().getYear()));
+        emp.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText())));
+        if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
+        emp.setSexo('M');
+        else 
+        emp.setSexo('F');
+        if(emp.getTipoCargo().equals("Vendedor"))
+            new DatosLaboralesVendedor((Vendedor) emp).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        new IngresarFamilia(emp).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
