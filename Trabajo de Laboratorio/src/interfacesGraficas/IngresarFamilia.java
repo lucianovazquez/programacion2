@@ -12,9 +12,15 @@ public class IngresarFamilia extends javax.swing.JPanel {
      * Creates new form IngresarFamilia
      */
     Empleado emp;
-    public IngresarFamilia(Empleado emp) {
+    javax.swing.JPanel panel0;
+    javax.swing.JFrame ventana;
+    
+    public IngresarFamilia(Empleado emp,javax.swing.JPanel panel0, javax.swing.JFrame ventana) {
+        
         initComponents();
      this.emp=emp;
+     this.panel0=panel0;
+     this.ventana=ventana;
     }
 
     /**
@@ -127,11 +133,15 @@ public class IngresarFamilia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    ventana.setContentPane(panel0);
+    panel0.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new IngresarFamiliarDatosPersonales(emp).setVisible(true);         // TODO add your handling code here:
+       IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(emp);
+       panel.setVisible(true);        
+       this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -24,11 +24,15 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     /**
      * Creates new form IngresarEmpleadoDatosLaborales
      */
+    javax.swing.JPanel panel0;
     javax.swing.JFrame ventana;
-    VentanaPrincipal volver = new VentanaPrincipal();
-    public IngresarEmpleadoDatosLaborales(javax.swing.JFrame ventana) {
+    
+    public IngresarEmpleadoDatosLaborales(javax.swing.JPanel panel0,javax.swing.JFrame ventana) {
         initComponents();   
-        this.ventana=ventana;
+        this.panel0 = panel0;
+        this.ventana = ventana;
+        
+        this.setSize(420, 330);
     }
     Empleado emp;
     
@@ -90,7 +94,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
 
         jLabel3.setText("Cargo:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Administrativo", "Operario", "Vendedor", "Jefe de Área" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Administrativo", "Jefe de Área", "Operario", "Vendedor" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -109,6 +113,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         });
 
         jButton1.setText("Volver");
+        jButton1.setToolTipText("Regresar al Menú Principal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -139,24 +144,23 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addGap(0, 161, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(170, 170, 170))
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,9 +194,9 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
         //no regresa a la ventana principal
-   ventana.setContentPane(ventana);
+   ventana.setContentPane(panel0);
+   panel0.setVisible(true);
    this.setVisible(false);
-   ventana.setVisible(true);
    
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -215,7 +219,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
            emp.setTipoCargo("Operario");
         }
         
-         IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales((Empleado) emp);
+         IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales((Empleado) emp,this, ventana);
         ventana.setContentPane(panel2);
         this.setVisible(false);
         panel2.setVisible(true);
@@ -223,14 +227,9 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        jComboBox1.addItem("Vendedor");
-        jComboBox1.addItem("Jefe de Area");
-        jComboBox1.addItem("Administrativo");
-        jComboBox1.addItem("Operario");
-
-        jComboBox1.setSelectedItem("Vendedor");
+    
         
-        
+     
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
