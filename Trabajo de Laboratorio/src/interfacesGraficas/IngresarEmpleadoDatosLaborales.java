@@ -32,7 +32,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         this.panel0 = panel0;
         this.ventana = ventana;
         
-        this.setSize(420, 330);
+        this.setSize(420, 330);  
     }
     Empleado emp;
     
@@ -192,22 +192,21 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        //no regresa a la ventana principal
-   ventana.setContentPane(panel0);
+ 
+   ventana.setContentPane(panel0);   
    panel0.setVisible(true);
    this.setVisible(false);
-   
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+/*
         if (jComboBox1.getSelectedItem().toString().equals("Vendedor")) {
             emp = new Vendedor();
             emp.setTipoCargo("Vendedor");
         }
 
-        if (jComboBox1.getSelectedItem().toString().equals("Jefe de Area")) {
+        if (jComboBox1.getSelectedItem().toString().equals("Jefe de Área")) {
            emp.setTipoCargo("Jefe de Area");
         }
 
@@ -218,7 +217,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         if (jComboBox1.getSelectedItem().toString().equals("Operario")) {
            emp.setTipoCargo("Operario");
         }
-        
+        */
          IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales((Empleado) emp,this, ventana);
         ventana.setContentPane(panel2);
         this.setVisible(false);

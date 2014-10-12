@@ -83,10 +83,11 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         jToolBar1.setRollover(true);
 
@@ -190,9 +191,6 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setText("Datos Personales");
-
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Masculino", "Femenino" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,14 +198,15 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("Nuevo Empleado");
+
+        jLabel15.setText("Datos Personales");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(150, 150, 150))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,14 +261,21 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel14)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel15)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -333,6 +339,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
+        /*
         emp.setApellido(jTextField1.getText());
         emp.setNombre(jTextField2.getText());
         emp.setDni(parseInt(jTextField3.getText()));
@@ -343,15 +350,20 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         else 
         emp.setSexo('F');
         if(emp.getTipoCargo().equals("Vendedor"))
-            new DatosLaboralesVendedor((Vendedor) emp).setVisible(true);
+                */
+          DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor((Vendedor) emp);
+          ventana.setContentPane(panelSig);
+          panelSig.setVisible(true);
+          this.setVisible(false);
+          
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        
-        IngresarFamilia panel = new IngresarFamilia(emp,this,ventana);
-        panel.setVisible(true);
+        IngresarFamilia panelSig = new IngresarFamilia(emp,this,ventana);
+        ventana.setContentPane(panelSig);
         this.setVisible(false);
+        panelSig.setVisible(true);   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
@@ -377,7 +389,8 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
