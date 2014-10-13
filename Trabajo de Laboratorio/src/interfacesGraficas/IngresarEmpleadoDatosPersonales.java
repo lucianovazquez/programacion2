@@ -123,6 +123,8 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        setMaximumSize(new java.awt.Dimension(420, 330));
+
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Apellido:");
@@ -328,9 +330,9 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          //VOLVER
-        ventana.setContentPane(panel1);
-        panel1.setVisible(true);
         this.setVisible(false);
+        ventana.setContentPane(panel1);
+        panel1.setVisible(true);      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -339,31 +341,36 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        /*
+        try{
         emp.setApellido(jTextField1.getText());
         emp.setNombre(jTextField2.getText());
-        emp.setDni(parseInt(jTextField3.getText()));
+        emp.setDni(Integer.parseInt(jTextField3.getText()));
         emp.setFechaNacimiento(LocalDate.of(jDateChooser1.getDate().getDay(), jDateChooser1.getDate().getMonth(), jDateChooser1.getDate().getYear()));
         emp.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText())));
         if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
         emp.setSexo('M');
         else 
         emp.setSexo('F');
-        if(emp.getTipoCargo().equals("Vendedor"))
-                */
+        
+        }catch(Exception ex){
+          System.out.println("ERROR EN EL SETEO DE LOS ATRIBUTOS");
+        }
+        
+        if(emp.getTipoCargo().equals("Vendedor")){    
+          this.setVisible(false);
+          emp = new Vendedor();
           DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor((Vendedor) emp);
           ventana.setContentPane(panelSig);
-          panelSig.setVisible(true);
-          this.setVisible(false);
-          
-        
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
         IngresarFamilia panelSig = new IngresarFamilia(emp,this,ventana);
         ventana.setContentPane(panelSig);
-        this.setVisible(false);
-        panelSig.setVisible(true);   
+        
+        
+        //panelSig.setVisible(true);   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed

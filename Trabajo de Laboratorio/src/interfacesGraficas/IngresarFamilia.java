@@ -21,6 +21,7 @@ public class IngresarFamilia extends javax.swing.JPanel {
      this.emp=emp;
      this.panel0=panel0;
      this.ventana=ventana;
+     this.setSize(420, 330);
     }
 
     /**
@@ -41,6 +42,8 @@ public class IngresarFamilia extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+
+        setMaximumSize(new java.awt.Dimension(420, 330));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Familia a Cargo");
@@ -94,20 +97,21 @@ public class IngresarFamilia extends javax.swing.JPanel {
                                 .addGap(45, 45, 45)
                                 .addComponent(jLabel2)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))
                         .addGap(37, 37, 37))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addContainerGap(323, Short.MAX_VALUE))
+                        .addContainerGap(343, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(jButton2)
-                                .addGap(111, 111, 111)
-                                .addComponent(jButton4)))
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton2)
+                        .addGap(111, 111, 111)
+                        .addComponent(jButton4)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,20 +132,20 @@ public class IngresarFamilia extends javax.swing.JPanel {
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(20, 20, 20))
+                .addGap(39, 39, 39))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    ventana.setContentPane(panel0);
-    panel0.setVisible(true);
     this.setVisible(false);
+    ventana.setContentPane(panel0);
+    panel0.setVisible(true); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(emp);
-       panel.setVisible(true);        
        this.setVisible(false);
+        IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(emp,this,ventana);
+       ventana.setContentPane(panel);    
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
