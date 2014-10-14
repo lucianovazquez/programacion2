@@ -24,8 +24,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         
         jLabel7.setText(emp.getNombre()+emp.getApellido());
         jLabel8.setText(Integer.toString(emp.getNroLegajo()));
-        String fec = emp.getFecIngreso().toString();
-        jLabel9.setText(fec);
+        jLabel9.setText(emp.getFecIngreso().toString());
     }
 
     /**
