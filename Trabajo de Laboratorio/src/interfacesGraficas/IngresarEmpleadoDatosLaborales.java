@@ -26,7 +26,8 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
      */
     javax.swing.JPanel panel0;
     javax.swing.JFrame ventana;
-    
+    Empleado emp;
+
     public IngresarEmpleadoDatosLaborales(javax.swing.JPanel panel0,javax.swing.JFrame ventana) {
         initComponents();   
         this.panel0 = panel0;
@@ -34,7 +35,6 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         
         this.setSize(420, 330);  
     }
-    Empleado emp;
     
  
     /**
@@ -186,36 +186,40 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   this.setVisible(false);
-   ventana.setContentPane(panel0);   
-   panel0.setVisible(true);
+        this.setVisible(false);
+        ventana.setContentPane(panel0);   
+        panel0.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        /*emp.setNroLegajo(Integer.parseInt(jTextField1.getText()));
-        emp.setFecIngreso(LocalDate.of(jDateChooser1.getDate().getDay(), jDateChooser1.getDate().getMonth(), jDateChooser1.getDate().getYear()));
-        
         if (jComboBox1.getSelectedItem().toString().equals("Vendedor")) {
-            Empleado emp = new Vendedor();
+            emp = new Vendedor();
             emp.setTipoCargo("Vendedor");        
         }
 
         if (jComboBox1.getSelectedItem().toString().equals("Jefe de Área")) {
-            Empleado emp = new Jefe();
+            emp = new Jefe();
            emp.setTipoCargo("Jefe de Area");        
         }
 
         if (jComboBox1.getSelectedItem().toString().equals("Administrativo")) {
-            Empleado emp = new Administrativo();
+            emp = new Administrativo();
             emp.setTipoCargo("Administrativo");       
         }
 
         if (jComboBox1.getSelectedItem().toString().equals("Operario")) {
-            Empleado emp = new Operario();
+           emp = new Operario();
            emp.setTipoCargo("Operario");
         }
-       */
+        
+        int numerolegajo=Integer.parseInt(jTextField1.getText().trim());
+        
+        emp.setNroLegajo(numerolegajo);
+        
+        emp.setFecIngreso(LocalDate.of(jDateChooser1.getDate().getYear(),jDateChooser1.getDate().getMonth(),jDateChooser1.getDate().getDay()));
+        
+  
         this.setVisible(false);
          IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales((Empleado) emp,this, ventana);
         ventana.setContentPane(panel2);  
@@ -228,7 +232,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-   
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jDateChooser1ActionPerformed(java.awt.event.ActionEvent evt){  
