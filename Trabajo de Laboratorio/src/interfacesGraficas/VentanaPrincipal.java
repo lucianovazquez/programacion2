@@ -145,7 +145,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      panel1.setVisible(true);
      
     }//GEN-LAST:event_jButton1ActionPerformed
-
+   
+    public void addEmpleado(Empleado emp1){
+        empleados.add(emp1);
+    }
     /**
      * @param args the command line arguments
      */
