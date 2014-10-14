@@ -9,6 +9,7 @@ import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Vendedor;
 /**
  *
@@ -359,9 +360,15 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
         if(emp instanceof Vendedor){    
           this.setVisible(false);
-          DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor((Vendedor) emp);
+          DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor((Vendedor) emp,this,ventana);
           ventana.setContentPane(panelSig);
         }
+        if(emp instanceof Jefe){    
+          this.setVisible(false);
+          DatosLaboralesJefe  panelSig = new DatosLaboralesJefe((Jefe) emp,this,ventana);
+          ventana.setContentPane(panelSig);
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

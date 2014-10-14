@@ -17,12 +17,16 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
      * Creates new form DatosLaboralesVendedor
      */
     Vendedor emp;
-    public DatosLaboralesVendedor(Vendedor emp) {
+    javax.swing.JPanel panel;
+    javax.swing.JFrame ventana;
+    public DatosLaboralesVendedor(Vendedor emp,javax.swing.JPanel panel, javax.swing.JFrame ventana) {
         
         initComponents();
         this.emp=emp;
+        this.panel=panel;
+        this.ventana=ventana;
         
-        jLabel7.setText(emp.getNombre()+emp.getApellido());
+        jLabel7.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel8.setText(Integer.toString(emp.getNroLegajo()));
         jLabel9.setText(emp.getFecIngreso().toString());
     }
@@ -56,6 +60,11 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         jLabel6.setText("Fecha de Ingreso:");
 
         jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nuevo Empleado");
@@ -171,10 +180,14 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Empleado empven = new Vendedor(parseInt(jTextField1.getText()),parseFloat(jTextField2.getText()));
-        empven.setTipoCargo("Vendedor");
-
+        //agregar empleado al array de empleados(ventana principal)
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        ventana.setContentPane(panel);
+        panel.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
