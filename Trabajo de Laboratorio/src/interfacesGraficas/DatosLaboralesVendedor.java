@@ -22,7 +22,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         initComponents();
         this.emp=emp;
         
-        jLabel7.setText(emp.getNombre()+emp.getApellido());
+        jLabel7.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel8.setText(Integer.toString(emp.getNroLegajo()));
         jLabel9.setText(emp.getFecIngreso().toString());
     }
@@ -56,6 +56,11 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         jLabel6.setText("Fecha de Ingreso:");
 
         jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nuevo Empleado");
@@ -175,6 +180,10 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         empven.setTipoCargo("Vendedor");
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
