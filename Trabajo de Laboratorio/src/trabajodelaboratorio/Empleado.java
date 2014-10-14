@@ -1,6 +1,7 @@
 package trabajodelaboratorio;
 
 import excepciones.YaTieneUnConyugeException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,6 +67,16 @@ public abstract class Empleado extends Persona {
      */
     public void setFecIngreso(LocalDate fecIngreso) {
         this.fecIngreso=fecIngreso;
+    }
+    public void setFecIngreso(Date fecIngreso) {
+            int dia;
+            int mes;
+            int año;
+            
+            año = Integer.parseInt(new SimpleDateFormat("yyyy").format(fecIngreso));
+            mes = Integer.parseInt(new SimpleDateFormat("MM").format(fecIngreso));
+            dia = Integer.parseInt(new SimpleDateFormat("dd").format(fecIngreso));
+        this.fecIngreso=LocalDate.of(año, mes, dia);
     }
 
      /**
