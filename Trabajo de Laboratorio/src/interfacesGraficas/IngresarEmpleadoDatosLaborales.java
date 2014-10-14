@@ -7,8 +7,11 @@ package interfacesGraficas;
 
 import java.awt.Container;
 import static java.lang.Integer.parseInt;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -217,7 +220,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         
         emp.setNroLegajo(numerolegajo);
         
-        emp.setFecIngreso(LocalDate.of(jDateChooser1.getDate().getYear(),jDateChooser1.getDate().getMonth(),jDateChooser1.getDate().getDay()));
+        emp.setFecIngreso(jDateChooser1.getDate());
         
   
         this.setVisible(false);
@@ -239,7 +242,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         //
    
     }
-    
+           
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
