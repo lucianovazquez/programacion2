@@ -17,10 +17,14 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
      * Creates new form DatosLaboralesVendedor
      */
     Vendedor emp;
-    public DatosLaboralesVendedor(Vendedor emp) {
+    javax.swing.JPanel panel;
+    javax.swing.JFrame ventana;
+    public DatosLaboralesVendedor(Vendedor emp,javax.swing.JPanel panel, javax.swing.JFrame ventana) {
         
         initComponents();
         this.emp=emp;
+        this.panel=panel;
+        this.ventana=ventana;
         
         jLabel7.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel8.setText(Integer.toString(emp.getNroLegajo()));
@@ -176,13 +180,13 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Empleado empven = new Vendedor(parseInt(jTextField1.getText()),parseFloat(jTextField2.getText()));
-        empven.setTipoCargo("Vendedor");
-
+        //agregar empleado al array de empleados(ventana principal)
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        ventana.setContentPane(panel);
+        panel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
