@@ -65,7 +65,7 @@ public abstract class Empleado extends Persona {
      * @param fecIngreso the fecIngreso to set
      */
     public void setFecIngreso(LocalDate fecIngreso) {
-        this.setFecIngreso(fecIngreso);
+        this.fecIngreso=fecIngreso;
     }
 
      /**
