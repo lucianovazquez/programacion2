@@ -4,7 +4,9 @@
  * del empleado como los datos personales de sus familiares a cargo
  */
 package trabajodelaboratorio;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 /**
  *
  * @author RoqueG
@@ -94,6 +96,17 @@ public abstract class Persona {
      */
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+    
+    public void setFechaNacimiento(Date fechaNacimiento) {
+            int dia;
+            int mes;
+            int año;
+            
+            año = Integer.parseInt(new SimpleDateFormat("yyyy").format(fechaNacimiento));
+            mes = Integer.parseInt(new SimpleDateFormat("MM").format(fechaNacimiento));
+            dia = Integer.parseInt(new SimpleDateFormat("dd").format(fechaNacimiento));
+            this.fechaNacimiento=LocalDate.of(año, mes, dia);
     }
 
     /**
