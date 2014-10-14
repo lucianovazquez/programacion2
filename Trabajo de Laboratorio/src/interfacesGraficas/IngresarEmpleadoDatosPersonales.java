@@ -356,9 +356,9 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
           System.out.println(ex.toString());
         }
         
-        if(emp.getTipoCargo().equals("Vendedor")){    
+
+        if(emp instanceof Vendedor){    
           this.setVisible(false);
-          emp = new Vendedor();
           DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor((Vendedor) emp);
           ventana.setContentPane(panelSig);
         }
