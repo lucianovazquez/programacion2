@@ -5,6 +5,8 @@
  */
 package interfacesGraficas;
 
+import java.util.ArrayList;
+import java.util.List;
 import trabajodelaboratorio.Empleado;
 
 /**
@@ -13,7 +15,7 @@ import trabajodelaboratorio.Empleado;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    
+    private List<Empleado> empleados = new ArrayList<>();
     /**
      * Creates new form VentanaPrincipal
      */
@@ -139,7 +141,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      
      IngresarEmpleadoDatosLaborales panel1 = new IngresarEmpleadoDatosLaborales(jPanel1,this);
-     this.setContentPane(panel1); 
+     this.setContentPane(panel1);
      panel1.setVisible(true);
      
     }//GEN-LAST:event_jButton1ActionPerformed
