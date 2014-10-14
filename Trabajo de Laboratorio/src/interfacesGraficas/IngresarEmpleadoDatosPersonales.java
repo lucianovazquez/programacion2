@@ -346,7 +346,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             emp.setApellido(jTextField1.getText());
             emp.setNombre(jTextField2.getText());
             emp.setDni(Integer.parseInt(jTextField3.getText().trim()));
-            emp.setFechaNacimiento(LocalDate.of(jDateChooser1.getDate().getYear(), jDateChooser1.getDate().getMonth(),jDateChooser1.getDate().getDay()));
+            emp.setFechaNacimiento(jDateChooser1.getDate());
             emp.setDomicilio(new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim())));
             if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
             emp.setSexo('M');
