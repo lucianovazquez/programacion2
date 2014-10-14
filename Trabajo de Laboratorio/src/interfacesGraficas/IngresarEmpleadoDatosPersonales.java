@@ -342,18 +342,18 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
         try{
-        emp.setApellido(jTextField1.getText());
-        emp.setNombre(jTextField2.getText());
-        emp.setDni(Integer.parseInt(jTextField3.getText()));
-        emp.setFechaNacimiento(LocalDate.of(jDateChooser1.getDate().getDay(), jDateChooser1.getDate().getMonth(), jDateChooser1.getDate().getYear()));
-        emp.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText())));
-        if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
-        emp.setSexo('M');
-        else 
-        emp.setSexo('F');
-        
+            emp.setApellido(jTextField1.getText());
+            emp.setNombre(jTextField2.getText());
+            //emp.setDni(Long.parseLong(jTextField3.getText().trim()));
+            emp.setFechaNacimiento(LocalDate.of(jDateChooser1.getDate().getYear(), jDateChooser1.getDate().getMonth(),jDateChooser1.getDate().getDay()));
+            emp.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText().trim())));
+            if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
+            emp.setSexo('M');
+            else 
+            emp.setSexo('F');
         }catch(Exception ex){
           System.out.println("ERROR EN EL SETEO DE LOS ATRIBUTOS");
+          System.out.println(ex.getMessage());
         }
         
         if(emp.getTipoCargo().equals("Vendedor")){    
