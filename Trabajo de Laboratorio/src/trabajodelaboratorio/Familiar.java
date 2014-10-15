@@ -11,5 +11,4 @@ import java.time.LocalDate;
  * @author Luciano
  */
 public interface Familiar {
-    
 }
