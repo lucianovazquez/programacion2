@@ -5,6 +5,9 @@
  */
 package interfacesGraficas;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
 
 /**
@@ -27,6 +30,21 @@ javax.swing.JFrame ventana;
         this.emp=emp;
         this.panel=panel;
         this.ventana=ventana;
+        
+     DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+     ArrayList<Empleado> lista = emp.getNominaEmpleados();
+     Object[] fila = new Object[tableModel.getColumnCount()];
+     
+     for (int i = 0; i < lista.size(); i++) {
+         
+    fila[0] = lista.get(i).getNombre();
+    fila[1] = lista.get(i).getApellido();
+    fila[2] = lista.get(i).getNroLegajo();
+    fila[3] = lista.get(i).getTipoCargo();
+    tableModel.addRow(fila);
+     }
+
+    jTable1.setModel(tableModel);
     }
 
     /**
