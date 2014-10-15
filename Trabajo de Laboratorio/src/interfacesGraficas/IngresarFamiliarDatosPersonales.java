@@ -329,9 +329,9 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
  
         fliar.setApellido(jTextField1.getText());
         fliar.setNombre(jTextField2.getText());
-        fliar.setDni(parseInt(jTextField3.getText()));
-        fliar.setFechaNacimiento(LocalDate.of(jDateChooser1.getDate().getDay(), jDateChooser1.getDate().getMonth(), jDateChooser1.getDate().getYear()));
-        fliar.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText())));
+        fliar.setDni(parseInt(jTextField3.getText().trim()));
+        fliar.setFechaNacimiento(jDateChooser1.getDate());
+        fliar.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText().trim())));
         if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
         fliar.setSexo('M');
         else 
