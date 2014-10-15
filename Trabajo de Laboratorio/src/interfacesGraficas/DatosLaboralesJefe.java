@@ -89,7 +89,7 @@ javax.swing.JFrame ventana;
 
         jLabel1.setText("Área de Jefatura:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Dirección", "Administración", "Ventas", "Producción" }));
 
         jLabel3.setText("A cargo:");
 
@@ -114,6 +114,11 @@ javax.swing.JFrame ventana;
         });
 
         jButton2.setText("Finalizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -188,6 +193,17 @@ javax.swing.JFrame ventana;
        ventana.setContentPane(panel);
        panel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       if(jComboBox1.getSelectedItem().equals("Administración")) //Ninguno, Dirección, Administración, Ventas, Producción
+           emp.setArea("Administración");
+       if(jComboBox1.getSelectedItem().equals("Dirección"))
+           emp.setArea("Dirección");
+       if(jComboBox1.getSelectedItem().equals("Producción"))
+           emp.setArea("Producción");
+        if(jComboBox1.getSelectedItem().equals("Ventas"))
+           emp.setArea("Ventas");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
