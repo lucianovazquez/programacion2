@@ -11,6 +11,7 @@ import trabajodelaboratorio.Persona;
  *
  * @author Luciano
  */
+
 public class DatosLaboralesVendedor extends javax.swing.JPanel {
 
     /**
@@ -19,6 +20,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     Vendedor emp;
     javax.swing.JPanel panel;
     javax.swing.JFrame ventana;
+    VentanaPrincipal principal;
     public DatosLaboralesVendedor(Vendedor emp,javax.swing.JPanel panel, javax.swing.JFrame ventana) {
         
         initComponents();
@@ -180,7 +182,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //agregar empleado al array de empleados(ventana principal)
+    principal.addEmpleado(emp);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
