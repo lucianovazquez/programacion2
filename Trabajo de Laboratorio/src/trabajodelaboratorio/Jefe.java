@@ -34,7 +34,7 @@ public class Jefe extends Empleado{
     public void addEmpleadoANomina(Empleado emp1) throws TipoEmpleadoNoValidoException{
         
         if(emp1 instanceof Operario || emp1 instanceof Administrativo){
-            nominaEmpleados.add(emp1);
+            getNominaEmpleados().add(emp1);
         }
         else{
             throw new  TipoEmpleadoNoValidoException("El empleado debe ser Administrativo o Operario");
@@ -52,6 +52,20 @@ public class Jefe extends Empleado{
     public void imprimirDatos(){
         super.imprimirDatos();
         System.out.println("Area a cargo: "+area+"");
+    }
+
+    /**
+     * @return the nominaEmpleados
+     */
+    public ArrayList<Empleado> getNominaEmpleados() {
+        return nominaEmpleados;
+    }
+
+    /**
+     * @param nominaEmpleados the nominaEmpleados to set
+     */
+    public void setNominaEmpleados(ArrayList<Empleado> nominaEmpleados) {
+        this.nominaEmpleados = nominaEmpleados;
     }
 
 }
