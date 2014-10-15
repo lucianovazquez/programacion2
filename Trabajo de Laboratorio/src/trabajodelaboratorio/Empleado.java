@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import trabajodelaboratorio.Conyuge;
 
 
 /**
@@ -18,7 +19,7 @@ public abstract class Empleado extends Persona {
     private LocalDate fecIngreso;
     
     private ArrayList<Familiar> familiares = new ArrayList<>();
-    
+ 
     public Empleado(String nombre, String apellido,char sexo, Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String tipoCargo){
             
         super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento);
@@ -84,22 +85,36 @@ public abstract class Empleado extends Persona {
       */
     public void addFamiliar(Familiar familiar) throws YaTieneUnConyugeException{
         if(familiar instanceof Conyuge){
-            for(int i=0; i<familiares.size();i++){
-                if(familiares.get(i) instanceof Conyuge)
+            for(int i=0; i<getFamiliares().size();i++){
+                if(getFamiliares().get(i) instanceof Conyuge)
                 throw new YaTieneUnConyugeException("Error: ya tiene un conyuge asingnado");
             }
         }     
-        familiares.add(familiar);
+          getFamiliares().add(familiar);
     }
     
     public void imprimirDatos(){
         super.imprimirDatos();
         System.out.println("DATOS DEL CARGO: Cargo: "+tipoCargo+" Legajo: "+nroLegajo+" Ingreso"+getFecIngreso());
         System.out.println("FAMILIARES A CARGO: ");
-        for(int i=0; i<familiares.size();i++){
-            Persona f = (Persona)familiares.get(i);
+        for(int i=0; i<getFamiliares().size();i++){
+            Persona f = (Persona)getFamiliares().get(i);
             f.imprimirDatos();
         }
+    }
+
+    /**
+     * @return the familiares
+     */
+    public ArrayList<Familiar> getFamiliares() {
+        return familiares;
+    }
+
+    /**
+     * @param familiares the familiares to set
+     */
+    public void setFamiliares(ArrayList<Familiar> familiares) {
+        this.familiares = familiares;
     }
 
     /**
