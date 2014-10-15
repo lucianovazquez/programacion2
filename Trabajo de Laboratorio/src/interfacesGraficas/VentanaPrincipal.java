@@ -27,6 +27,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.rootPane.setContentPane(jPanel1);
+        this.setTitle("Gestor de Empleados");
     }
 
     /**
