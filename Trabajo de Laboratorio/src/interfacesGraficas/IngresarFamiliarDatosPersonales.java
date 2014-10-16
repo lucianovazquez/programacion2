@@ -325,18 +325,24 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    
+
+        if(jRadioButton1.isSelected()){
+            fliar = new Conyuge();
+            }
+        if(jRadioButton2.isSelected()){
+            fliar= new Hijo();
+            }  
  
         fliar.setApellido(jTextField1.getText());
         fliar.setNombre(jTextField2.getText());
-        fliar.setDni(parseInt(jTextField3.getText().trim()));
+        fliar.setDni(Integer.parseInt(jTextField3.getText().trim()));
         fliar.setFechaNacimiento(jDateChooser1.getDate());
-        fliar.setDomicilio(new Domicilio(jTextField4.getText(),parseInt(jTextField5.getText().trim())));
-        if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
-        fliar.setSexo('M');
-        else 
-        fliar.setSexo('F');
-        
+        fliar.setDomicilio(new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim())));
+            if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
+            fliar.setSexo('M');
+            else 
+            fliar.setSexo('F');
+ 
         try {
             emp.addFamiliar((Familiar) fliar);
         } catch (YaTieneUnConyugeException ex) {
@@ -345,14 +351,14 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
         
         // Carga el familiar y regresa a la tabla de familiares a cargo.
         this.setVisible(false);
+        panel = new IngresarFamilia(emp,panel,ventana); 
         ventana.setContentPane(panel);
         panel.setVisible(true);
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        jComboBox3.addItem("Masculino");
-        jComboBox3.addItem("Femenino");
+     
 
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
