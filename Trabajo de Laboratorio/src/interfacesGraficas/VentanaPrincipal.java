@@ -20,7 +20,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    VentanaPrincipal vp;
+    
     public VentanaPrincipal() {
         initComponents();
         
@@ -130,14 +130,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jPanel1.setVisible(false);
         
-        ListadoEmpleados panel = new ListadoEmpleados(vp,this,jPanel1);
+        ListadoEmpleados panel = new ListadoEmpleados(this,jPanel1);
         this.rootPane.setContentPane(panel);
         panel.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     vp= new VentanaPrincipal();  
-     IngresarEmpleadoDatosLaborales panel1 = new IngresarEmpleadoDatosLaborales(vp,jPanel1,this);
+     
+     IngresarEmpleadoDatosLaborales panel1 = new IngresarEmpleadoDatosLaborales(jPanel1,this);
      this.setContentPane(panel1);
      panel1.setVisible(true);
      

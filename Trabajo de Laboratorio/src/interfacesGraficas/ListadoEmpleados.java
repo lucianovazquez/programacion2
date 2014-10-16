@@ -20,18 +20,19 @@ public class ListadoEmpleados extends javax.swing.JPanel {
      */
     javax.swing.JFrame ventana;
     javax.swing.JPanel panel;
-    VentanaPrincipal vp;
-    public ListadoEmpleados(VentanaPrincipal vp, javax.swing.JFrame ventana,javax.swing.JPanel panel) {
+    
+    public ListadoEmpleados( javax.swing.JFrame ventana,javax.swing.JPanel panel) {
         
         initComponents();
         this.ventana=ventana;
         this.panel=panel;
         this.setSize(420, 330);
-        this.vp=vp;
+        
        
         //jLabel1.setText(vp.getEmpleados().get(0).getNombre());
+        VentanaPrincipal vpr = (VentanaPrincipal)ventana;
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     ArrayList<Empleado> lista = vp.getEmpleados();
+     ArrayList<Empleado> lista = vpr.getEmpleados();
      Object[] fila = new Object[tableModel.getColumnCount()];
  
          for (int i = 0; i < lista.size(); i++) {
@@ -89,15 +90,18 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(143, 143, 143)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 117, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

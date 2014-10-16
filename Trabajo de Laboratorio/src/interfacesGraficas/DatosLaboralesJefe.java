@@ -24,16 +24,16 @@ Jefe emp;
 javax.swing.JPanel panel;
 javax.swing.JFrame ventana;
 javax.swing.JPanel panelPrincipal;
-VentanaPrincipal vp;
 
-    public DatosLaboralesJefe(VentanaPrincipal vp,javax.swing.JPanel panelPrincipal,Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
+
+    public DatosLaboralesJefe(javax.swing.JPanel panelPrincipal,Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
         initComponents();
         
         this.emp=emp;
         this.panel=panel;
         this.ventana=ventana;
         this.panelPrincipal=panelPrincipal;
-        this.vp=vp;
+        
         
      DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      ArrayList<Empleado> lista = emp.getNominaEmpleados();
@@ -208,7 +208,8 @@ VentanaPrincipal vp;
         if(jComboBox1.getSelectedItem().equals("Ventas"))
            emp.setArea("Ventas");
         
-        vp.addEmpleado(emp);
+        VentanaPrincipal vpr = (VentanaPrincipal)ventana;
+        vpr.addEmpleado(emp);
         
         this.setVisible(false);
         ventana.setContentPane(panelPrincipal);
