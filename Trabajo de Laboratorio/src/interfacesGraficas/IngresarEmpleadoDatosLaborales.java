@@ -24,11 +24,13 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     javax.swing.JPanel panel0;
     javax.swing.JFrame ventana;
     Empleado emp;
+    VentanaPrincipal vp;
 
-    public IngresarEmpleadoDatosLaborales(javax.swing.JPanel panel0,javax.swing.JFrame ventana) {
+    public IngresarEmpleadoDatosLaborales(VentanaPrincipal vp, javax.swing.JPanel panel0,javax.swing.JFrame ventana) {
         initComponents();   
         this.panel0 = panel0;
         this.ventana = ventana;
+        this.vp=vp;
         
         this.setSize(420, 330);  
     }
@@ -219,7 +221,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         
   
         this.setVisible(false);
-         IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales((Empleado) emp,this, ventana);
+         IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales(vp,panel0,(Empleado) emp,this, ventana);
         ventana.setContentPane(panel2);  
         panel2.setVisible(true);
                  

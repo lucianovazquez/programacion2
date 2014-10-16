@@ -25,15 +25,17 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
     Empleado emp;
     javax.swing.JPanel panel1;
     javax.swing.JFrame ventana;
-    
-    public IngresarEmpleadoDatosPersonales(Empleado emp,javax.swing.JPanel panel1,javax.swing.JFrame ventana) {
+    javax.swing.JPanel panelPrincipal;
+    VentanaPrincipal vp;
+    public IngresarEmpleadoDatosPersonales(VentanaPrincipal vp,javax.swing.JPanel panelPrincipal,Empleado emp,javax.swing.JPanel panel1,javax.swing.JFrame ventana) {
         
         initComponents();
         
         this.emp = emp;
         this.panel1=panel1;
         this.ventana=ventana;
-        
+        this.panelPrincipal=panelPrincipal;
+        this.vp=vp;
         this.setSize(420, 330);
     }
 
@@ -366,12 +368,12 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
         if(emp instanceof Vendedor){    
           this.setVisible(false);
-          DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor((Vendedor) emp,this,ventana);
+          DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor(vp,panelPrincipal,(Vendedor) emp,this,ventana);
           ventana.setContentPane(panelSig);
         }
         if(emp instanceof Jefe){    
           this.setVisible(false);
-          DatosLaboralesJefe  panelSig = new DatosLaboralesJefe((Jefe) emp,this,ventana);
+          DatosLaboralesJefe  panelSig = new DatosLaboralesJefe(vp,panelPrincipal,(Jefe) emp,this,ventana);
           ventana.setContentPane(panelSig);
         }
         

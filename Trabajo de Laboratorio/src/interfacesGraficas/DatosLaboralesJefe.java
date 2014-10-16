@@ -23,13 +23,17 @@ public class DatosLaboralesJefe extends javax.swing.JPanel {
 Jefe emp;
 javax.swing.JPanel panel;
 javax.swing.JFrame ventana;
+javax.swing.JPanel panelPrincipal;
+VentanaPrincipal vp;
 
-    public DatosLaboralesJefe(Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
+    public DatosLaboralesJefe(VentanaPrincipal vp,javax.swing.JPanel panelPrincipal,Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
         initComponents();
         
         this.emp=emp;
         this.panel=panel;
         this.ventana=ventana;
+        this.panelPrincipal=panelPrincipal;
+        this.vp=vp;
         
      DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      ArrayList<Empleado> lista = emp.getNominaEmpleados();
@@ -203,6 +207,12 @@ javax.swing.JFrame ventana;
            emp.setArea("Producción");
         if(jComboBox1.getSelectedItem().equals("Ventas"))
            emp.setArea("Ventas");
+        
+        vp.addEmpleado(emp);
+        
+        this.setVisible(false);
+        ventana.setContentPane(panelPrincipal);
+        panelPrincipal.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

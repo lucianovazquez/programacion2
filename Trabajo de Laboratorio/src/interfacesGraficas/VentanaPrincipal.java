@@ -13,12 +13,14 @@ import trabajodelaboratorio.Empleado;
  *
  * @author Luciano
  */
+
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    private List<Empleado> empleados = new ArrayList<>();
+    private ArrayList<Empleado> empleados = new ArrayList<>();
     /**
      * Creates new form VentanaPrincipal
      */
+    VentanaPrincipal vp;
     public VentanaPrincipal() {
         initComponents();
         
@@ -28,6 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.rootPane.setContentPane(jPanel1);
         this.setTitle("Gestor de Empleados");
+        
     }
 
     /**
@@ -125,19 +128,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        jPanel1.setVisible(false);
+        
+        ListadoEmpleados panel = new ListadoEmpleados(vp,this,jPanel1);
+        this.rootPane.setContentPane(panel);
+        panel.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     
-     IngresarEmpleadoDatosLaborales panel1 = new IngresarEmpleadoDatosLaborales(jPanel1,this);
+     vp= new VentanaPrincipal();  
+     IngresarEmpleadoDatosLaborales panel1 = new IngresarEmpleadoDatosLaborales(vp,jPanel1,this);
      this.setContentPane(panel1);
      panel1.setVisible(true);
      
     }//GEN-LAST:event_jButton1ActionPerformed
    
     public void addEmpleado(Empleado emp1){
-        empleados.add(emp1);
+        getEmpleados().add(emp1);
     }
     /**
      * @param args the command line arguments
@@ -183,4 +190,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the empleados
+     */
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    /**
+     * @param empleados the empleados to set
+     */
+    public void setEmpleados(ArrayList<Empleado> empleados) {
+        this.empleados = empleados;
+    }
 }

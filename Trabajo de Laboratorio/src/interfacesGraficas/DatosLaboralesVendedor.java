@@ -21,12 +21,17 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     javax.swing.JPanel panel;
     javax.swing.JFrame ventana;
     VentanaPrincipal principal;
-    public DatosLaboralesVendedor(Vendedor emp,javax.swing.JPanel panel, javax.swing.JFrame ventana) {
+    ListadoEmpleados listado;
+    javax.swing.JPanel panelPrincipal;
+    VentanaPrincipal vp;
+    public DatosLaboralesVendedor(VentanaPrincipal vp,javax.swing.JPanel panelPrincipal, Vendedor emp,javax.swing.JPanel panel, javax.swing.JFrame ventana) {
         
         initComponents();
         this.emp=emp;
         this.panel=panel;
         this.ventana=ventana;
+        this.panelPrincipal=panelPrincipal;
+        this.vp=vp;
         
         jLabel7.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel8.setText(Integer.toString(emp.getNroLegajo()));
@@ -182,7 +187,13 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    principal.addEmpleado(emp);
+        
+        vp.addEmpleado(emp);
+        
+        this.setVisible(false);
+        
+        ventana.setContentPane(panelPrincipal);
+        panelPrincipal.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
