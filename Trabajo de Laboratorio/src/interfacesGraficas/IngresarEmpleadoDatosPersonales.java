@@ -124,6 +124,10 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusable(false);
+        setInheritsPopupMenu(true);
+        setInputVerifier(getInputVerifier());
         setMaximumSize(new java.awt.Dimension(420, 330));
 
         jLabel2.setText("Nombre:");
@@ -164,6 +168,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         jLabel9.setText("Nro:");
 
         jTextField5.setText("                    ");
+        jTextField5.setCaretPosition(0);
 
         jLabel10.setText("Piso:");
 
@@ -172,6 +177,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         jLabel12.setText("Depto:");
 
         jTextField8.setText("                    ");
+        jTextField8.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

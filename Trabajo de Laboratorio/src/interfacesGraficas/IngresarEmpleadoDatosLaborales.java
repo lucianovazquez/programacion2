@@ -5,13 +5,7 @@
  */
 package interfacesGraficas;
 
-import java.awt.Container;
-import static java.lang.Integer.parseInt;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -103,6 +97,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         jLabel5.setText("Legajo N°:");
 
         jTextField1.setText("                  ");
+        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

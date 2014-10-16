@@ -107,6 +107,14 @@
     </Component>
   </NonVisualComponents>
   <Properties>
+    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+      <Color id="Cursor Por defecto"/>
+    </Property>
+    <Property name="focusable" type="boolean" value="false"/>
+    <Property name="inheritsPopupMenu" type="boolean" value="true"/>
+    <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection component="Form" name="inputVerifier" type="property"/>
+    </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[420, 330]"/>
     </Property>
@@ -337,6 +345,7 @@
     <Component class="javax.swing.JTextField" name="jTextField5">
       <Properties>
         <Property name="text" type="java.lang.String" value="                    "/>
+        <Property name="caretPosition" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
@@ -357,6 +366,9 @@
     <Component class="javax.swing.JTextField" name="jTextField8">
       <Properties>
         <Property name="text" type="java.lang.String" value="                    "/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Texto"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
