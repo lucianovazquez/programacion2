@@ -2,11 +2,14 @@ package interfacesGraficas;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Conyuge;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Familiar;
 import trabajodelaboratorio.Hijo;
+import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Persona;
+import trabajodelaboratorio.Vendedor;
 
 /**
  *
@@ -20,13 +23,15 @@ public class IngresarFamilia extends javax.swing.JPanel {
     Empleado emp;
     javax.swing.JPanel panel0;
     javax.swing.JFrame ventana;
+    javax.swing.JPanel panelPrincipal;
     
-    public IngresarFamilia(Empleado emp,javax.swing.JPanel panel0, javax.swing.JFrame ventana) {
+    public IngresarFamilia(javax.swing.JPanel panelPrincipal,Empleado emp,javax.swing.JPanel panel0, javax.swing.JFrame ventana) {
         
         initComponents();
      this.emp=emp;
      this.panel0=panel0;
      this.ventana=ventana;
+     this.panelPrincipal=panelPrincipal;
      this.setSize(420, 330);
      
      //jLabel4.setText(emp.getNombre()+" "+emp.getApellido()+" N° Leg:"+emp.getNroLegajo());
@@ -99,7 +104,7 @@ public class IngresarFamilia extends javax.swing.JPanel {
 
         jLabel3.setText("Listado:");
 
-        jButton1.setText("Volver");
+        jButton1.setText("Siguiente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -136,15 +141,14 @@ public class IngresarFamilia extends javax.swing.JPanel {
                         .addContainerGap(343, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(111, 111, 111)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jButton1)))
+                .addComponent(jButton2)
+                .addGap(111, 111, 111)
+                .addComponent(jButton4)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,14 +172,25 @@ public class IngresarFamilia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    this.setVisible(false);
-    ventana.setContentPane(panel0);
-    panel0.setVisible(true); 
+    if(emp instanceof Vendedor){    
+          this.setVisible(false);
+          DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor(panelPrincipal,(Vendedor) emp,this,ventana);
+          ventana.setContentPane(panelSig);
+        }
+        if(emp instanceof Jefe){    
+          this.setVisible(false);
+          DatosLaboralesJefe  panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe) emp,this,ventana);
+          ventana.setContentPane(panelSig);
+        }
+        if(emp instanceof Administrativo){
+            this.setVisible(false);
+            DatosLaboralesAdmin panelSig = new DatosLaboralesAdmin(panelPrincipal,(Administrativo) emp,this,ventana);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        this.setVisible(false);
-        IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(emp,this,ventana);
+        IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(panelPrincipal,emp,this,ventana);
        ventana.setContentPane(panel);    
     }//GEN-LAST:event_jButton2ActionPerformed
 
