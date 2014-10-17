@@ -185,6 +185,7 @@ public class IngresarFamilia extends javax.swing.JPanel {
         if(emp instanceof Administrativo){
             this.setVisible(false);
             DatosLaboralesAdmin panelSig = new DatosLaboralesAdmin(panelPrincipal,(Administrativo) emp,this,ventana);
+            ventana.setContentPane(panelSig);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

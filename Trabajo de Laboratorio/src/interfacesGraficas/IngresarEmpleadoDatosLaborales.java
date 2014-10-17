@@ -213,6 +213,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
            emp.setTipoCargo("Operario");
         }
         
+        
         int numerolegajo=Integer.parseInt(jTextField1.getText().trim());
         
         emp.setNroLegajo(numerolegajo);

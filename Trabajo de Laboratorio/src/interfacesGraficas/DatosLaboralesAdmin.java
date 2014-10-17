@@ -23,6 +23,11 @@ public class DatosLaboralesAdmin extends javax.swing.JPanel {
     
     public DatosLaboralesAdmin(javax.swing.JPanel panelPrincipal,Administrativo emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
         initComponents();
+        this.emp=emp;
+        this.panel=panel;
+        this.ventana=ventana;
+        this.panelPrincipal=panelPrincipal;
+        
         jLabel1.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel3.setText(Integer.toString(emp.getNroLegajo()));
         jLabel7.setText(emp.getFechaNacimiento().toString());
@@ -161,7 +166,10 @@ public class DatosLaboralesAdmin extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         VentanaPrincipal vp = (VentanaPrincipal)ventana;
         vp.addEmpleado(emp);
+        
         this.setVisible(false);
+        ventana.setContentPane(panelPrincipal);
+        panelPrincipal.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
