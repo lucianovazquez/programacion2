@@ -31,13 +31,14 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
     Empleado emp;
     javax.swing.JPanel panel;
     javax.swing.JFrame ventana;
-    
-    public IngresarFamiliarDatosPersonales(Empleado emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
+    javax.swing.JPanel panelPrincipal;
+    public IngresarFamiliarDatosPersonales(javax.swing.JPanel panelPrincipal,Empleado emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
         
         initComponents();   
         this.emp=emp;
         this.panel=panel;
         this.ventana=ventana;
+        this.panelPrincipal=panelPrincipal;
         this.setSize(420, 330);  
     }
     /**
@@ -351,7 +352,7 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
         
         // Carga el familiar y regresa a la tabla de familiares a cargo.
         this.setVisible(false);
-        panel = new IngresarFamilia(emp,panel,ventana); 
+        panel = new IngresarFamilia(panelPrincipal,emp,panel,ventana); 
         ventana.setContentPane(panel);
         panel.setVisible(true);
         
