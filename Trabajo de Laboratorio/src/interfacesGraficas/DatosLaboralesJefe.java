@@ -145,6 +145,11 @@ javax.swing.JPanel panelPrincipal;
         });
 
         jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -267,6 +272,16 @@ javax.swing.JPanel panelPrincipal;
        ventana.setContentPane(panelSig);
        panelSig.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+ DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        
+        //VentanaPrincipal vp =(VentanaPrincipal)ventana;
+        ArrayList<Empleado> lista = emp.getNominaEmpleados();
+        
+        lista.remove(jTable1.getSelectedRow());
+        tableModel.removeRow(jTable1.getSelectedRow());
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

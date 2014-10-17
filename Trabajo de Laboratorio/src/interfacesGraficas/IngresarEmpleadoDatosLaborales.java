@@ -199,7 +199,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
             return;
         }
         if ( jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(panel0, "Debe ingresar un numero de legajo");       
+            JOptionPane.showMessageDialog(panel0, "Debe ingresar un número de legajo");       
             return;
         }
         if ( jDateChooser1.getDate()==null) {

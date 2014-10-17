@@ -26,7 +26,8 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     javax.swing.JFrame ventana;
     javax.swing.JPanel panelAnt;
     javax.swing.JPanel panelPrincipal;
-    DatosLaboralesJefe panelSig;
+    ArrayList <Empleado> arrayRoque = new ArrayList();
+    
     
     public ListadoEmpleadosJefe(Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana,javax.swing.JPanel panelAnt,javax.swing.JPanel panelPrincipal) {
         initComponents();
@@ -39,17 +40,22 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
         jLabel2.setText(emp.getNombre()+" "+emp.getApellido());
         
         VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     ArrayList<Empleado> lista = vp.getEmpleados();
+        ArrayList<Empleado> lista = vp.getEmpleados();
+        for (int i = 0; i < lista.size(); i++) {
+            if(lista.get(i) instanceof Operario || lista.get(i) instanceof Administrativo)
+                arrayRoque.add(lista.get(i));
+        }
+ 
+     DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      Object[] fila = new Object[tableModel.getColumnCount()];
      
-         for (int i = 0; i < lista.size(); i++) {
-            if(lista.get(i) instanceof Operario || lista.get(i) instanceof Administrativo){
-            fila[0] = lista.get(i).getNroLegajo();
-            fila[1] = lista.get(i).getNombre();
-            fila[2] = lista.get(i).getApellido();
-            fila[3] = lista.get(i).getTipoCargo();
-            fila[4] = lista.get(i).getFecIngreso();
+         for (int i = 0; i < arrayRoque.size(); i++) {
+            {
+            fila[0] = arrayRoque.get(i).getNroLegajo();
+            fila[1] = arrayRoque.get(i).getNombre();
+            fila[2] = arrayRoque.get(i).getApellido();
+            fila[3] = arrayRoque.get(i).getTipoCargo();
+            fila[4] = arrayRoque.get(i).getFecIngreso();
             tableModel.addRow(fila);
             }
          }
@@ -130,16 +136,18 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
   
-        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+       // DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      
-     Object[] fila = new Object[tableModel.getColumnCount()];
+     //Object[] fila = new Object[tableModel.getColumnCount()];
+     ArrayList<Empleado> lista = emp.getNominaEmpleados();
      int indice;
      indice= jTable1.getSelectedRow();
-     Empleado empleado = (Empleado)fila[indice];
+     Empleado empleado = (Empleado)arrayRoque.get(indice);
      emp.addEmpleadoANomina(empleado);
      
+     
      this.setVisible(false);
-     panelSig = new DatosLaboralesJefe(panelPrincipal,emp,panelAnt,ventana);
+     DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
      ventana.setContentPane(panelSig);
      panelSig.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
