@@ -90,6 +90,7 @@ public class DatosLaboralesOperario extends javax.swing.JPanel {
         });
 
         jLabel14.setText("Datos Laborales - Operario");
+        jLabel14.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

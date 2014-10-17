@@ -15,7 +15,7 @@ public class TrabajoDeLaboratorio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hola maldito mundo!!!!!");
+        
         
         Empleado empleado1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Tecnologia");
         Empleado empleado2 = new Vendedor("Juan","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4));
@@ -29,21 +29,10 @@ public class TrabajoDeLaboratorio {
             System.out.println(ex.getMessage());
         }
        
-        Jefe jef1=(Jefe)empleado1;
-        
-        try{
+            Jefe jef1=(Jefe)empleado1;
             jef1.addEmpleadoANomina(empleado2);
-        }catch(TipoEmpleadoNoValidoException e){
-            System.out.println("Error: "+e.getMessage());
-        }
-        
-        try{
             jef1.addEmpleadoANomina(empleado3);
-        }catch(TipoEmpleadoNoValidoException e){
-            System.out.println("Error: "+e.getMessage());
-        }
-        
-        empleado1.imprimirDatos();
+             empleado1.imprimirDatos();
         
     }
 }

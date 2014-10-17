@@ -77,6 +77,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         jLabel2.setText("Nuevo Empleado");
 
         jButton2.setText("Finalizar");
+        jButton2.setToolTipText("Agregar Empleado");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

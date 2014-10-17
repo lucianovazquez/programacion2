@@ -31,14 +31,8 @@ public class Jefe extends Empleado{
         return area;
     }
     
-    public void addEmpleadoANomina(Empleado emp1) throws TipoEmpleadoNoValidoException{
-        
-        if(emp1 instanceof Operario || emp1 instanceof Administrativo){
+    public void addEmpleadoANomina(Empleado emp1){
             getNominaEmpleados().add(emp1);
-        }
-        else{
-            throw new  TipoEmpleadoNoValidoException("El empleado debe ser Administrativo o Operario");
-        }
     }
     
     /**
