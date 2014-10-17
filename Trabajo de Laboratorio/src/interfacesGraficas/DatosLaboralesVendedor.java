@@ -132,7 +132,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
                         .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel8))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -189,8 +189,8 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         //vp.addEmpleado(emp);
-        VentanaPrincipal vpr = (VentanaPrincipal)ventana;
-        vpr.addEmpleado(emp);
+        VentanaPrincipal vp = (VentanaPrincipal)ventana;
+        vp.addEmpleado(emp);
         this.setVisible(false);
         
         ventana.setContentPane(panelPrincipal);
