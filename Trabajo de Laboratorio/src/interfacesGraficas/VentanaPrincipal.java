@@ -8,12 +8,8 @@ package interfacesGraficas;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import trabajodelaboratorio.Administrativo;
-import trabajodelaboratorio.Domicilio;
-import trabajodelaboratorio.Empleado;
-import trabajodelaboratorio.Jefe;
-import trabajodelaboratorio.Operario;
-import trabajodelaboratorio.Vendedor;
+import trabajodelaboratorio.*;
+import excepciones.*;
 
 /**
  *
