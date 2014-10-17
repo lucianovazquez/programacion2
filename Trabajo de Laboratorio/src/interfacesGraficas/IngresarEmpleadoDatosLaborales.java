@@ -7,11 +7,9 @@ package interfacesGraficas;
 
 
 import javax.swing.JOptionPane;
-import trabajodelaboratorio.Administrativo;
-import trabajodelaboratorio.Empleado;
-import trabajodelaboratorio.Jefe;
-import trabajodelaboratorio.Operario;
-import trabajodelaboratorio.Vendedor;
+import trabajodelaboratorio.*;
+import excepciones.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -227,6 +225,14 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
            emp = new Operario();
            emp.setTipoCargo("Operario");
         }
+        VentanaPrincipal vn = (VentanaPrincipal)ventana;
+        ArrayList<Empleado> empleados= vn.getEmpleados();
+        for(int i=0;i<empleados.size();i++){
+            if(empleados.get(i).getNroLegajo()==Integer.parseInt(jTextField1.getText().trim())){
+                JOptionPane.showMessageDialog(panel0, "Este empleado ya existe");
+                return;
+            }
+        }
         
         /* Agregar al objeto los datos ingresados  */
         
@@ -234,19 +240,17 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
             int numerolegajo=Integer.parseInt(jTextField1.getText().trim()); 
             emp.setNroLegajo(numerolegajo);
             emp.setFecIngreso(jDateChooser1.getDate());
+            
+            /* Ocultar panel, crear y mostrar siguiente panel */
+
+            this.setVisible(false);
+            IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales(panel0,(Empleado) emp,this, ventana);
+            ventana.setContentPane(panel2);  
+            panel2.setVisible(true);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(panel0, "Ocurrio un error:"+ex);
-            return;
         }
-        
-        
-        /* Ocultar panel, crear y mostrar siguiente panel */
-
-        this.setVisible(false);
-        IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales(panel0,(Empleado) emp,this, ventana);
-        ventana.setContentPane(panel2);  
-        panel2.setVisible(true);
-                 
+                         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
