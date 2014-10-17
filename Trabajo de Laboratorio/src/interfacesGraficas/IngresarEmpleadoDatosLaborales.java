@@ -229,10 +229,16 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         }
         
         /* Agregar al objeto los datos ingresados  */
-
-        int numerolegajo=Integer.parseInt(jTextField1.getText().trim());
-        emp.setNroLegajo(numerolegajo);
-        emp.setFecIngreso(jDateChooser1.getDate());
+        
+        try{
+            int numerolegajo=Integer.parseInt(jTextField1.getText().trim()); 
+            emp.setNroLegajo(numerolegajo);
+            emp.setFecIngreso(jDateChooser1.getDate());
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(panel0, "Ocurrio un error:"+ex);
+            return;
+        }
+        
         
         /* Ocultar panel, crear y mostrar siguiente panel */
 
