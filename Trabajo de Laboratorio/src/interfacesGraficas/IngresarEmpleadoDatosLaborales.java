@@ -6,6 +6,7 @@
 package interfacesGraficas;
 
 
+import javax.swing.JOptionPane;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -193,36 +194,50 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        /* Ventanas emergentes en caso de no ingresar algun dato en la ventana  */
+
+        if (jComboBox1.getSelectedItem().toString().equals("Ninguno")) {
+            JOptionPane.showMessageDialog(panel0, "Debe seleccionar un cargo");       
+            return;
+        }
+        if ( jTextField1.getText().equals("")) {
+            JOptionPane.showMessageDialog(panel0, "Debe ingresar un numero de legajo");       
+            return;
+        }
+        if ( jDateChooser1.getDate()==null) {
+            JOptionPane.showMessageDialog(panel0, "Debe ingresar una fecha");       
+            return;
+        }
+        
+        /* Instanciar el objeto segun el cargo seleccionado  */
+        
         if (jComboBox1.getSelectedItem().toString().equals("Vendedor")) {
             emp = new Vendedor();
             emp.setTipoCargo("Vendedor");        
         }
-
         if (jComboBox1.getSelectedItem().toString().equals("Jefe de Área")) {
             emp = new Jefe();
            emp.setTipoCargo("Jefe de Area");        
         }
-
         if (jComboBox1.getSelectedItem().toString().equals("Administrativo")) {
             emp = new Administrativo();
             emp.setTipoCargo("Administrativo");       
         }
-
         if (jComboBox1.getSelectedItem().toString().equals("Operario")) {
            emp = new Operario();
            emp.setTipoCargo("Operario");
         }
         
-        
+        /* Agregar al objeto los datos ingresados  */
+
         int numerolegajo=Integer.parseInt(jTextField1.getText().trim());
-        
         emp.setNroLegajo(numerolegajo);
-        
         emp.setFecIngreso(jDateChooser1.getDate());
         
-  
+        /* Ocultar panel, crear y mostrar siguiente panel */
+
         this.setVisible(false);
-         IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales(panel0,(Empleado) emp,this, ventana);
+        IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales(panel0,(Empleado) emp,this, ventana);
         ventana.setContentPane(panel2);  
         panel2.setVisible(true);
                  
