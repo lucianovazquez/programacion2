@@ -7,6 +7,7 @@ package interfacesGraficas;
 import interfacesGraficas.DatosLaboralesVendedor;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -136,6 +137,12 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         jLabel3.setText("Apellido:");
 
         jLabel4.setText("Fec. de Nacimiento:");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,6 +346,37 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
+        /* Ventanas emergentes en caso de no ingresar algun dato en la ventana  */
+
+        
+        if (jTextField2.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar un nombre");       
+            return;
+        }
+        if (jTextField1.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar un apellido");       
+            return;
+        }
+        if ( jDateChooser1.getDate()==null) {
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar una fecha de nacimiento valida");       
+            return;
+        }
+        if (jComboBox3.getSelectedItem().toString().equals("Ninguno")) {
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar sexo");       
+            return;
+        }
+        if (jTextField3.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar el DNI");       
+            return;
+        }
+        if (jTextField4.getText().trim().equals("")||jTextField5.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar el domicilio");       
+            return;
+        }
+        
+        
+        /* Agregar al objeto los datos ingresados  */
+
         try{
             emp.setApellido(jTextField1.getText());
             emp.setNombre(jTextField2.getText());
@@ -352,6 +390,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         }catch(Exception ex){
           System.out.println("ERROR EN EL SETEO DE LOS ATRIBUTOS");
           System.out.println(ex.toString());
+          return;
         }
         
         this.setVisible(false);
@@ -376,6 +415,10 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
        jComboBox3.addItem("Femenino");
        
     }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
