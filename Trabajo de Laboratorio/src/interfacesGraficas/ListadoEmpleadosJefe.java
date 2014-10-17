@@ -6,6 +6,7 @@
 package interfacesGraficas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
@@ -46,8 +47,8 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
                 arrayRoque.add(lista.get(i));
         }
  
-     DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     Object[] fila = new Object[tableModel.getColumnCount()];
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        Object[] fila = new Object[tableModel.getColumnCount()];
      
          for (int i = 0; i < arrayRoque.size(); i++) {
             {
@@ -143,8 +144,19 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
      int indice;
      indice= jTable1.getSelectedRow();
      Empleado empleado = (Empleado)arrayRoque.get(indice);
+    for(int i=0;i<emp.getNominaEmpleados().size();i++){
+        if(emp.getNominaEmpleados().get(i).getNroLegajo()==empleado.getNroLegajo()){
+            JOptionPane.showMessageDialog(this, "Este empleado ya esta en la lista");
+            this.setVisible(false);
+            DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
+            ventana.setContentPane(panelSig);
+            panelSig.setVisible(true);
+            return;
+        }
+    }
      emp.addEmpleadoANomina(empleado);
      
+
      
      this.setVisible(false);
      DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
