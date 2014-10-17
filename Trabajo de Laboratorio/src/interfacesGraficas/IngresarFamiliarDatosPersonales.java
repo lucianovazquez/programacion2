@@ -10,6 +10,7 @@ import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import trabajodelaboratorio.Conyuge;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
@@ -327,6 +328,39 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
+                /* Ventanas emergentes en caso de no ingresar algun dato en la ventana  */
+
+        
+        if (jTextField2.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un nombre");       
+            return;
+        }
+        if (jTextField1.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un apellido");       
+            return;
+        }
+        if ( jDateChooser1.getDate()==null) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una fecha de nacimiento valida");       
+            return;
+        }
+        if (jComboBox3.getSelectedItem().toString().equals("Ninguno")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar sexo");       
+            return;
+        }
+        
+        if (jTextField3.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el DNI");       
+            return;
+        }
+        if (!jRadioButton1.isSelected()&&!jRadioButton2.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar el parentezco");       
+            return;
+        }
+        if (jTextField4.getText().trim().equals("")||jTextField5.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el domicilio");       
+            return;
+        }
+        
         if(jRadioButton1.isSelected()){
             fliar = new Conyuge();
             }
