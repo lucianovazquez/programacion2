@@ -200,7 +200,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(panel0, "Debe seleccionar un cargo");       
             return;
         }
-        if ( jTextField1.getText().equals("")) {
+        if ( jTextField1.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(panel0, "Debe ingresar un numero de legajo");       
             return;
         }
