@@ -34,6 +34,8 @@ javax.swing.JPanel panelPrincipal;
         this.ventana=ventana;
         this.panelPrincipal=panelPrincipal;
         
+        jLabel9.setText(emp.getNombre()+" "+emp.getApellido());
+        jLabel10.setText(Integer.toString(emp.getNroLegajo()));
         
      DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      ArrayList<Empleado> lista = emp.getNominaEmpleados();
@@ -75,6 +77,8 @@ javax.swing.JPanel panelPrincipal;
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel4.setText("Nombre:");
 
@@ -124,6 +128,10 @@ javax.swing.JPanel panelPrincipal;
             }
         });
 
+        jLabel9.setText("jLabel9");
+
+        jLabel10.setText("jLabel10");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,9 +161,13 @@ javax.swing.JPanel panelPrincipal;
                         .addContainerGap(44, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8)
-                        .addGap(101, 101, 101))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10)
+                        .addGap(51, 51, 51))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(jButton1)
@@ -175,7 +187,9 @@ javax.swing.JPanel panelPrincipal;
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -208,8 +222,8 @@ javax.swing.JPanel panelPrincipal;
         if(jComboBox1.getSelectedItem().equals("Ventas"))
            emp.setArea("Ventas");
         
-        VentanaPrincipal vpr = (VentanaPrincipal)ventana;
-        vpr.addEmpleado(emp);
+        VentanaPrincipal vp = (VentanaPrincipal)ventana;
+        vp.addEmpleado(emp);
         
         this.setVisible(false);
         ventana.setContentPane(panelPrincipal);
@@ -222,6 +236,7 @@ javax.swing.JPanel panelPrincipal;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -230,6 +245,7 @@ javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
