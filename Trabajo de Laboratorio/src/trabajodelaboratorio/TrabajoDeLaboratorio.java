@@ -2,6 +2,7 @@ package trabajodelaboratorio;
 
 import excepciones.TipoEmpleadoNoValidoException;
 import excepciones.YaTieneUnConyugeException;
+import excepciones.YaTieneUnJefeException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,11 +29,16 @@ public class TrabajoDeLaboratorio {
         } catch (YaTieneUnConyugeException ex) {
             System.out.println(ex.getMessage());
         }
-       
-            Jefe jef1=(Jefe)empleado1;
-            jef1.addEmpleadoANomina(empleado2);
-            jef1.addEmpleadoANomina(empleado3);
-             empleado1.imprimirDatos();
+        
+        Jefe emp=(Jefe)empleado1;
+        try{    
+            emp.addEmpleadoANomina(empleado3);
+            emp.addEmpleadoANomina(empleado4);
+        } catch (TipoEmpleadoNoValidoException ex) {
+            System.out.print(ex);
+        } catch (YaTieneUnJefeException ex) {
+            System.out.print(ex);
+        }
         
     }
 }
