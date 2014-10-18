@@ -6,6 +6,7 @@
 package interfacesGraficas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -105,6 +106,11 @@ javax.swing.JPanel panelPrincipal;
         jLabel1.setToolTipText("Área de Jefatura");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Dirección", "Administración", "Ventas", "Producción" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Empleados a cargo:");
 
@@ -249,7 +255,12 @@ javax.swing.JPanel panelPrincipal;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if(jComboBox1.getSelectedItem().equals("Administración")) //Ninguno, Dirección, Administración, Ventas, Producción
+       
+        if(jComboBox1.getSelectedItem().equals("Ninguno")){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar area a cargo"); 
+            return;
+        }
+        if(jComboBox1.getSelectedItem().equals("Administración")) //Ninguno, Dirección, Administración, Ventas, Producción
            emp.setArea("Administración");
        if(jComboBox1.getSelectedItem().equals("Dirección"))
            emp.setArea("Dirección");
@@ -274,14 +285,23 @@ javax.swing.JPanel panelPrincipal;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
- DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        int indice = jTable1.getSelectedRow();
+        if(indice==-1){
+           JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado");       
+           return;
+        }
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         
         //VentanaPrincipal vp =(VentanaPrincipal)ventana;
         ArrayList<Empleado> lista = emp.getNominaEmpleados();
         
-        lista.remove(jTable1.getSelectedRow());
-        tableModel.removeRow(jTable1.getSelectedRow());
+        lista.remove(indice);
+        tableModel.removeRow(indice);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
