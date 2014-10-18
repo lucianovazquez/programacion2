@@ -8,7 +8,9 @@ package interfacesGraficas;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.Operario;
 
 /**
  *
@@ -154,6 +156,20 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         
         VentanaPrincipal vp =(VentanaPrincipal)ventana;
         ArrayList<Empleado> lista = vp.getEmpleados();
+        
+        Empleado emp = lista.get(jTable1.getSelectedRow());
+        if( emp instanceof Operario || emp instanceof Administrativo){
+            if(emp instanceof Operario){
+                Operario op = (Operario)emp;
+                op.getJefe().eliminarEmpleadoDeNomina(op);
+                op.deleteJefe();
+            }
+            if(emp instanceof Administrativo){
+                Administrativo ad = (Administrativo)emp;
+                ad.getJefe().eliminarEmpleadoDeNomina(ad);
+                ad.deleteJefe();
+            }
+        }
         
         lista.remove(jTable1.getSelectedRow());
         tableModel.removeRow(jTable1.getSelectedRow());
