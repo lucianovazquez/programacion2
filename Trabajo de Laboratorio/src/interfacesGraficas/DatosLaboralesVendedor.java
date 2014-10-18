@@ -3,6 +3,7 @@ package interfacesGraficas;
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Vendedor;
 import trabajodelaboratorio.Persona;
@@ -91,6 +92,11 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         jLabel3.setText("Comisión (%):");
 
         jTextField1.setText("                 ");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setText("                ");
 
@@ -190,12 +196,29 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         //vp.addEmpleado(emp);
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        vp.addEmpleado(emp);
-        this.setVisible(false);
-        
-        ventana.setContentPane(panelPrincipal);
-        panelPrincipal.setVisible(true);
+        if (jTextField1.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar sucursal");       
+            return;
+        }
+        if (jTextField2.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar comisionde ventas");       
+            return;
+        }
+        try{
+            emp.setSucursal(Integer.parseInt(jTextField1.getText().trim()));
+            emp.setPorcentajeCom(Float.parseFloat(jTextField2.getText().trim()));
+            VentanaPrincipal vp = (VentanaPrincipal)ventana;
+            vp.addEmpleado(emp);
+            
+            this.setVisible(false);
+            ventana.setContentPane(panelPrincipal);
+            panelPrincipal.setVisible(true);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Uno de los valores numericos ingresado no es valido");       
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Ocurrio un error, revise los datos: "+ex);       
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -203,6 +226,10 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         ventana.setContentPane(panel);
         panel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
