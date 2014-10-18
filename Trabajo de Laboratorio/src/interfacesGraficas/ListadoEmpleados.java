@@ -6,6 +6,7 @@
 package interfacesGraficas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
 
@@ -160,12 +161,15 @@ public class ListadoEmpleados extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int indice = jTable1.getSelectedRow();
-        
-        this.setVisible(false);
-        ListadoFamiliares panelSig = new ListadoFamiliares(this,ventana,indice);
-        ventana.setContentPane(panelSig);
-        panelSig.setVisible(true);
-        
+        if(indice==-1){
+           JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado");       
+        }
+        else{
+            this.setVisible(false);
+            ListadoFamiliares panelSig = new ListadoFamiliares(this,ventana,indice);
+            ventana.setContentPane(panelSig);
+            panelSig.setVisible(true);
+        }   
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
