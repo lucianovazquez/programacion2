@@ -19,7 +19,7 @@ public class Jefe extends Empleado{
     private ArrayList<Empleado> nominaEmpleados  = new ArrayList<>();  // ArrayList con todos los empleados a cargo
    
     public Jefe(String nombre, String apellido,char sexo,Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String area){
-        super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Jefe de area");
+        super(nombre,apellido,sexo,domicilio,dni,fechaNacimiento,nro_legajo,fec_ingreso,"Jefe de Área");
         this.area=area;
     }   
     public Jefe(){}
