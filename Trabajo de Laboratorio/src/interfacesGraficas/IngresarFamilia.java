@@ -67,8 +67,8 @@ public class IngresarFamilia extends javax.swing.JPanel {
             fila[3] = hijo.getDni();
             tableModel.addRow(fila);
              }
-        jTable1.setModel(tableModel);
      }
+     jTable1.setModel(tableModel);
     }
     /**
      * This method is called from within the constructor to initialize the form.
