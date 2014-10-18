@@ -31,7 +31,7 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     javax.swing.JFrame ventana;
     javax.swing.JPanel panelAnt;
     javax.swing.JPanel panelPrincipal;
-    ArrayList <Empleado> arrayRoque = new ArrayList();
+    ArrayList <Empleado> arrayRoque;
     
     
     public ListadoEmpleadosJefe(Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana,javax.swing.JPanel panelAnt,javax.swing.JPanel panelPrincipal) {
@@ -41,7 +41,7 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
         this.ventana=ventana;
         this.panelAnt=panelAnt;
         this.panelPrincipal=panelPrincipal;
-        
+        arrayRoque = new ArrayList<>();
         jLabel2.setText(emp.getNombre()+" "+emp.getApellido());
         
         VentanaPrincipal vp = (VentanaPrincipal)ventana;
@@ -159,32 +159,15 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
             return;
         }
     }
-    if(empleado instanceof Operario){
-        try {
-            Operario operario = (Operario)empleado;
-            try {
-                emp.addEmpleadoANomina(empleado);
-            } catch (TipoEmpleadoNoValidoException ex) {
-                JOptionPane.showMessageDialog(this, ex);
-            }
-
-        } catch (YaTieneUnJefeException ex) {
-            JOptionPane.showMessageDialog(this, ex);
-        }
+    
+    try {
+        emp.addEmpleadoANomina(empleado);
+    } catch (TipoEmpleadoNoValidoException ex) {
+        JOptionPane.showMessageDialog(this, ex);
+    } catch (YaTieneUnJefeException ex) {
+        JOptionPane.showMessageDialog(this, ex);
     }
      
-    if(empleado instanceof Administrativo){
-        try {
-            Administrativo administrativo = (Administrativo)empleado;
-            try {
-                emp.addEmpleadoANomina(empleado);
-            } catch (TipoEmpleadoNoValidoException ex) {
-                JOptionPane.showMessageDialog(this, ex);
-            }
-        } catch (YaTieneUnJefeException ex) {
-            JOptionPane.showMessageDialog(this, ex);
-        }
-    }
      
      this.setVisible(false);
      DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
