@@ -33,11 +33,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.rootPane.setContentPane(jPanel1);
         this.setTitle("Empresa - Gestor de Empleados");
         
-        Empleado empleado1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Tecnologia");
-        Empleado empleado2 = new Vendedor("Juan","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4));
+        Empleado empleado1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción");
+        Empleado empleado2 = new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4));
         Empleado empleado3 = new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2));
-        Empleado empleado4 = new Administrativo("Marcelo","Vazquez",'M',new Domicilio("Rivadavia",44),24573293,LocalDate.of(1982,6,23),103,LocalDate.of(2012,8,12));
-        
+        Empleado empleado4 = new Administrativo("Marcelo","Fuentes",'M',new Domicilio("Rivadavia",44),24573293,LocalDate.of(1982,6,23),103,LocalDate.of(2012,4,15));
+        Empleado empleado5 = new Operario("Sergio","Moreno",'M',new Domicilio("San Martín",454),24653293,LocalDate.of(1982,9,23),104,LocalDate.of(2013,3,12));
+        Empleado empleado6 = new Administrativo("Cristina","Fernandez",'F',new Domicilio("Junín",267),22578393,LocalDate.of(1982,10,23),105,LocalDate.of(2010,8,11));
+        Empleado empleado7 = new Jefe("Florencia","Sosa",'F',new Domicilio("Salta",570),30578393,LocalDate.of(1990,10,23),106,LocalDate.of(2012,3,14),"Dirección");
+        Empleado empleado8 = new Jefe("Gonzalo","Ibañez",'M',new Domicilio("Caseros",1323),23578393,LocalDate.of(1987,10,23),107,LocalDate.of(2010,2,1)," Administración");
         try {
             empleado1.addFamiliar((Familiar)new Conyuge("Teresita","Condori",'F',new Domicilio("Av.SiempreViva",123),32405326,LocalDate.of(1993,8,4)));
             empleado1.addFamiliar((Familiar)new Hijo("Maria","Condori",'F',new Domicilio("Av.SiempreViva",123),45402326,LocalDate.of(2014,8,4)));
@@ -49,6 +52,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         empleados.add(empleado2);
         empleados.add(empleado3);
         empleados.add(empleado4);
+        empleados.add(empleado5);
+        empleados.add(empleado6);
+        empleados.add(empleado7);
+        empleados.add(empleado8);
+        
+        Jefe emp=(Jefe)empleado1;
+        emp.addEmpleadoANomina(empleado3);
+        emp.addEmpleadoANomina(empleado4);
+        emp.addEmpleadoANomina(empleado5);
+        
     }
 
     /**
