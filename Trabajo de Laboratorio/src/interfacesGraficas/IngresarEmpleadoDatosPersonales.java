@@ -350,27 +350,27 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
         
         if (jTextField2.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(panel1, "Debe ingresar un nombre");       
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar un nombre.");       
             return;
         }
         if (jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(panel1, "Debe ingresar un apellido");       
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar un apellido.");       
             return;
         }
         if ( jDateChooser1.getDate()==null) {
-            JOptionPane.showMessageDialog(panel1, "Debe ingresar una fecha de nacimiento valida");       
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar una fecha de nacimiento valida.");       
             return;
         }
         if (jComboBox3.getSelectedItem().toString().equals("Ninguno")) {
-            JOptionPane.showMessageDialog(panel1, "Debe ingresar sexo");       
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar sexo.");       
             return;
         }
         if (jTextField3.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(panel1, "Debe ingresar el DNI");       
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar número de documento.");       
             return;
         }
         if (jTextField4.getText().trim().equals("")||jTextField5.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(panel1, "Debe ingresar el domicilio");       
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar el domicilio.");       
             return;
         }
         

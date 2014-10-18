@@ -333,32 +333,32 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
 
         
         if (jTextField2.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un nombre");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar un nombre.");       
             return;
         }
         if (jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un apellido");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar un apellido.");       
             return;
         }
         if ( jDateChooser1.getDate()==null) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar una fecha de nacimiento valida");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar una fecha de nacimiento válida.");       
             return;
         }
         if (jComboBox3.getSelectedItem().toString().equals("Ninguno")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar sexo");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar sexo.");       
             return;
         }
         
         if (jTextField3.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar el DNI");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar número de documento.");       
             return;
         }
         if (!jRadioButton1.isSelected()&&!jRadioButton2.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar el parentezco");       
+            JOptionPane.showMessageDialog(this, "Debe seleccionar el parentesco.");       
             return;
         }
         if (jTextField4.getText().trim().equals("")||jTextField5.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar el domicilio");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar el domicilio.");       
             return;
         }
         

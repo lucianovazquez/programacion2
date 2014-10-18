@@ -257,7 +257,7 @@ javax.swing.JPanel panelPrincipal;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
         if(jComboBox1.getSelectedItem().equals("Ninguno")){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar area a cargo"); 
+            JOptionPane.showMessageDialog(this, "Debe seleccionar el área de jefatura."); 
             return;
         }
         if(jComboBox1.getSelectedItem().equals("Administración")) //Ninguno, Dirección, Administración, Ventas, Producción
@@ -287,7 +287,7 @@ javax.swing.JPanel panelPrincipal;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int indice = jTable1.getSelectedRow();
         if(indice==-1){
-           JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado");       
+           JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");       
            return;
         }
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();

@@ -44,7 +44,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             fila[3] = lista.get(i).getTipoCargo();
             fila[4] = lista.get(i).getFecIngreso();
             tableModel.addRow(fila);
-            System.out.println("PASO POR FOR CARGA");
+            
          }
          jTable1.setModel(tableModel);
     }
@@ -162,7 +162,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int indice = jTable1.getSelectedRow();
         if(indice==-1){
-           JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado");       
+           JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");       
         }
         else{
             this.setVisible(false);

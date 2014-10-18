@@ -197,11 +197,11 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         
         //vp.addEmpleado(emp);
         if (jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar sucursal");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar sucursal.");       
             return;
         }
         if (jTextField2.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar comisionde ventas");       
+            JOptionPane.showMessageDialog(this, "Debe ingresar comisión por ventas.");       
             return;
         }
         try{
@@ -214,7 +214,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
             ventana.setContentPane(panelPrincipal);
             panelPrincipal.setVisible(true);
         }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Uno de los valores numericos ingresado no es valido");       
+            JOptionPane.showMessageDialog(this, "Uno de los valores numéricos ingresado no es valido");       
         }catch(Exception ex){
             JOptionPane.showMessageDialog(this, "Ocurrio un error, revise los datos: "+ex);       
         }

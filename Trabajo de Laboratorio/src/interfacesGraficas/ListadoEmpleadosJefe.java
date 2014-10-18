@@ -141,13 +141,13 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     int indice;
     indice= jTable1.getSelectedRow();
     if(indice==-1){
-        JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado");       
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");       
         return;
     }
      Empleado empleado = (Empleado)arrayRoque.get(indice);
     for(int i=0;i<emp.getNominaEmpleados().size();i++){
         if(emp.getNominaEmpleados().get(i).getNroLegajo()==empleado.getNroLegajo()){
-            JOptionPane.showMessageDialog(this, "Este empleado ya esta en la lista");
+            JOptionPane.showMessageDialog(this, "El empleado seleccionado ya se encuentra en la lista.");
             this.setVisible(false);
             DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
             ventana.setContentPane(panelSig);
