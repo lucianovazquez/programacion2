@@ -138,8 +138,12 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
   
   
-     int indice;
-     indice= jTable1.getSelectedRow();
+    int indice;
+    indice= jTable1.getSelectedRow();
+    if(indice==-1){
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado");       
+        return;
+    }
      Empleado empleado = (Empleado)arrayRoque.get(indice);
     for(int i=0;i<emp.getNominaEmpleados().size();i++){
         if(emp.getNominaEmpleados().get(i).getNroLegajo()==empleado.getNroLegajo()){
