@@ -30,7 +30,6 @@ public class Administrativo extends Empleado{
      */
     
     public void addJefe(Jefe jefe) throws YaTieneUnJefeException{
-        
         if(this.jefe==null){
             this.jefe = jefe;
         }
