@@ -137,6 +137,7 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
         });
 
         jButton3.setText("Agregar");
+        jButton3.setToolTipText("Agregar Nuevo Familiar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
