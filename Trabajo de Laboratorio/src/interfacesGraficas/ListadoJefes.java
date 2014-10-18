@@ -43,7 +43,7 @@ public class ListadoJefes extends javax.swing.JPanel {
             fila[0] = arrayJefes.get(i).getNroLegajo();
             fila[1] = arrayJefes.get(i).getNombre();
             fila[2] = arrayJefes.get(i).getApellido();
-            fila[3] = arrayJefes.get(i).getFecIngreso();
+            fila[3] = arrayJefes.get(i).getArea();
             tableModel.addRow(fila);
             }
          }
@@ -77,6 +77,11 @@ public class ListadoJefes extends javax.swing.JPanel {
 
         jButton1.setText("Ver Empleados a Cargo");
         jButton1.setToolTipText("Lista de Empleados a cargo del Jefe Seleccionado");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Menu Principal");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +132,15 @@ public class ListadoJefes extends javax.swing.JPanel {
         ventana.setContentPane(panel);
         panel.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     int indice=jTable1.getSelectedRow();
+        
+     this.setVisible(false);
+     ListadoEmpleadosAcargo panelSig = new ListadoEmpleadosAcargo(arrayJefes,indice,this,ventana);
+     ventana.setContentPane(panelSig);
+     panelSig.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
