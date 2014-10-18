@@ -162,7 +162,6 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     if(empleado instanceof Operario){
         try {
             Operario operario = (Operario)empleado;
-            operario.addJefe(emp);
             try {
                 emp.addEmpleadoANomina(empleado);
             } catch (TipoEmpleadoNoValidoException ex) {
@@ -177,7 +176,6 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     if(empleado instanceof Administrativo){
         try {
             Administrativo administrativo = (Administrativo)empleado;
-            administrativo.addJefe(emp);
             try {
                 emp.addEmpleadoANomina(empleado);
             } catch (TipoEmpleadoNoValidoException ex) {
