@@ -47,8 +47,18 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
         VentanaPrincipal vp = (VentanaPrincipal)ventana;
         ArrayList<Empleado> lista = vp.getEmpleados();
         for (int i = 0; i < lista.size(); i++) {
-            if(lista.get(i) instanceof Operario || lista.get(i) instanceof Administrativo)
-                arrayRoque.add(lista.get(i));
+            if(lista.get(i)instanceof Operario){
+                Operario op =(Operario)lista.get(i);
+                if(op.getJefe()==null){
+                    arrayRoque.add(lista.get(i));
+                }
+            }
+            if(lista.get(i) instanceof Administrativo){
+                Administrativo ad =(Administrativo)lista.get(i);
+                if(ad.getJefe()==null){
+                    arrayRoque.add(lista.get(i));
+                }
+            }
         }
  
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
