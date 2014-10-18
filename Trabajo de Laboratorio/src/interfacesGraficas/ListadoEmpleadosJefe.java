@@ -137,10 +137,7 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
   
-       // DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     
-     //Object[] fila = new Object[tableModel.getColumnCount()];
-     ArrayList<Empleado> lista = emp.getNominaEmpleados();
+  
      int indice;
      indice= jTable1.getSelectedRow();
      Empleado empleado = (Empleado)arrayRoque.get(indice);
