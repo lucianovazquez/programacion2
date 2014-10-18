@@ -5,7 +5,11 @@
  */
 package interfacesGraficas;
 
+import excepciones.TipoEmpleadoNoValidoException;
+import excepciones.YaTieneUnJefeException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
@@ -155,9 +159,34 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
             return;
         }
     }
-     emp.addEmpleadoANomina(empleado);
-     
+    if(empleado instanceof Operario){
+        try {
+            Operario operario = (Operario)empleado;
+            operario.addJefe(emp);
+            try {
+                emp.addEmpleadoANomina(empleado);
+            } catch (TipoEmpleadoNoValidoException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
 
+        } catch (YaTieneUnJefeException ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+    }
+     
+    if(empleado instanceof Administrativo){
+        try {
+            Administrativo administrativo = (Administrativo)empleado;
+            administrativo.addJefe(emp);
+            try {
+                emp.addEmpleadoANomina(empleado);
+            } catch (TipoEmpleadoNoValidoException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
+        } catch (YaTieneUnJefeException ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+    }
      
      this.setVisible(false);
      DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
