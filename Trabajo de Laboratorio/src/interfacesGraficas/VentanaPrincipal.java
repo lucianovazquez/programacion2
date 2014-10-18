@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import trabajodelaboratorio.*;
 import excepciones.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,14 +27,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
-        
-        jPanel1.setSize(450, 400);   
+        jPanel1.setSize(450, 400);
         this.setSize(450, 400);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.rootPane.setContentPane(jPanel1);
         this.setTitle("Empresa - Gestor de Empleados");
-        
         Empleado empleado1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción");
         Empleado empleado2 = new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4));
         Empleado empleado3 = new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2));
@@ -56,11 +56,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         empleados.add(empleado6);
         empleados.add(empleado7);
         empleados.add(empleado8);
-        
         Jefe emp=(Jefe)empleado1;
-        emp.addEmpleadoANomina(empleado3);
-        emp.addEmpleadoANomina(empleado4);
-        emp.addEmpleadoANomina(empleado5);
+        try{    
+            emp.addEmpleadoANomina(empleado3);
+            emp.addEmpleadoANomina(empleado4);
+            emp.addEmpleadoANomina(empleado5);
+        } catch (TipoEmpleadoNoValidoException ex) {
+            System.out.print(ex);
+        } catch (YaTieneUnJefeException ex) {
+            System.out.print(ex);
+        }
         
     }
 
