@@ -5,9 +5,12 @@
 package trabajodelaboratorio;
 
 import excepciones.TipoEmpleadoNoValidoException;
+import excepciones.YaTieneUnJefeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,8 +34,26 @@ public class Jefe extends Empleado{
         return area;
     }
     
-    public void addEmpleadoANomina(Empleado emp1){
-            getNominaEmpleados().add(emp1);
+    public void addEmpleadoANomina(Empleado emp1) throws TipoEmpleadoNoValidoException, YaTieneUnJefeException{
+            if(emp1 instanceof Operario || emp1 instanceof Administrativo){
+                if(emp1 instanceof Operario){
+                    Operario op = (Operario)emp1;
+                    op.addJefe(this);
+                }
+                else{
+                    Administrativo ad = (Administrativo)emp1;
+                    ad.addJefe(this);
+                }
+                nominaEmpleados.add(emp1);
+
+            }
+            else
+                throw new TipoEmpleadoNoValidoException("No es operario ni administrador");        
+    }
+    
+    public void eliminarEmpleadoDeNomina(Empleado emp1){
+        
+        nominaEmpleados.remove(emp1);           
     }
     
     /**
