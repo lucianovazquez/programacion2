@@ -172,12 +172,12 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             ArrayList<Empleado> nominaEmpleados = jefe.getNominaEmpleados();
             for(int i=0;i<nominaEmpleados.size();i++){
                 Empleado empleadoNomina = nominaEmpleados.get(i);
-                if(emp instanceof Operario){
-                    Operario op = (Operario)emp;
+                if(empleadoNomina instanceof Operario){
+                    Operario op = (Operario)empleadoNomina;
                     op.deleteJefe();
                 }
-                if(emp instanceof Administrativo){
-                    Administrativo ad = (Administrativo)emp;
+                if(empleadoNomina instanceof Administrativo){
+                    Administrativo ad = (Administrativo)empleadoNomina;
                     ad.deleteJefe();
                 }
             }
