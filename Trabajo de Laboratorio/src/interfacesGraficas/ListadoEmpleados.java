@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
 
 /**
@@ -158,16 +159,27 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         ArrayList<Empleado> lista = vp.getEmpleados();
         
         Empleado emp = lista.get(jTable1.getSelectedRow());
-        if( emp instanceof Operario || emp instanceof Administrativo){
-            if(emp instanceof Operario){
-                Operario op = (Operario)emp;
-                op.getJefe().eliminarEmpleadoDeNomina(op);
-                op.deleteJefe();
-            }
-            if(emp instanceof Administrativo){
-                Administrativo ad = (Administrativo)emp;
-                ad.getJefe().eliminarEmpleadoDeNomina(ad);
-                ad.deleteJefe();
+        if(emp instanceof Operario){
+            Operario op = (Operario)emp;
+            op.getJefe().eliminarEmpleadoDeNomina(op);
+        }
+        if(emp instanceof Administrativo){
+            Administrativo ad = (Administrativo)emp;
+            ad.getJefe().eliminarEmpleadoDeNomina(ad);
+        }
+        if(emp instanceof Jefe){
+            Jefe jefe =(Jefe)emp;
+            ArrayList<Empleado> nominaEmpleados = jefe.getNominaEmpleados();
+            for(int i=0;i<nominaEmpleados.size();i++){
+                Empleado empleadoNomina = nominaEmpleados.get(i);
+                if(emp instanceof Operario){
+                    Operario op = (Operario)emp;
+                    op.deleteJefe();
+                }
+                if(emp instanceof Administrativo){
+                    Administrativo ad = (Administrativo)emp;
+                    ad.deleteJefe();
+                }
             }
         }
         
