@@ -21,24 +21,25 @@ public class ListadoJefes extends javax.swing.JPanel {
      */
     javax.swing.JPanel panel;
     javax.swing.JFrame ventana;
-    ArrayList<Jefe> arrayJefes = new ArrayList();
+    ArrayList<Jefe> arrayJefes;
     public ListadoJefes(javax.swing.JPanel panel, javax.swing.JFrame ventana) {
         initComponents();
-        
+    
         this.panel=panel;
         this.ventana=ventana;
+        arrayJefes = new ArrayList<>();
         
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        ArrayList<Empleado> lista = vp.getEmpleados();
+        /* Acceso al array empleados para crear uno nuevo solo con los jefes*/
+        ArrayList<Empleado> lista = VentanaPrincipal.empleados;
         for (int i = 0; i < lista.size(); i++) {
             if(lista.get(i) instanceof Jefe)
                 arrayJefes.add((Jefe)lista.get(i));
         }
- 
+        
+        /* Creacion de la tabla con los jefes*/
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
-     
-         for (int i = 0; i < arrayJefes.size(); i++) {
+        for (int i = 0; i < arrayJefes.size(); i++) {
             {
             fila[0] = arrayJefes.get(i).getNroLegajo();
             fila[1] = arrayJefes.get(i).getNombre();
