@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.EmpleadoNominaJefe;
 import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
 
@@ -155,35 +156,37 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         
-        VentanaPrincipal vp =(VentanaPrincipal)ventana;
-        ArrayList<Empleado> lista = vp.getEmpleados();
+        /* Obtener el empleado que se desea eliminar seleccionado en la tabla, obtenerlo desde el array empleados */
+        Empleado emp = VentanaPrincipal.empleados.get(jTable1.getSelectedRow());
         
-        Empleado emp = lista.get(jTable1.getSelectedRow());
-        if(emp instanceof Operario){
-            Operario op = (Operario)emp;
-            op.getJefe().eliminarEmpleadoDeNomina(op);
+        /* Si es operario o administrador */
+        if(emp instanceof Operario || emp instanceof Administrativo){
+            /* Catear el empleado para acceder a los metodos de empleadoNominaJefe*/
+            EmpleadoNominaJefe empleadoNominaJefe = (EmpleadoNominaJefe)emp;
+            /* Obtener jefe del empleado*/
+            Jefe jefe = empleadoNominaJefe.getJefe();
+            if(jefe != null){
+                /* Si tiene un jefe asignado eliminarlo de la nomina de ese jefe*/
+                jefe.eliminarEmpleadoDeNomina(emp);
+            }
         }
-        if(emp instanceof Administrativo){
-            Administrativo ad = (Administrativo)emp;
-            ad.getJefe().eliminarEmpleadoDeNomina(ad);
-        }
+        
+        /* Si es un jefe*/
         if(emp instanceof Jefe){
             Jefe jefe =(Jefe)emp;
             ArrayList<Empleado> nominaEmpleados = jefe.getNominaEmpleados();
+            /* Desvincular el jefe de todos los empleados que tenia a cargo */
             for(int i=0;i<nominaEmpleados.size();i++){
                 Empleado empleadoNomina = nominaEmpleados.get(i);
-                if(empleadoNomina instanceof Operario){
-                    Operario op = (Operario)empleadoNomina;
-                    op.deleteJefe();
-                }
-                if(empleadoNomina instanceof Administrativo){
-                    Administrativo ad = (Administrativo)empleadoNomina;
-                    ad.deleteJefe();
+                if(empleadoNomina instanceof Operario || empleadoNomina instanceof Administrativo){
+                    EmpleadoNominaJefe empleadoNominaJefe = (EmpleadoNominaJefe)empleadoNomina;
+                    empleadoNominaJefe.deleteJefe();
                 }
             }
         }
         
-        lista.remove(jTable1.getSelectedRow());
+        /* Borrar empleado del array empleados*/
+        VentanaPrincipal.empleados.remove(jTable1.getSelectedRow());
         tableModel.removeRow(jTable1.getSelectedRow());
     }//GEN-LAST:event_jButton2ActionPerformed
 
