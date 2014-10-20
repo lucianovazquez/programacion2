@@ -154,6 +154,11 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(jTable1.getSelectedRow()==-1){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una opcion");
+            return;
+        }
+        
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         
         /* Obtener el empleado que se desea eliminar seleccionado en la tabla, obtenerlo desde el array empleados */
