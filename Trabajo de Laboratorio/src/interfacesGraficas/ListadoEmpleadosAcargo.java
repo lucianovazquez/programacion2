@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.EmpleadoNominaJefe;
 import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
 
@@ -24,7 +25,8 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
     int indice;
     javax.swing.JPanel panel;
     javax.swing.JFrame ventana;
-    ArrayList<Jefe> arrayJefes = new ArrayList();
+    private ArrayList<Jefe> arrayJefes = new ArrayList();
+    private Jefe empJefe;
     public ListadoEmpleadosAcargo(ArrayList<Jefe> arrayJefes,int indice,javax.swing.JPanel panel,javax.swing.JFrame ventana ) {
         initComponents();
         
@@ -33,21 +35,20 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
         this.panel=panel;
         this.ventana=ventana;
         
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        Jefe empJefe = (Jefe)arrayJefes.get(indice);
+        empJefe = (Jefe)arrayJefes.get(indice);
         ArrayList<Empleado> lista = empJefe.getNominaEmpleados();
-    
+        
+        /* Crear tabla con la nomina de empleados del jefe */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
-     
-         for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < lista.size(); i++) {
             {
-            fila[0] = lista.get(i).getNroLegajo();
-            fila[1] = lista.get(i).getNombre();
-            fila[2] = lista.get(i).getApellido();
-            fila[3] = lista.get(i).getTipoCargo();
-            fila[4] = lista.get(i).getFecIngreso();
-            tableModel.addRow(fila);
+                fila[0] = lista.get(i).getNroLegajo();
+                fila[1] = lista.get(i).getNombre();
+                fila[2] = lista.get(i).getApellido();
+                fila[3] = lista.get(i).getTipoCargo();
+                fila[4] = lista.get(i).getFecIngreso();
+                tableModel.addRow(fila);
             }
          }
          jTable1.setModel(tableModel);
@@ -69,6 +70,7 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +95,13 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
 
         jLabel2.setText("jLabel2");
 
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,7 +121,9 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,8 +134,10 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(47, 47, 47))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -135,9 +148,21 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
        panel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Empleado> lista = empJefe.getNominaEmpleados();
+
+        /* Obtener el empleado que se desea eliminar seleccionado en la tabla, obtenerlo desde el array empleados */
+        EmpleadoNominaJefe emp = (EmpleadoNominaJefe)lista.get(jTable1.getSelectedRow());
+        lista.remove(emp);
+        emp.deleteJefe();
+        tableModel.removeRow(jTable1.getSelectedRow());
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
