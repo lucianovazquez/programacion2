@@ -346,9 +346,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        /* Ventanas emergentes en caso de no ingresar algun dato en la ventana  */
-
-        
+        /* Ventanas emergentes mostrando error en caso de no ingresar algun dato en la ventana  */
         if (jTextField2.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(panel1, "Debe ingresar un nombre.");       
             return;
@@ -374,10 +372,8 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             return;
         }
         
-        
-        /* Agregar al objeto los datos ingresados  */
-
         try{
+            /* Agregar al objeto emp los datos ingresados  */
             emp.setApellido(jTextField1.getText());
             emp.setNombre(jTextField2.getText());
             emp.setDni(Integer.parseInt(jTextField3.getText().trim()));
@@ -387,16 +383,17 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             emp.setSexo('M');
             else 
             emp.setSexo('F');
+            
+            /*Ocultar panel y pasar al siguiente*/
+            this.setVisible(false);
+            IngresarFamilia panelSig = new IngresarFamilia(panelPrincipal,emp,this,ventana);
+            ventana.setContentPane(panelSig);
         }catch(Exception ex){
           System.out.println("ERROR EN EL SETEO DE LOS ATRIBUTOS");
           System.out.println(ex.toString());
-          return;
         }
         
-        this.setVisible(false);
-        IngresarFamilia panelSig = new IngresarFamilia(panelPrincipal,emp,this,ventana);
-        ventana.setContentPane(panelSig);
-/*
+        /*
         if(emp instanceof Vendedor){    
           this.setVisible(false);
           DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor(panelPrincipal,(Vendedor) emp,this,ventana);
