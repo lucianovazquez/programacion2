@@ -192,8 +192,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        /* Ventanas emergentes en caso de no ingresar algun dato en la ventana  */
-
+        /* Ventanas emergentes mostrando error en caso de no ingresar algun dato en la ventana  */
         if (jComboBox1.getSelectedItem().toString().equals("Ninguno")) {
             JOptionPane.showMessageDialog(panel0, "Debe seleccionar un cargo");       
             return;
@@ -207,8 +206,16 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
             return;
         }
         
+        /* Comprobar si ya existe un empleado con ese legajo*/
+        ArrayList<Empleado> empleados= VentanaPrincipal.empleados;
+        for(int i=0;i<empleados.size();i++){
+            if(empleados.get(i).getNroLegajo()==Integer.parseInt(jTextField1.getText().trim())){
+                JOptionPane.showMessageDialog(panel0, "Este empleado ya existe");
+                return;
+            }
+        }
+
         /* Instanciar el objeto segun el cargo seleccionado  */
-        
         if (jComboBox1.getSelectedItem().toString().equals("Vendedor")) {
             emp = new Vendedor();
             emp.setTipoCargo("Vendedor");        
@@ -225,24 +232,14 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
            emp = new Operario();
            emp.setTipoCargo("Operario");
         }
-        VentanaPrincipal vn = (VentanaPrincipal)ventana;
-        ArrayList<Empleado> empleados= vn.getEmpleados();
-        for(int i=0;i<empleados.size();i++){
-            if(empleados.get(i).getNroLegajo()==Integer.parseInt(jTextField1.getText().trim())){
-                JOptionPane.showMessageDialog(panel0, "Este empleado ya existe");
-                return;
-            }
-        }
-        
-        /* Agregar al objeto los datos ingresados  */
         
         try{
+            /* Agregar a emp los datos ingresados en la ventana */
             int numerolegajo=Integer.parseInt(jTextField1.getText().trim()); 
             emp.setNroLegajo(numerolegajo);
             emp.setFecIngreso(jDateChooser1.getDate());
             
             /* Ocultar panel, crear y mostrar siguiente panel */
-
             this.setVisible(false);
             IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales(panel0,(Empleado) emp,this, ventana);
             ventana.setContentPane(panel2);  
