@@ -29,46 +29,41 @@ public class IngresarFamilia extends javax.swing.JPanel {
     public IngresarFamilia(javax.swing.JPanel panelPrincipal,Empleado emp,javax.swing.JPanel panel0, javax.swing.JFrame ventana) {
         
         initComponents();
-     this.emp=emp;
-     this.panel0=panel0;
-     this.ventana=ventana;
-     this.panelPrincipal=panelPrincipal;
-     this.setSize(420, 330);
+        this.emp=emp;
+        this.panel0=panel0;
+        this.ventana=ventana;
+        this.panelPrincipal=panelPrincipal;
+        this.setSize(420, 330);
      
-     jLabel4.setText(emp.getNombre()+" "+emp.getApellido());
+        jLabel4.setText(emp.getNombre()+" "+emp.getApellido());
      
-     //Cargar Tabla
-     
-     DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     ArrayList<Familiar> lista = emp.getFamiliares();
-     Object[] fila = new Object[tableModel.getColumnCount()];
- 
-     for (int i = 0; i < lista.size(); i++) {
-             if(lista.get(i) instanceof Conyuge){
-                 Conyuge con=(Conyuge)lista.get(i);
-                 
-            fila[0] = con.getNombre();
-            fila[1] = con.getApellido();
-            fila[2] = ("Conyuge");
-            fila[3] = con.getDni();
-            tableModel.addRow(fila);
+        /* Cargar Tabla con los familiares del empleado*/
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Familiar> lista = emp.getFamiliares();
+        Object[] fila = new Object[tableModel.getColumnCount()];
+        for(int i = 0; i < lista.size(); i++) {
+            if(lista.get(i) instanceof Conyuge){
+                Conyuge con=(Conyuge)lista.get(i);      
+                fila[0] = con.getNombre();
+                fila[1] = con.getApellido();
+                fila[2] = ("Conyuge");
+                fila[3] = con.getDni();
+                tableModel.addRow(fila);
             }
-             else{
-                  Hijo hijo=(Hijo)lista.get(i);
-            fila[0] = hijo.getNombre();
-            fila[1] = hijo.getApellido();
-            
+            else{
+                Hijo hijo=(Hijo)lista.get(i);
+                fila[0] = hijo.getNombre();
+                fila[1] = hijo.getApellido();
                 char a= hijo.getSexo();
                 if(a=='M'){
                 fila[2] = ("Hijo");}
                 else{
                 fila[2] = ("Hija");} 
-                
-            fila[3] = hijo.getDni();
-            tableModel.addRow(fila);
-             }
-     }
-     jTable1.setModel(tableModel);
+                fila[3] = hijo.getDni();
+                tableModel.addRow(fila);
+            }
+        }
+        jTable1.setModel(tableModel);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,15 +187,16 @@ public class IngresarFamilia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    if(emp instanceof Vendedor){    
-          this.setVisible(false);
-          DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor(panelPrincipal,(Vendedor) emp,this,ventana);
-          ventana.setContentPane(panelSig);
+        /* Mostrar siguiente panel segun el tipo de empleado tratado */
+        if(emp instanceof Vendedor){    
+            this.setVisible(false);
+            DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor(panelPrincipal,(Vendedor) emp,this,ventana);
+            ventana.setContentPane(panelSig);
         }
         if(emp instanceof Jefe){    
-          this.setVisible(false);
-          DatosLaboralesJefe  panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe) emp,this,ventana);
-          ventana.setContentPane(panelSig);
+            this.setVisible(false);
+            DatosLaboralesJefe  panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe) emp,this,ventana);
+            ventana.setContentPane(panelSig);
         }
         if(emp instanceof Administrativo){
             this.setVisible(false);
@@ -215,17 +211,18 @@ public class IngresarFamilia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       /* Ir al panel para ingresar los familiares a cargo*/
        this.setVisible(false);
-        IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(panelPrincipal,emp,this,ventana);
+       IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(panelPrincipal,emp,this,ventana);
        ventana.setContentPane(panel);    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        /* Eliminar familiar seleccionado */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         ArrayList<Familiar> lista = emp.getFamiliares();
         lista.remove(jTable1.getSelectedRow());
-        tableModel.removeRow(jTable1.getSelectedRow());
-        
+        tableModel.removeRow(jTable1.getSelectedRow());   
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
