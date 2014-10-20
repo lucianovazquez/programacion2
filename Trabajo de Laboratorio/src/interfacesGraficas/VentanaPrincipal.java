@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    private ArrayList<Empleado> empleados = new ArrayList<>();
+    public static ArrayList<Empleado> empleados = new ArrayList<>();
     /**
      * Creates new form VentanaPrincipal
      */
