@@ -10,6 +10,7 @@ import trabajodelaboratorio.Administrativo;
 /**
  *
  * @author Luciano
+ * @author RoqueG
  */
 public class DatosLaboralesAdmin extends javax.swing.JPanel {
 
