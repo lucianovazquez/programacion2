@@ -6,6 +6,7 @@
 package interfacesGraficas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -135,6 +136,11 @@ public class ListadoJefes extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     
+    if(jTable1.getSelectedRow()==-1){
+        JOptionPane.showMessageDialog(this, "Debe seleccionar una opcion");
+        return;
+    }   
      int indice=jTable1.getSelectedRow();
         
      this.setVisible(false);
