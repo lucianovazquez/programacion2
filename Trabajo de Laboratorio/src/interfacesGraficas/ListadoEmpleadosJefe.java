@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.EmpleadoNominaJefe;
 import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
 
@@ -31,7 +32,7 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     javax.swing.JFrame ventana;
     javax.swing.JPanel panelAnt;
     javax.swing.JPanel panelPrincipal;
-    ArrayList <Empleado> arrayRoque;
+    private ArrayList <Empleado> arrayRoque;
     
     
     public ListadoEmpleadosJefe(Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana,javax.swing.JPanel panelAnt,javax.swing.JPanel panelPrincipal) {
@@ -44,35 +45,28 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
         arrayRoque = new ArrayList<>();
         jLabel2.setText(emp.getNombre()+" "+emp.getApellido());
         
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        ArrayList<Empleado> lista = vp.getEmpleados();
+        
+        ArrayList<Empleado> lista = VentanaPrincipal.empleados;
+        /* Crear array con los operadores y administradores sin jefe a partir del array de empleados */
         for (int i = 0; i < lista.size(); i++) {
-            if(lista.get(i)instanceof Operario){
-                Operario op =(Operario)lista.get(i);
-                if(op.getJefe()==null){
-                    arrayRoque.add(lista.get(i));
-                }
-            }
-            if(lista.get(i) instanceof Administrativo){
-                Administrativo ad =(Administrativo)lista.get(i);
-                if(ad.getJefe()==null){
+            if(lista.get(i)instanceof Operario||lista.get(i) instanceof Administrativo){
+                EmpleadoNominaJefe empleadoNominaJefe =(EmpleadoNominaJefe)lista.get(i);
+                if(empleadoNominaJefe.getJefe()==null){
                     arrayRoque.add(lista.get(i));
                 }
             }
         }
- 
+        /* Crear tabla con el array que solo tienen operadores y administradores sin jefe */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
      
-         for (int i = 0; i < arrayRoque.size(); i++) {
-            {
+        for (int i = 0; i < arrayRoque.size(); i++) {
             fila[0] = arrayRoque.get(i).getNroLegajo();
             fila[1] = arrayRoque.get(i).getNombre();
             fila[2] = arrayRoque.get(i).getApellido();
             fila[3] = arrayRoque.get(i).getTipoCargo();
             fila[4] = arrayRoque.get(i).getFecIngreso();
             tableModel.addRow(fila);
-            }
          }
          jTable1.setModel(tableModel);
     }
