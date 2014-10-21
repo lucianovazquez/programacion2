@@ -242,6 +242,8 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(jTextField1.getText().isEmpty())
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
         int nroLeg;
         int ok=0;
         int nroBuscar=Integer.parseInt(jTextField1.getText().trim());
@@ -257,7 +259,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             }
         }
         if(ok==0)
-            JOptionPane.showMessageDialog(this, "No se encontró resultados.");
+            JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
             
         else{
             

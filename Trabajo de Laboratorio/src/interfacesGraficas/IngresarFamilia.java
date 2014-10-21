@@ -1,6 +1,7 @@
 package interfacesGraficas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Conyuge;
@@ -211,13 +212,17 @@ public class IngresarFamilia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       /* Ir al panel para ingresar los familiares a cargo*/
+     /* Ir al panel para ingresar los familiares a cargo*/
        this.setVisible(false);
        IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(panelPrincipal,emp,this,ventana);
        ventana.setContentPane(panel);    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(jTable1.getSelectedRow()==-1){
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un familiar.");
+        return;
+        } 
         /* Eliminar familiar seleccionado */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         ArrayList<Familiar> lista = emp.getFamiliares();

@@ -356,7 +356,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             return;
         }
         if ( jDateChooser1.getDate()==null) {
-            JOptionPane.showMessageDialog(panel1, "Debe ingresar una fecha de nacimiento valida.");       
+            JOptionPane.showMessageDialog(panel1, "Debe ingresar una fecha de nacimiento válida.");       
             return;
         }
         if (jComboBox3.getSelectedItem().toString().equals("Ninguno")) {
@@ -389,7 +389,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             IngresarFamilia panelSig = new IngresarFamilia(panelPrincipal,emp,this,ventana);
             ventana.setContentPane(panelSig);
         }catch(Exception ex){
-          System.out.println("ERROR EN EL SETEO DE LOS ATRIBUTOS");
+         
           System.out.println(ex.toString());
         }
         
@@ -408,9 +408,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-       jComboBox3.addItem("Masculino");
-       jComboBox3.addItem("Femenino");
-       
+      
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

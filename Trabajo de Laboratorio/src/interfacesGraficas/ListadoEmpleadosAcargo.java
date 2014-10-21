@@ -151,7 +151,7 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(jTable1.getSelectedRow()==-1){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una opcion");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
             return;
         }
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();

@@ -194,15 +194,15 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
 
         /* Ventanas emergentes mostrando error en caso de no ingresar algun dato en la ventana  */
         if (jComboBox1.getSelectedItem().toString().equals("Ninguno")) {
-            JOptionPane.showMessageDialog(panel0, "Debe seleccionar un cargo");       
+            JOptionPane.showMessageDialog(panel0, "Debe seleccionar un tipo de cargo.");       
             return;
         }
         if ( jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(panel0, "Debe ingresar un número de legajo");       
+            JOptionPane.showMessageDialog(panel0, "Debe ingresar un número de legajo.");       
             return;
         }
         if ( jDateChooser1.getDate()==null) {
-            JOptionPane.showMessageDialog(panel0, "Debe ingresar una fecha");       
+            JOptionPane.showMessageDialog(panel0, "Debe ingresar una fecha.");       
             return;
         }
         

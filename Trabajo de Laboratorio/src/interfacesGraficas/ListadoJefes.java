@@ -138,7 +138,7 @@ public class ListadoJefes extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      
     if(jTable1.getSelectedRow()==-1){
-        JOptionPane.showMessageDialog(this, "Debe seleccionar una opcion");
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un Jefe de Área.");
         return;
     }   
      int indice=jTable1.getSelectedRow();
