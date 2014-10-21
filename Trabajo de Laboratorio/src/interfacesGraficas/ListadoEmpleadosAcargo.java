@@ -26,7 +26,7 @@ public class ListadoEmpleadosAcargo extends javax.swing.JPanel {
     int indice;
     javax.swing.JPanel panel;
     javax.swing.JFrame ventana;
-    private ArrayList<Jefe> arrayJefes = new ArrayList();
+    private ArrayList<Jefe> arrayJefes;
     private Jefe empJefe;
     public ListadoEmpleadosAcargo(ArrayList<Jefe> arrayJefes,int indice,javax.swing.JPanel panel,javax.swing.JFrame ventana ) {
         initComponents();
