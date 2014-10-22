@@ -131,6 +131,12 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         });
 
         jButton5.setText("Modificar");
+        jButton5.setToolTipText("Modificar Datos del empleado seleccionado.");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -273,8 +279,20 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         else{
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
-    }
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if(jTextField1.getText().isEmpty())
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
+        
+        int indice= jTable1.getSelectedRow();
+        this.setVisible(false);
+        ModificarEmpleado panelSig = new ModificarEmpleado(indice,this,panel,ventana);
+        ventana.setContentPane(panelSig);
+        panelSig.setVisible(true);
+  
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
