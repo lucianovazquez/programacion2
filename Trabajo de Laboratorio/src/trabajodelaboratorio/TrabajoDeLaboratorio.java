@@ -3,6 +3,7 @@ package trabajodelaboratorio;
 import excepciones.TipoEmpleadoNoValidoException;
 import excepciones.YaTieneUnConyugeException;
 import excepciones.YaTieneUnJefeException;
+import interfacesGraficas.VentanaPrincipal;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,7 @@ public class TrabajoDeLaboratorio {
         } catch (YaTieneUnJefeException ex) {
             System.out.print(ex);
         }
-        
+        VentanaPrincipal vp = new VentanaPrincipal();
+        vp.setVisible(true);
     }
 }
