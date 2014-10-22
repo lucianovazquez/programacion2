@@ -2,6 +2,7 @@ package interfacesGraficas;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Conyuge;
@@ -37,7 +38,8 @@ public class IngresarFamilia extends javax.swing.JPanel {
         this.setSize(420, 330);
      
         jLabel4.setText(emp.getNombre()+" "+emp.getApellido());
-     
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         /* Cargar Tabla con los familiares del empleado*/
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         ArrayList<Familiar> lista = emp.getFamiliares();
@@ -98,7 +100,15 @@ public class IngresarFamilia extends javax.swing.JPanel {
             new String [] {
                 "Nombre", "Apellido", "Parentesco", "Documento"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel3.setText("Listado:");

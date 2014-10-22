@@ -7,6 +7,7 @@ package interfacesGraficas;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -39,6 +40,7 @@ javax.swing.JPanel panelPrincipal;
         jLabel9.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel10.setText(Integer.toString(emp.getNroLegajo()));
         
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      ArrayList<Empleado> lista = emp.getNominaEmpleados();
      Object[] fila = new Object[tableModel.getColumnCount()];
@@ -121,7 +123,15 @@ javax.swing.JPanel panelPrincipal;
             new String [] {
                 "Nombre", "Apellido", "N° Legajo", "Cargo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Volver");
