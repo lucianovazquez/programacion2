@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
@@ -56,6 +57,7 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
                 }
             }
         }
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         /* Crear tabla con el array que solo tienen operadores y administradores sin jefe */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
@@ -94,7 +96,15 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
             new String [] {
                 "N° Legajo", "Nombre", "Apellido", "Cargo", "Ingreso"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Seleccionar los empleados a cargo del Jefe de Área:");

@@ -6,6 +6,7 @@
 package interfacesGraficas;
 
 import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Conyuge;
 import trabajodelaboratorio.Empleado;
@@ -39,6 +40,7 @@ public class ListadoFamiliares extends javax.swing.JPanel {
                 
      DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      ArrayList<Familiar> lista = emp.getFamiliares();
+     jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
      Object[] fila = new Object[tableModel.getColumnCount()];
         for (int i = 0; i < lista.size(); i++) {
              if(lista.get(i) instanceof Conyuge){
@@ -93,7 +95,15 @@ public class ListadoFamiliares extends javax.swing.JPanel {
             new String [] {
                 "Nombre", "Apellido", "Parentesco", "Documento", "Fec. de Nacimiento"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Volver");

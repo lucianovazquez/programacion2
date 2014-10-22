@@ -7,6 +7,7 @@ package interfacesGraficas;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Jefe;
@@ -40,6 +41,8 @@ public class ListadoJefes extends javax.swing.JPanel {
         /* Creacion de la tabla con los jefes*/
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         for (int i = 0; i < arrayJefes.size(); i++) {
             {
             fila[0] = arrayJefes.get(i).getNroLegajo();
