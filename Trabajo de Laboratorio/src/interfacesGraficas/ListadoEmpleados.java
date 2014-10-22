@@ -7,6 +7,7 @@ package interfacesGraficas;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
@@ -39,7 +40,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      ArrayList<Empleado> lista = vp.getEmpleados();
      Object[] fila = new Object[tableModel.getColumnCount()];
- 
+     jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
          for (int i = 0; i < lista.size(); i++) {
          
             fila[0] = lista.get(i).getNroLegajo();
@@ -80,7 +81,15 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             new String [] {
                 "N° Legajo", "Nombre", "Apellido", "Cargo", "Ingreso"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Volver");
@@ -249,37 +258,21 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         int nroBuscar=Integer.parseInt(jTextField1.getText().trim());
         Empleado empBuscado= new Empleado() {};
         VentanaPrincipal vp=(VentanaPrincipal)ventana;
-        jButton4.setEnabled(false);
+        
         
         for (int i = 0; i < vp.getEmpleados().size(); i++) {
             nroLeg=vp.getEmpleados().get(i).getNroLegajo();
             if(nroLeg==nroBuscar){
                 empBuscado=vp.getEmpleados().get(i);
                 ok=1;
+                jTable1.getSelectionModel().setSelectionInterval(i, i);
             }
         }
         if(ok==0)
             JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
-            
         else{
-            
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
-        
-        
-            for (int i = 0; i < vp.getEmpleados().size(); i++){
-                tableModel.removeRow(0);
-           }
-        
-       
-            fila[0] = empBuscado.getNroLegajo();
-            fila[1] = empBuscado.getNombre();
-            fila[2] = empBuscado.getApellido();
-            fila[3] = empBuscado.getTipoCargo();
-            fila[4] = empBuscado.getFecIngreso();
-            
-            tableModel.addRow(fila);
-            jTable1.setModel(tableModel);
     }//GEN-LAST:event_jButton4ActionPerformed
     }
 
