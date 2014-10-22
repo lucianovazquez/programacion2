@@ -5,6 +5,7 @@
  */
 package interfacesGraficas;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -257,6 +258,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int indice=0;
         if(jTextField1.getText().isEmpty())
             JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
         int nroLeg;
@@ -270,16 +272,20 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             nroLeg=vp.getEmpleados().get(i).getNroLegajo();
             if(nroLeg==nroBuscar){
                 empBuscado=vp.getEmpleados().get(i);
+                indice=i;
                 ok=1;
                 jTable1.getSelectionModel().setSelectionInterval(i, i);
             }
         }
         if(ok==0)
             JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
-        else{
+    
+        Rectangle r = jTable1.getCellRect (indice, 0, true);
+        jTable1.scrollRectToVisible(r);
+        
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-        Object[] fila = new Object[tableModel.getColumnCount()];
-        }
+        tableModel.fireTableDataChanged();
+        jTable1.getSelectionModel().setSelectionInterval(indice, indice);
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
