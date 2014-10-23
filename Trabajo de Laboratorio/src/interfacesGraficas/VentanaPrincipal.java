@@ -40,7 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Empleado empleado5 = new Operario("Sergio","Moreno",'M',new Domicilio("San Martín",454),24653293,LocalDate.of(1982,9,23),104,LocalDate.of(2013,3,12));
         Empleado empleado6 = new Administrativo("Cristina","Fernandez",'F',new Domicilio("Junín",267),22578393,LocalDate.of(1982,10,23),105,LocalDate.of(2010,8,11));
         Empleado empleado7 = new Jefe("Florencia","Sosa",'F',new Domicilio("Salta",570),30578393,LocalDate.of(1990,10,23),106,LocalDate.of(2012,3,14),"Dirección");
-        Empleado empleado8 = new Jefe("Gonzalo","Ibañez",'M',new Domicilio("Caseros",1323),23578393,LocalDate.of(1987,10,23),107,LocalDate.of(2010,2,1)," Administración");
+        Empleado empleado8 = new Jefe("Gonzalo","Ibañez",'M',new Domicilio("Caseros",1323),23578393,LocalDate.of(1987,10,23),107,LocalDate.of(2010,2,1),"Administración");
         try {
             empleado1.addFamiliar((Familiar)new Conyuge("Teresita","Condori",'F',new Domicilio("Av.SiempreViva",123),32405326,LocalDate.of(1993,8,4)));
             empleado1.addFamiliar((Familiar)new Hijo("Maria","Condori",'F',new Domicilio("Av.SiempreViva",123),45402326,LocalDate.of(2014,8,4)));
@@ -92,6 +92,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(450, 420));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestor de Empleados");
 
         jButton1.setText("Ingresar Empleado");
@@ -135,16 +136,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel1)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton1)

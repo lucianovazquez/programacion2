@@ -383,15 +383,15 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             emp.setSexo('M');
             else 
             emp.setSexo('F');
-            
+             }catch(Exception ex){
+          System.out.println(ex.toString());
+        }
+        
             /*Ocultar panel y pasar al siguiente*/
             this.setVisible(false);
             IngresarFamilia panelSig = new IngresarFamilia(panelPrincipal,emp,this,ventana);
             ventana.setContentPane(panelSig);
-        }catch(Exception ex){
-         
-          System.out.println(ex.toString());
-        }
+       
         
         /*
         if(emp instanceof Vendedor){    
