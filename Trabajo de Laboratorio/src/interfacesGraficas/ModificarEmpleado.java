@@ -5,6 +5,10 @@
  */
 package interfacesGraficas;
 
+import java.time.Instant;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
@@ -36,7 +40,10 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         
         jTextField2.setText(emp.getNombre());
         jTextField1.setText(emp.getApellido());
-        //jDateChooser1.setDate(emp.getFechaNacimiento()); PASAR DE LOCALDATE A DATE
+        LocalDate ld =emp.getFechaNacimiento();
+        Instant instant = ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        Date res = Date.from(instant);
+        jDateChooser1.setDate(res);
         if(emp.getSexo()=='M')
             jComboBox3.setSelectedItem("Masculino");
         else
