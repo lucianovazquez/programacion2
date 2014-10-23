@@ -274,8 +274,9 @@ public class ListadoEmpleados extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int indice=0;
-        if(jTextField1.getText().isEmpty())
+        if(jTextField1.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
+            return;}
         int nroLeg;
         int ok=0;
         int nroBuscar=Integer.parseInt(jTextField1.getText().trim());
@@ -292,8 +293,10 @@ public class ListadoEmpleados extends javax.swing.JPanel {
                 jTable1.getSelectionModel().setSelectionInterval(i, i);
             }
         }
-        if(ok==0)
+        if(ok==0){
             JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
+        return;
+        }
     
         Rectangle r = jTable1.getCellRect (indice, 0, true);
         jTable1.scrollRectToVisible(r);
@@ -305,9 +308,10 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         int indice = jTable1.getSelectedRow();
-        if(indice==-1)
+        if(indice==-1){
            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
-        
+           return;
+        }
         
         this.setVisible(false);
         ModificarEmpleado panelSig = new ModificarEmpleado(indice,panel,ventana);
@@ -318,8 +322,10 @@ public class ListadoEmpleados extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
        int indice = jTable1.getSelectedRow();
-       if(indice==-1)
+        if(indice==-1){
            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
+           return;
+        }
        
        VentanaPrincipal vp = (VentanaPrincipal)ventana;
        if(vp.getEmpleados().get(indice).getTipoCargo().equals("Vendedor")){
