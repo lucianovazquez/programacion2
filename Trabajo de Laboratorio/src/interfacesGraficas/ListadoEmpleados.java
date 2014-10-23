@@ -141,6 +141,11 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         });
 
         jButton6.setText("Modificar Datos Laborales");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -310,6 +315,33 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         panelSig.setVisible(true);
   
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       int indice = jTable1.getSelectedRow();
+       if(indice==-1)
+           JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
+       
+       VentanaPrincipal vp = (VentanaPrincipal)ventana;
+       if(vp.getEmpleados().get(indice).getTipoCargo().equals("Vendedor")){
+           ModificarVendedor panelSig = new ModificarVendedor(indice,panel,ventana);
+           this.setVisible(false);
+           ventana.setContentPane(panelSig);
+           panelSig.setVisible(true);
+       }
+       if(vp.getEmpleados().get(indice).getTipoCargo().equals("Administrativo")||vp.getEmpleados().get(indice).getTipoCargo().equals("Operario")){
+           ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
+           this.setVisible(false);
+           ventana.setContentPane(panelSig);
+           panelSig.setVisible(true);
+       }
+       if(vp.getEmpleados().get(indice).getTipoCargo().equals("Jefe")){
+           ModificarJefe panelSig = new ModificarJefe(indice,panel,ventana);
+           this.setVisible(false);
+           ventana.setContentPane(panelSig);
+           panelSig.setVisible(true);
+       }
+       
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
