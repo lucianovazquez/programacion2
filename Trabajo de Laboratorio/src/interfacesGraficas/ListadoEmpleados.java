@@ -334,7 +334,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
            ventana.setContentPane(panelSig);
            panelSig.setVisible(true);
        }
-       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Jefe")){
+       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Jefe de Área")){
            ModificarJefe panelSig = new ModificarJefe(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);
