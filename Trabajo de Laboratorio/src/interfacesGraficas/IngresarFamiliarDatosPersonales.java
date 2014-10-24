@@ -328,10 +328,8 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-                /* Ventanas emergentes en caso de no ingresar algun dato en la ventana  */
-
         
+        /* Ventanas emergentes en caso de no ingresar algun dato en la ventana  */
         if (jTextField2.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un nombre.");       
             return;
@@ -348,7 +346,6 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Debe ingresar sexo.");       
             return;
         }
-        
         if (jTextField3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar número de documento.");       
             return;

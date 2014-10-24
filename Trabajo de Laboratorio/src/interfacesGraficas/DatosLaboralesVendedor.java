@@ -5,6 +5,7 @@ import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Vendedor;
 import trabajodelaboratorio.Persona;
 
@@ -207,9 +208,7 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         try{
             emp.setSucursal(Integer.parseInt(jTextField1.getText().trim()));
             emp.setPorcentajeCom(Float.parseFloat(jTextField2.getText().trim()));
-            VentanaPrincipal vp = (VentanaPrincipal)ventana;
-            vp.addEmpleado(emp);
-            
+            GestionEmpleados.addEmpleado(emp);
             this.setVisible(false);
             ventana.setContentPane(panelPrincipal);
             panelPrincipal.setVisible(true);

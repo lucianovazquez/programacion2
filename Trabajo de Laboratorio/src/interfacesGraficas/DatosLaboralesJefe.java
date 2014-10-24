@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
 
 /**
@@ -279,8 +280,8 @@ javax.swing.JPanel panelPrincipal;
         if(jComboBox1.getSelectedItem().equals("Ventas"))
            emp.setArea("Ventas");
         
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        vp.addEmpleado(emp);
+        GestionEmpleados.addEmpleado(emp);
+
         
         this.setVisible(false);
         ventana.setContentPane(panelPrincipal);

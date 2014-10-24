@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.EmpleadoNominaJefe;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
 
@@ -43,20 +44,10 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
         this.ventana=ventana;
         this.panelAnt=panelAnt;
         this.panelPrincipal=panelPrincipal;
-        arrayRoque = new ArrayList<>();
         jLabel2.setText(emp.getNombre()+" "+emp.getApellido());
         
+        arrayRoque = GestionEmpleados.obtenerNuevoArrayOperadoresAdministradores();
         
-        ArrayList<Empleado> lista = VentanaPrincipal.empleados;
-        /* Crear array con los operadores y administradores sin jefe a partir del array de empleados */
-        for (int i = 0; i < lista.size(); i++) {
-            if(lista.get(i)instanceof Operario||lista.get(i) instanceof Administrativo){
-                EmpleadoNominaJefe empleadoNominaJefe =(EmpleadoNominaJefe)lista.get(i);
-                if(empleadoNominaJefe.getJefe()==null){
-                    arrayRoque.add(lista.get(i));
-                }
-            }
-        }
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         /* Crear tabla con el array que solo tienen operadores y administradores sin jefe */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();

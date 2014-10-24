@@ -6,6 +6,7 @@
 package interfacesGraficas;
 
 import trabajodelaboratorio.Administrativo;
+import trabajodelaboratorio.GestionEmpleados;
 
 /**
  *
@@ -165,8 +166,7 @@ public class DatosLaboralesAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        vp.addEmpleado(emp);
+        GestionEmpleados.addEmpleado(emp);
         
         this.setVisible(false);
         ventana.setContentPane(panelPrincipal);

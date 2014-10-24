@@ -12,6 +12,7 @@ import java.time.ZoneId;
 import javax.swing.JOptionPane;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.GestionEmpleados;
 
 /**
  *
@@ -35,8 +36,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         this.panelAnt=panelAnt;
         this.ventana=ventana;
         Empleado emp;
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        emp = vp.getEmpleados().get(indice);
+        emp = GestionEmpleados.getEmpleado(indice);
         
         jTextField2.setText(emp.getNombre());
         jTextField1.setText(emp.getApellido());
@@ -338,7 +338,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         
         Empleado emp;
         VentanaPrincipal vp = (VentanaPrincipal)ventana;
-        emp = vp.getEmpleados().get(indice);
+        emp = GestionEmpleados.getEmpleado(indice);
         
         try{
             /* Agregar al objeto emp los datos ingresados  */

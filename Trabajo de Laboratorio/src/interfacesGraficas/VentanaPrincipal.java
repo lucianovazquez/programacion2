@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    public static ArrayList<Empleado> empleados = new ArrayList<>();
     /**
      * Creates new form VentanaPrincipal
      */
@@ -48,14 +47,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         
-        empleados.add(empleado1);
-        empleados.add(empleado2);
-        empleados.add(empleado3);
-        empleados.add(empleado4);
-        empleados.add(empleado5);
-        empleados.add(empleado6);
-        empleados.add(empleado7);
-        empleados.add(empleado8);
+        GestionEmpleados.addEmpleado(empleado1);
+        GestionEmpleados.addEmpleado(empleado2);
+        GestionEmpleados.addEmpleado(empleado3);
+        GestionEmpleados.addEmpleado(empleado4);
+        GestionEmpleados.addEmpleado(empleado5);
+        GestionEmpleados.addEmpleado(empleado6);
+        GestionEmpleados.addEmpleado(empleado7);
+        GestionEmpleados.addEmpleado(empleado8);
+
         Jefe emp=(Jefe)empleado1;
         try{    
             emp.addEmpleadoANomina(empleado3);
@@ -206,9 +206,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        panelSig.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
    
-    public void addEmpleado(Empleado emp1){
-        getEmpleados().add(emp1);
-    }
     /**
      * @param args the command line arguments
      */
@@ -254,18 +251,4 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the empleados
-     */
-    public ArrayList<Empleado> getEmpleados() {
-        return empleados;
-    }
-
-    /**
-     * @param empleados the empleados to set
-     */
-    public void setEmpleados(ArrayList<Empleado> empleados) {
-        this.empleados = empleados;
-    }
 }

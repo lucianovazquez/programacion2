@@ -230,10 +230,10 @@ public class IngresarFamilia extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if(jTable1.getSelectedRow()==-1){
-        JOptionPane.showMessageDialog(this, "Debe seleccionar un familiar.");
-        return;
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un familiar.","Error",JOptionPane.ERROR_MESSAGE);
+            return;
         } 
-        /* Eliminar familiar seleccionado */
+        /* Eliminar familiar seleccionado de la table y de emp */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         ArrayList<Familiar> lista = emp.getFamiliares();
         lista.remove(jTable1.getSelectedRow());

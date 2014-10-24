@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.EmpleadoNominaJefe;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
 
@@ -37,11 +38,10 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         
        
         //jLabel1.setText(vp.getEmpleados().get(0).getNombre());
-        VentanaPrincipal vp = (VentanaPrincipal)ventana;
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     ArrayList<Empleado> lista = vp.getEmpleados();
-     Object[] fila = new Object[tableModel.getColumnCount()];
-     jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ArrayList<Empleado> lista = GestionEmpleados.getEmpleados();
+        Object[] fila = new Object[tableModel.getColumnCount()];
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
          for (int i = 0; i < lista.size(); i++) {
          
             fila[0] = lista.get(i).getNroLegajo();
@@ -226,7 +226,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         
         /* Obtener el empleado que se desea eliminar seleccionado en la tabla, obtenerlo desde el array empleados */
-        Empleado emp = VentanaPrincipal.empleados.get(jTable1.getSelectedRow());
+        Empleado emp = GestionEmpleados.getEmpleado(jTable1.getSelectedRow());
         
         /* Si es operario o administrador */
         if(emp instanceof Operario || emp instanceof Administrativo){
@@ -255,7 +255,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         }
         
         /* Borrar empleado del array empleados*/
-        VentanaPrincipal.empleados.remove(jTable1.getSelectedRow());
+        GestionEmpleados.getEmpleados().remove(jTable1.getSelectedRow());
         tableModel.removeRow(jTable1.getSelectedRow());
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -279,23 +279,17 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             return;}
         int nroLeg;
         int ok=0;
-        int nroBuscar=Integer.parseInt(jTextField1.getText().trim());
-        Empleado empBuscado= new Empleado() {};
+        int legajo=Integer.parseInt(jTextField1.getText().trim());
+        Empleado empBuscado;
         VentanaPrincipal vp=(VentanaPrincipal)ventana;
         
-        
-        for (int i = 0; i < vp.getEmpleados().size(); i++) {
-            nroLeg=vp.getEmpleados().get(i).getNroLegajo();
-            if(nroLeg==nroBuscar){
-                empBuscado=vp.getEmpleados().get(i);
-                indice=i;
-                ok=1;
-                jTable1.getSelectionModel().setSelectionInterval(i, i);
-            }
+        if(GestionEmpleados.existeEmpleadoConEsteLegajo(legajo)){
+            indice=GestionEmpleados.getPosicionEmpleadoConEsteLegajo(legajo);
+            empBuscado = GestionEmpleados.getEmpleado(indice);
         }
-        if(ok==0){
+        else{
             JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
-        return;
+            return;
         }
     
         Rectangle r = jTable1.getCellRect (indice, 0, true);
@@ -328,19 +322,19 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         }
        
        VentanaPrincipal vp = (VentanaPrincipal)ventana;
-       if(vp.getEmpleados().get(indice).getTipoCargo().equals("Vendedor")){
+       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Vendedor")){
            ModificarVendedor panelSig = new ModificarVendedor(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);
            panelSig.setVisible(true);
        }
-       if(vp.getEmpleados().get(indice).getTipoCargo().equals("Administrativo")||vp.getEmpleados().get(indice).getTipoCargo().equals("Operario")){
+       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Administrativo")||GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Operario")){
            ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);
            panelSig.setVisible(true);
        }
-       if(vp.getEmpleados().get(indice).getTipoCargo().equals("Jefe")){
+       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Jefe")){
            ModificarJefe panelSig = new ModificarJefe(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);

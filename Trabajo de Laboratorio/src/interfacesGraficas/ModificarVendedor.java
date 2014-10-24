@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Vendedor;
 
 /**
@@ -32,7 +33,7 @@ public class ModificarVendedor extends javax.swing.JPanel {
     this.ventana=ventana;
     
     VentanaPrincipal vp = (VentanaPrincipal)ventana;
-    Vendedor ven=(Vendedor)vp.getEmpleados().get(indice);
+    Vendedor ven=(Vendedor)GestionEmpleados.getEmpleado(indice);
     jLabel7.setText(ven.getNombre()+" "+ven.getApellido());
     jLabel8.setText(Integer.toString(ven.getNroLegajo()));
     
@@ -220,7 +221,7 @@ public class ModificarVendedor extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
    VentanaPrincipal vp = (VentanaPrincipal)ventana;
-    Vendedor ven=(Vendedor)vp.getEmpleados().get(indice);
+    Vendedor ven=(Vendedor)GestionEmpleados.getEmpleado(indice);
         
         //vp.addEmpleado(emp);
         if (jTextField1.getText().trim().equals("")){ 

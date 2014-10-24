@@ -7,6 +7,7 @@ package interfacesGraficas;
 import interfacesGraficas.DatosLaboralesVendedor;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import trabajodelaboratorio.Domicilio;
 import trabajodelaboratorio.Empleado;
@@ -372,21 +373,39 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             return;
         }
         
+        /* Obtener dni y crear domicilio*/
+        int dni;
+        Domicilio domicilio;
+        try{
+    
+            dni = Integer.parseInt(jTextField3.getText().trim());
+            domicilio = new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim()));
+        }catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Numero ingresado no valido","Error",JOptionPane.ERROR_MESSAGE);       
+            return;
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Ocurrio error al crear domiclio","Error",JOptionPane.ERROR_MESSAGE);       
+            return;
+        }
+        
         try{
             /* Agregar al objeto emp los datos ingresados  */
             emp.setApellido(jTextField1.getText());
             emp.setNombre(jTextField2.getText());
-            emp.setDni(Integer.parseInt(jTextField3.getText().trim()));
+            emp.setDni(dni);
             emp.setFechaNacimiento(jDateChooser1.getDate());
-            emp.setDomicilio(new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim())));
+            emp.setDomicilio(domicilio);
             if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
             emp.setSexo('M');
             else 
             emp.setSexo('F');
-             }catch(Exception ex){
-          System.out.println(ex.toString());
-        }
-        
+         }catch(Exception ex){
+             /*Volver al panel principal*/
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al asignar valores al empleado","Error",JOptionPane.ERROR_MESSAGE);
+            this.setVisible(false);
+            ventana.setContentPane(panelPrincipal);   
+            panelPrincipal.setVisible(true);
+         }
             /*Ocultar panel y pasar al siguiente*/
             this.setVisible(false);
             IngresarFamilia panelSig = new IngresarFamilia(panelPrincipal,emp,this,ventana);

@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Conyuge;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Familiar;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Hijo;
 
 /**
@@ -34,7 +35,7 @@ public class ListadoFamiliares extends javax.swing.JPanel {
         
         ArrayList empleados= new ArrayList();
         VentanaPrincipal vp=(VentanaPrincipal)ventana;
-        empleados=vp.getEmpleados();
+        empleados=GestionEmpleados.getEmpleados();
         Empleado emp=(Empleado)empleados.get(indice);
         
                 

@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
 
 /**
@@ -29,14 +30,7 @@ public class ListadoJefes extends javax.swing.JPanel {
     
         this.panel=panel;
         this.ventana=ventana;
-        arrayJefes = new ArrayList<>();
-        
-        /* Acceso al array empleados para crear uno nuevo solo con los jefes*/
-        ArrayList<Empleado> lista = VentanaPrincipal.empleados;
-        for (int i = 0; i < lista.size(); i++) {
-            if(lista.get(i) instanceof Jefe)
-                arrayJefes.add((Jefe)lista.get(i));
-        }
+        arrayJefes = GestionEmpleados.obtenerNuevoArrayJefes();
         
         /* Creacion de la tabla con los jefes*/
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();

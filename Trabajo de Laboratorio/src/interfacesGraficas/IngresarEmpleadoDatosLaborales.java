@@ -6,10 +6,12 @@
 package interfacesGraficas;
 
 
+import excepciones.TipoEmpleadoNoValidoException;
 import javax.swing.JOptionPane;
 import trabajodelaboratorio.*;
-import excepciones.*;
-import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -194,58 +196,56 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
 
         /* Ventanas emergentes mostrando error en caso de no ingresar algun dato en la ventana  */
         if (jComboBox1.getSelectedItem().toString().equals("Ninguno")) {
-            JOptionPane.showMessageDialog(panel0, "Debe seleccionar un tipo de cargo.");       
+            JOptionPane.showMessageDialog(panel0, "Debe seleccionar un tipo de cargo.","Error",JOptionPane.ERROR_MESSAGE);       
             return;
         }
         if ( jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(panel0, "Debe ingresar un número de legajo.");       
+            JOptionPane.showMessageDialog(panel0, "Debe ingresar un número de legajo.","Error",JOptionPane.ERROR_MESSAGE);       
             return;
         }
         if ( jDateChooser1.getDate()==null) {
-            JOptionPane.showMessageDialog(panel0, "Debe ingresar una fecha.");       
+            JOptionPane.showMessageDialog(panel0, "Debe ingresar una fecha.","Error",JOptionPane.ERROR_MESSAGE);       
+            return;
+        }
+        try{
+           Integer.parseInt(jTextField1.getText().trim());
+        }catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(panel0, "Legajo no valido debe ser un numero","Error",JOptionPane.ERROR_MESSAGE);       
             return;
         }
         
         /* Comprobar si ya existe un empleado con ese legajo*/
-        ArrayList<Empleado> empleados= VentanaPrincipal.empleados;
-        for(int i=0;i<empleados.size();i++){
-            if(empleados.get(i).getNroLegajo()==Integer.parseInt(jTextField1.getText().trim())){
-                JOptionPane.showMessageDialog(panel0, "Este empleado ya existe");
-                return;
-            }
+        if(GestionEmpleados.existeEmpleadoConEsteLegajo(Integer.parseInt(jTextField1.getText().trim()))){
+            JOptionPane.showMessageDialog(panel0, "Empleado ya existente","Error",JOptionPane.ERROR_MESSAGE);
+            return;
         }
-
+       
         /* Instanciar el objeto segun el cargo seleccionado  */
-        if (jComboBox1.getSelectedItem().toString().equals("Vendedor")) {
-            emp = new Vendedor();
-            emp.setTipoCargo("Vendedor");        
+        try {
+            emp = GestionEmpleados.instanciarNuevoEmpleado(jComboBox1.getSelectedItem().toString());
+        } catch (TipoEmpleadoNoValidoException ex) {
+            JOptionPane.showMessageDialog(panel0, "Empleado ya existente","Error",JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        if (jComboBox1.getSelectedItem().toString().equals("Jefe de Área")) {
-            emp = new Jefe();
-           emp.setTipoCargo("Jefe de Area");        
-        }
-        if (jComboBox1.getSelectedItem().toString().equals("Administrativo")) {
-            emp = new Administrativo();
-            emp.setTipoCargo("Administrativo");       
-        }
-        if (jComboBox1.getSelectedItem().toString().equals("Operario")) {
-           emp = new Operario();
-           emp.setTipoCargo("Operario");
-        }
+        
         
         try{
             /* Agregar a emp los datos ingresados en la ventana */
-            int numerolegajo=Integer.parseInt(jTextField1.getText().trim()); 
-            emp.setNroLegajo(numerolegajo);
+            emp.setNroLegajo(Integer.parseInt(jTextField1.getText().trim()));
             emp.setFecIngreso(jDateChooser1.getDate());
-            
+            emp.setTipoCargo(jComboBox1.getSelectedItem().toString());
+
             /* Ocultar panel, crear y mostrar siguiente panel */
             this.setVisible(false);
             IngresarEmpleadoDatosPersonales panel2 = new IngresarEmpleadoDatosPersonales(panel0,(Empleado) emp,this, ventana);
             ventana.setContentPane(panel2);  
             panel2.setVisible(true);
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(panel0, "Ocurrio un error:"+ex);
+             /*Volver al panel principal*/
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al asignar valores al empleado","Error",JOptionPane.ERROR_MESSAGE);
+            this.setVisible(false);
+            ventana.setContentPane(panel0);   
+            panel0.setVisible(true);
         }
                          
     }//GEN-LAST:event_jButton2ActionPerformed

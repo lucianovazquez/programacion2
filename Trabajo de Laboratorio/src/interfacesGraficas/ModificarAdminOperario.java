@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import trabajodelaboratorio.GestionEmpleados;
 
 /**
  *
@@ -30,14 +31,13 @@ public class ModificarAdminOperario extends javax.swing.JPanel {
     this.panelAnt=panelAnt;
     this.ventana=ventana;
   
-    VentanaPrincipal vp = (VentanaPrincipal)ventana;
-     LocalDate ld =vp.getEmpleados().get(indice).getFecIngreso();
+     LocalDate ld = GestionEmpleados.getEmpleado(indice).getFecIngreso();
         Instant instant = ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         Date res = Date.from(instant);
         jDateChooser1.setDate(res);
         
-    jLabel7.setText(vp.getEmpleados().get(indice).getNombre()+" "+vp.getEmpleados().get(indice).getApellido());
-    jLabel8.setText(Integer.toString(vp.getEmpleados().get(indice).getNroLegajo()));
+    jLabel7.setText(GestionEmpleados.getEmpleado(indice).getNombre()+" "+GestionEmpleados.getEmpleado(indice).getApellido());
+    jLabel8.setText(Integer.toString(GestionEmpleados.getEmpleado(indice).getNroLegajo()));
     }
 
     /**
@@ -175,7 +175,7 @@ public class ModificarAdminOperario extends javax.swing.JPanel {
         if ( jDateChooser1.getDate()==null){
             JOptionPane.showMessageDialog(this, "Debe ingresar una fecha.");}
 
-        VentanaPrincipal.empleados.get(indice).setFecIngreso(jDateChooser1.getDate());
+        GestionEmpleados.getEmpleado(indice).setFecIngreso(jDateChooser1.getDate());
         
         this.setVisible(false);
         ListadoEmpleados panelSig = new ListadoEmpleados(ventana,panelAnt);
