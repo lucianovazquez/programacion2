@@ -219,11 +219,24 @@ public class ListadoEmpleados extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(jTable1.getSelectedRow()==-1){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una opcion");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
             return;
         }
+        int seleccion = JOptionPane.showOptionDialog(
+        this, // Componente padre
+        "¿Desea eliminar el Empleado?", //Mensaje
+        "Seleccione una opción", // Título
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,    // null para icono por defecto.
+        new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
+        "Si");
         
-        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        if (seleccion != -1)
+        {
+           if((seleccion + 1)==1)
+           {
+              DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         
         /* Obtener el empleado que se desea eliminar seleccionado en la tabla, obtenerlo desde el array empleados */
         Empleado emp = GestionEmpleados.getEmpleado(jTable1.getSelectedRow());
@@ -257,6 +270,14 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         /* Borrar empleado del array empleados*/
         GestionEmpleados.getEmpleados().remove(jTable1.getSelectedRow());
         tableModel.removeRow(jTable1.getSelectedRow());
+           }
+           else
+           {
+              return;
+           }
+        }
+        
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -277,8 +298,6 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         if(jTextField1.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
             return;}
-        int nroLeg;
-        int ok=0;
         int legajo=Integer.parseInt(jTextField1.getText().trim());
         Empleado empBuscado;
         VentanaPrincipal vp=(VentanaPrincipal)ventana;

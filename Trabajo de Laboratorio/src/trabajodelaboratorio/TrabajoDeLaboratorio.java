@@ -7,6 +7,7 @@ import interfacesGraficas.VentanaPrincipal;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
  * @author Luciano
@@ -16,7 +17,7 @@ public class TrabajoDeLaboratorio {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
         
         
         Empleado empleado1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Tecnologia");

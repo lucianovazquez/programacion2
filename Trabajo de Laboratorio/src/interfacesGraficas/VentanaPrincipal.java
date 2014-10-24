@@ -5,6 +5,8 @@
  */
 package interfacesGraficas;
 
+import com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel;
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,10 @@ import trabajodelaboratorio.*;
 import excepciones.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 /**
  *
@@ -23,8 +29,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    
-    public VentanaPrincipal() {
+    public VentanaPrincipal() throws UnsupportedLookAndFeelException {
+        
+        UIManager.setLookAndFeel(new WindowsClassicLookAndFeel());
         initComponents();
         jPanel1.setSize(450, 400);
         this.setSize(450, 400);
@@ -236,7 +243,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                try {
+                    new VentanaPrincipal().setVisible(true);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
