@@ -129,7 +129,7 @@ public class ModificarAdminOperario extends javax.swing.JPanel {
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel7)))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +154,7 @@ public class ModificarAdminOperario extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
@@ -173,7 +173,9 @@ public class ModificarAdminOperario extends javax.swing.JPanel {
         //VentanaPrincipal vp = (VentanaPrincipal)ventana;
         
         if ( jDateChooser1.getDate()==null){
-            JOptionPane.showMessageDialog(this, "Debe ingresar una fecha.");}
+            JOptionPane.showMessageDialog(this, "Debe ingresar una fecha.");
+            return;
+        }
 
         GestionEmpleados.getEmpleado(indice).setFecIngreso(jDateChooser1.getDate());
         
