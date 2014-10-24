@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
 
 /**
@@ -31,12 +32,11 @@ public class ModificarJefe extends javax.swing.JPanel {
     this.panelAnt=panelAnt;
     this.ventana=ventana;
     
-    VentanaPrincipal vp = (VentanaPrincipal)ventana;
-    Jefe jefe = (Jefe)vp.getEmpleados().get(indice);
-    jLabel7.setText(vp.getEmpleados().get(indice).getNombre()+" "+vp.getEmpleados().get(indice).getApellido());
-    jLabel8.setText(Integer.toString(vp.getEmpleados().get(indice).getNroLegajo()));
+    Jefe jefe = (Jefe)GestionEmpleados.getEmpleado(indice);
+    jLabel7.setText(GestionEmpleados.getEmpleado(indice).getNombre()+" "+GestionEmpleados.getEmpleado(indice).getApellido());
+    jLabel8.setText(Integer.toString(GestionEmpleados.getEmpleado(indice).getNroLegajo()));
     
-    LocalDate ld =vp.getEmpleados().get(indice).getFecIngreso();
+    LocalDate ld =GestionEmpleados.getEmpleado(indice).getFecIngreso();
         Instant instant = ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         Date res = Date.from(instant);
         jDateChooser1.setDate(res);
@@ -221,8 +221,8 @@ public class ModificarJefe extends javax.swing.JPanel {
             return;
         }
 
-        VentanaPrincipal.empleados.get(indice).setFecIngreso(jDateChooser1.getDate());
-        Jefe jefe = (Jefe)VentanaPrincipal.empleados.get(indice);
+        GestionEmpleados.getEmpleado(indice).setFecIngreso(jDateChooser1.getDate());
+        Jefe jefe = (Jefe)GestionEmpleados.getEmpleado(indice);
         
         if(jComboBox1.getSelectedItem().equals("Dirección"))
             jefe.setArea("Dirección");
