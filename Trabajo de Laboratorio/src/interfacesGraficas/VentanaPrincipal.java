@@ -102,9 +102,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestor de Empleados");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton1.setText("Ingresar Empleado");
         jButton1.setToolTipText("Agregar un Nuevo Empleado");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -113,6 +115,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButton2.setText("Ver Empleados");
         jButton2.setToolTipText("Listado de Todos los Empleados");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.setMaximumSize(new java.awt.Dimension(123, 23));
         jButton2.setMinimumSize(new java.awt.Dimension(123, 23));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +126,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButton3.setText("Ver Jefes de Área");
         jButton3.setToolTipText("Listado de Jefes de Área");
+        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.setMaximumSize(new java.awt.Dimension(123, 23));
         jButton3.setMinimumSize(new java.awt.Dimension(123, 23));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
