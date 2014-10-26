@@ -381,10 +381,10 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             dni = Integer.parseInt(jTextField3.getText().trim());
             domicilio = new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim()));
         }catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Numero ingresado no valido","Error",JOptionPane.ERROR_MESSAGE);       
+            JOptionPane.showMessageDialog(this, "Numero ingresado no válido.","Error.",JOptionPane.ERROR_MESSAGE);       
             return;
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Ocurrio error al crear domiclio","Error",JOptionPane.ERROR_MESSAGE);       
+            JOptionPane.showMessageDialog(this, "Ocurrio error al guardar el domiclio.","Error.",JOptionPane.ERROR_MESSAGE);       
             return;
         }
         
@@ -401,7 +401,7 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
             emp.setSexo('F');
          }catch(Exception ex){
              /*Volver al panel principal*/
-            JOptionPane.showMessageDialog(this, "Ocurrio un error al asignar valores al empleado","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al asignar valores del empleado.","Error.",JOptionPane.ERROR_MESSAGE);
             this.setVisible(false);
             ventana.setContentPane(panelPrincipal);   
             panelPrincipal.setVisible(true);

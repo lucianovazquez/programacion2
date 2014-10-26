@@ -210,13 +210,13 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         try{
            Integer.parseInt(jTextField1.getText().trim());
         }catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(panel0, "Legajo no valido debe ser un numero","Error",JOptionPane.ERROR_MESSAGE);       
+            JOptionPane.showMessageDialog(panel0, "N° de Legajo no válido, debe ser un número.","Error",JOptionPane.ERROR_MESSAGE);       
             return;
         }
         
         /* Comprobar si ya existe un empleado con ese legajo*/
         if(GestionEmpleados.existeEmpleadoConEsteLegajo(Integer.parseInt(jTextField1.getText().trim()))){
-            JOptionPane.showMessageDialog(panel0, "Empleado ya existente","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(panel0, "Empleado ya existente.","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
        
@@ -224,7 +224,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
         try {
             emp = GestionEmpleados.instanciarNuevoEmpleado(jComboBox1.getSelectedItem().toString());
         } catch (TipoEmpleadoNoValidoException ex) {
-            JOptionPane.showMessageDialog(panel0, "Empleado ya existente","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(panel0, "Empleado ya existente.","Error.",JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -242,7 +242,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
             panel2.setVisible(true);
         }catch(Exception ex){
              /*Volver al panel principal*/
-            JOptionPane.showMessageDialog(this, "Ocurrio un error al asignar valores al empleado","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al asignar valores del empleado.","Error.",JOptionPane.ERROR_MESSAGE);
             this.setVisible(false);
             ventana.setContentPane(panel0);   
             panel0.setVisible(true);

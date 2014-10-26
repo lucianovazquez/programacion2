@@ -368,9 +368,19 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
  
         fliar.setApellido(jTextField1.getText());
         fliar.setNombre(jTextField2.getText());
+        
+        try{
         fliar.setDni(Integer.parseInt(jTextField3.getText().trim()));
-        fliar.setFechaNacimiento(jDateChooser1.getDate());
         fliar.setDomicilio(new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim())));
+        }catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Numero ingresado no válido.","Error.",JOptionPane.ERROR_MESSAGE);       
+            return;
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Ocurrio error al guardar el domiclio.","Error.",JOptionPane.ERROR_MESSAGE);       
+            return;
+        }
+        fliar.setFechaNacimiento(jDateChooser1.getDate());
+       
             if(jComboBox3.getSelectedItem().toString().equals("Masculino"))
             fliar.setSexo('M');
             else 

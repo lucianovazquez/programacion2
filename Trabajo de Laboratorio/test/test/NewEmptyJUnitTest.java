@@ -71,12 +71,7 @@ public class NewEmptyJUnitTest {
         }
         
         assertEquals(empleado2,empBuscado);
-        
-        assertEquals(empleado1,empleados.get(0));
-        assertEquals(empleado2,empleados.get(1));
-        assertEquals(empleado3,empleados.get(2));
-        assertEquals(empleado4,empleados.get(3));
-
+   
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
