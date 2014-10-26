@@ -35,7 +35,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         UIManager.setLookAndFeel(new NimbusLookAndFeel());
         initComponents();
         jPanel1.setSize(450, 400);
-        this.setSize(450, 420);
+        this.setSize(450, 400);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.rootPane.setContentPane(jPanel1);
