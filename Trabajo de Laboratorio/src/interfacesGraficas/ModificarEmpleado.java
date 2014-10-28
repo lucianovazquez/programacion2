@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfacesGraficas;
 
 import java.time.Instant;
@@ -16,6 +11,7 @@ import trabajodelaboratorio.GestionEmpleados;
 
 /**
  *
+ * @author RoqueG
  * @author Luciano
  */
 public class ModificarEmpleado extends javax.swing.JPanel {
@@ -52,6 +48,11 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         jTextField3.setText(Integer.toString(emp.getDni()).trim());
         jTextField4.setText(emp.getDomicilio().getCalle());
         jTextField5.setText(Integer.toString(emp.getDomicilio().getNumero()));
+        if((emp.getDomicilio().getPiso())>0){
+            jTextField6.setText(Integer.toString(emp.getDomicilio().getPiso()));
+        }
+        jTextField8.setText(emp.getDomicilio().getDepartamento());
+
  }
 
     /**

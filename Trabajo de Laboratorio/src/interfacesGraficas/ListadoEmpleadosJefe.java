@@ -8,17 +8,12 @@ package interfacesGraficas;
 import excepciones.TipoEmpleadoNoValidoException;
 import excepciones.YaTieneUnJefeException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
-import trabajodelaboratorio.EmpleadoNominaJefe;
 import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
-import trabajodelaboratorio.Operario;
 
 /**
  *

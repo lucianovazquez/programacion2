@@ -1,17 +1,13 @@
 
 package interfacesGraficas;
-import static java.lang.Float.parseFloat;
-import static java.lang.Integer.parseInt;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Vendedor;
-import trabajodelaboratorio.Persona;
 
 /**
  *
  * @author Luciano
+ * @author RoqueG
  */
 
 public class DatosLaboralesVendedor extends javax.swing.JPanel {

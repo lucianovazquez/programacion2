@@ -9,10 +9,36 @@ package trabajodelaboratorio;
 public class Domicilio {
     private String calle;
     private int numero;
+    private int piso;
+    private String departamento;
+
+    public int getPiso() {
+        return piso;
+    }
+
+    public void setPiso(int piso) {
+        this.piso = piso;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
     
     public Domicilio(String calle, int numero){
         this.calle = calle;
         this.numero = numero;
+        this.piso=0;
+        this.departamento="";
+    }
+    public Domicilio(String calle, int numero, int piso,String departamento){
+        this.calle = calle;
+        this.numero = numero;
+        this.piso=piso;
+        this.departamento=departamento;
     }
 
     /**

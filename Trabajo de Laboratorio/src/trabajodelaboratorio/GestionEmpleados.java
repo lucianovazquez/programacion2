@@ -9,20 +9,33 @@ import javax.swing.JOptionPane;
  * @author Roque
  */
 public class GestionEmpleados {
-    public static ArrayList<Empleado> empleados = new ArrayList<>();
+    private static ArrayList<Empleado> empleados = new ArrayList<>();
     
+    /**
+     * Metodo que retorna arraylist con los empleados
+     * @return ArrayList<Empleado>
+     */
     public static ArrayList<Empleado> getEmpleados(){
         return empleados;
     }
+    
+    /**
+     * Metodo que retorna el empleado en la posicion i
+     * @param i posicion del empleado en el arraylist
+     * @return Empledo
+     */
     public static Empleado getEmpleado(int i){
         return empleados.get(i);
     }
+    
+    /**
+     * Metodo que agrega un nuevo empleado al arraylist "empleados"
+     * @param empleado empleado a agregar
+     */
     public static void addEmpleado(Empleado empleado){
         empleados.add(empleado);
     }
 
-    
-    
     public static ArrayList<Empleado> obtenerNuevoArrayOperadoresAdministradores(){
         /* Crear array con los operadores y administradores sin jefe a partir del array de empleados */
         ArrayList<Empleado> arrayOperadoresAdministradores = new ArrayList<>();
@@ -47,8 +60,9 @@ public class GestionEmpleados {
         }
         return arrayJefes;
     }
+    
     /**
-     * Devuelve si ya existe un empleado con el numero de legajo enviado
+     * Devuelve true si ya existe un empleado con el numero de legajo enviado
      * @param legajo
      * @return true si existe un empleado con ese legajo y false en caso contrario
      */
@@ -61,6 +75,12 @@ public class GestionEmpleados {
         }
         return false;
     }
+    
+    /**
+     * Retorna el empleado con el numero de legajo enviado
+     * @param legajo del empleado
+     * @return empleado
+     */
     public static Empleado getEmpleadoConEsteLegajo(int legajo){
         for(int i=0;i<empleados.size();i++){
             if(empleados.get(i).getNroLegajo()==legajo){
@@ -69,6 +89,7 @@ public class GestionEmpleados {
         }
         return null;
     }
+    
     public static int getPosicionEmpleadoConEsteLegajo(int legajo){
         for(int i=0;i<empleados.size();i++){
             if(empleados.get(i).getNroLegajo()==legajo){

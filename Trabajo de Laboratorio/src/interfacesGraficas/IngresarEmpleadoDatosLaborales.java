@@ -9,9 +9,6 @@ package interfacesGraficas;
 import excepciones.TipoEmpleadoNoValidoException;
 import javax.swing.JOptionPane;
 import trabajodelaboratorio.*;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,13 +27,10 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
     public IngresarEmpleadoDatosLaborales(javax.swing.JPanel panel0,javax.swing.JFrame ventana) {
         initComponents();   
         this.panel0 = panel0;
-        this.ventana = ventana;
-        
-        
+        this.ventana = ventana;   
         this.setSize(420, 330);  
     }
     
- 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

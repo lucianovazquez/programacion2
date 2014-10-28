@@ -1,16 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabajodelaboratorio;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
- *
+ * Ventana principal del programa
  * @author Luciano
+ * @author Roque
  */
 public class Vendedor extends Empleado {
     private int sucursal; //Sucursal de venta
@@ -51,11 +46,5 @@ public class Vendedor extends Empleado {
      */
     public void setPorcentajeCom(Float porcentajeCom) {
         this.porcentajeCom = porcentajeCom;
-    }
-    
-    @Override
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("Sucursal:"+sucursal+" Porcentaje de comision: "+porcentajeCom);
     }
 }

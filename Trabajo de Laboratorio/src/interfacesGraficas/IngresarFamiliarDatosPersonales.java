@@ -402,6 +402,9 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Debe ingresar el domicilio.");
             return;
         }
+         if (jTextField6.getText().trim().equals("")) {
+            jTextField6.setText("0");       
+        }
 
         if(jRadioButton1.isSelected()){
             fliar = new Conyuge();
@@ -415,7 +418,7 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
 
         try{
             fliar.setDni(Integer.parseInt(jTextField3.getText().trim()));
-            fliar.setDomicilio(new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim())));
+            fliar.setDomicilio(new Domicilio(jTextField4.getText(),Integer.parseInt(jTextField5.getText().trim()),Integer.parseInt(jTextField6.getText().trim()),jTextField8.getText().trim()));
         }catch (NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "Numero ingresado no válido.","Error.",JOptionPane.ERROR_MESSAGE);
             return;

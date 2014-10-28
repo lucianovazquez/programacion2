@@ -339,12 +339,9 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
             return;}
         int legajo=Integer.parseInt(jTextField1.getText().trim());
-        Empleado empBuscado;
-        VentanaPrincipal vp=(VentanaPrincipal)ventana;
         
         if(GestionEmpleados.existeEmpleadoConEsteLegajo(legajo)){
             indice=GestionEmpleados.getPosicionEmpleadoConEsteLegajo(legajo);
-            empBuscado = GestionEmpleados.getEmpleado(indice);
         }
         else{
             JOptionPane.showMessageDialog(this, "No se encontraron resultados.");

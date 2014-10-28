@@ -15,6 +15,7 @@ import trabajodelaboratorio.Jefe;
 
 /**
  *
+ * @author RoqueG
  * @author Luciano
  */
 

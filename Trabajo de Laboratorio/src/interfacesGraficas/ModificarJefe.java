@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfacesGraficas;
 
 import java.time.Instant;
@@ -14,7 +9,7 @@ import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
 
 /**
- *
+ * @author RoqueG
  * @author Luciano
  */
 public class ModificarJefe extends javax.swing.JPanel {
