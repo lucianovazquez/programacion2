@@ -50,35 +50,35 @@ public class GestionEmpleadosJUnitTest {
     // The methods must be annotated with annotation @Test. For example:
     
     @Test
-    public void AgregarEmpleadoAdministrativoTest() {
+    public void agregarEmpleadoAdministrativoTest() {
        Empleado administrativo1 = new Administrativo("Marcelo","Fuentes",'M',new Domicilio("Rivadavia",44),24573293,LocalDate.of(1982,6,23),103,LocalDate.of(2012,4,15));
        GestionEmpleados.addEmpleado(administrativo1);
        assertEquals(administrativo1,GestionEmpleados.getEmpleado(0));     
     }
     
     @Test
-    public void AgregarEmpleadoJefeTest() {
+    public void agregarEmpleadoJefeTest() {
        Empleado jefe1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción");
        GestionEmpleados.addEmpleado(jefe1);
        assertEquals(jefe1,GestionEmpleados.getEmpleado(0));     
     }
     
     @Test
-    public void AgregarEmpleadoOperarioTest() {
+    public void agregarEmpleadoOperarioTest() {
        Empleado operario1 = new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2));
        GestionEmpleados.addEmpleado(operario1);
        assertEquals(operario1,GestionEmpleados.getEmpleado(0));     
     }
     
     @Test
-    public void AgregarEmpleadoVendedorTest() {
+    public void agregarEmpleadoVendedorTest() {
        Empleado vendedor1 = new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f);
        GestionEmpleados.addEmpleado(vendedor1);
        assertEquals(vendedor1,GestionEmpleados.getEmpleado(0));     
     }
     
     @Test
-    public void ComprobarEmpleadosEnPosicionCorrectaTest() {
+    public void comprobarEmpleadosEnPosicionCorrectaTest() {
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))
@@ -94,7 +94,7 @@ public class GestionEmpleadosJUnitTest {
     }
     
     @Test
-    public void ObtenerArraySoloJefesTest() {
+    public void obtenerArraySoloJefesTest() {
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))
@@ -112,7 +112,7 @@ public class GestionEmpleadosJUnitTest {
     }
     
     @Test
-    public void ObtenerArraySoloAdministrativosYOperariosTest() {
+    public void obtenerArraySoloAdministrativosYOperariosTest() {
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))
@@ -130,7 +130,7 @@ public class GestionEmpleadosJUnitTest {
     }
     
     @Test
-    public void ComprobarQueExisteEmpleadoConNumeroDeLegajoTest(){
+    public void comprobarQueExisteEmpleadoConNumeroDeLegajoTest(){
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))
@@ -146,7 +146,7 @@ public class GestionEmpleadosJUnitTest {
     }
     
     @Test
-    public void ComprobarQueNoExisteEmpleadoConNumeroDeLegajoTest(){
+    public void comprobarQueNoExisteEmpleadoConNumeroDeLegajoTest(){
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))
@@ -162,7 +162,7 @@ public class GestionEmpleadosJUnitTest {
     }
     
     @Test
-    public void ObtenerEmpleadoExistenteConNumeroDeLegajoTest(){
+    public void obtenerEmpleadoExistenteConNumeroDeLegajoTest(){
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))
@@ -178,7 +178,7 @@ public class GestionEmpleadosJUnitTest {
     }
     
     @Test
-    public void ObtenerEmpleadoNoExistenteConNumeroDeLegajoTest(){
+    public void obtenerEmpleadoNoExistenteConNumeroDeLegajoTest(){
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))
@@ -194,7 +194,7 @@ public class GestionEmpleadosJUnitTest {
     }
     
      @Test
-    public void ObtenerPosicionDeEmpleadoTest(){
+    public void obtenerPosicionDeEmpleadoTest(){
         Empleado[] emp = {new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción")
          ,new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f)
         ,new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2))

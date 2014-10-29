@@ -28,6 +28,7 @@ public abstract class Persona {
         this.sexo = sexo;
     }
     public Persona(){}
+    
     /**
      * @return the nombre
      */
@@ -122,10 +123,5 @@ public abstract class Persona {
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
-    
-    public void imprimirDatos(){
-        System.out.println("Apellido y nombre:"+apellido+" "+nombre+" Sexo: "+sexo+" Fecha nacimiento: "+fechaNacimiento);
-        System.out.println("Domicilio: "+domicilio.getCalle()+" "+domicilio.getNumero());
-    }
-    
+
 }

@@ -1,7 +1,7 @@
 package trabajodelaboratorio;
 
 /**
- *
+ * @author Luciano
  * @author Roqueg
  */
 

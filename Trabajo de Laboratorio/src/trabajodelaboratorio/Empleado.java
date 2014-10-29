@@ -18,7 +18,7 @@ public abstract class Empleado extends Persona {
     private int nroLegajo;
     private LocalDate fecIngreso;
     
-    private ArrayList<Familiar> familiares = new ArrayList<>();
+    private ArrayList<Familiar> familiares;
  
     public Empleado(String nombre, String apellido,char sexo, Domicilio domicilio, int dni,LocalDate fechaNacimiento, int nro_legajo, LocalDate fec_ingreso, String tipoCargo){
             
@@ -26,8 +26,11 @@ public abstract class Empleado extends Persona {
         this.nroLegajo=nro_legajo;
         this.fecIngreso=fec_ingreso;  
         this.tipoCargo=tipoCargo;
+        this.familiares = new ArrayList<>();
     }
-    public Empleado(){}
+    public Empleado(){
+        this.familiares = new ArrayList<>();
+}
     /**
      * @return the tipoCargo
      */
@@ -69,6 +72,7 @@ public abstract class Empleado extends Persona {
     public void setFecIngreso(LocalDate fecIngreso) {
         this.fecIngreso=fecIngreso;
     }
+    
     public void setFecIngreso(Date fecIngreso) {
             int dia;
             int mes;
@@ -93,16 +97,6 @@ public abstract class Empleado extends Persona {
           getFamiliares().add(familiar);
     }
     
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("DATOS DEL CARGO: Cargo: "+tipoCargo+" Legajo: "+nroLegajo+" Ingreso"+getFecIngreso());
-        System.out.println("FAMILIARES A CARGO: ");
-        for(int i=0; i<getFamiliares().size();i++){
-            Persona f = (Persona)getFamiliares().get(i);
-            f.imprimirDatos();
-        }
-    }
-
     /**
      * @return the familiares
      */
@@ -115,10 +109,5 @@ public abstract class Empleado extends Persona {
      */
     public void setFamiliares(ArrayList<Familiar> familiares) {
         this.familiares = familiares;
-    }
-
-    /**
-     * @param fecIngreso the fecIngreso to set
-     */
-    
+    }    
 }

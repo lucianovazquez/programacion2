@@ -2,10 +2,9 @@ package trabajodelaboratorio;
 
 import excepciones.TipoEmpleadoNoValidoException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
- *
+ * @author Luciano
  * @author Roque
  */
 public class GestionEmpleados {
@@ -36,6 +35,11 @@ public class GestionEmpleados {
         empleados.add(empleado);
     }
 
+    /**
+     * Metodo que retorna un nuevo arraylist de empleados solo con los operadores y administradores
+     * que se encuentran en "empleados".
+     * @return ArrayList<Empleado> arraylist de empleados solo con operadores y administradores
+     */
     public static ArrayList<Empleado> obtenerNuevoArrayOperadoresAdministradores(){
         /* Crear array con los operadores y administradores sin jefe a partir del array de empleados */
         ArrayList<Empleado> arrayOperadoresAdministradores = new ArrayList<>();
@@ -50,6 +54,10 @@ public class GestionEmpleados {
         return arrayOperadoresAdministradores;
     }
     
+    /**
+     * Metodo que retorna un nuevo arraylist de jefes solo con los jefes que se encuentran en "empleados".
+     * @return ArrayList<Empleado> arraylist de jefes
+     */
     public static ArrayList<Jefe> obtenerNuevoArrayJefes(){
         /* Crear array con los operadores y administradores sin jefe a partir del array de empleados */
         ArrayList<Jefe> arrayJefes = new ArrayList<>();

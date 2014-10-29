@@ -8,9 +8,6 @@ import excepciones.TipoEmpleadoNoValidoException;
 import excepciones.YaTieneUnJefeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -63,12 +60,6 @@ public class Jefe extends Empleado{
         this.area = area;
     }
     
-    @Override
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("Area a cargo: "+area+"");
-    }
-
     /**
      * @return the nominaEmpleados
      */
