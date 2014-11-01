@@ -8,9 +8,16 @@ package interfacesGraficas;
 import java.awt.Rectangle;
 import java.awt.print.PrinterException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultRowSorter;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.EmpleadoNominaJefe;
@@ -37,9 +44,19 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         this.panel=panel;
         this.setSize(420, 330);
         
-       
-        //jLabel1.setText(vp.getEmpleados().get(0).getNombre());
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        
+       //Ordena la tabla en forma descendiente, según columna 0 (Nro de Legajo)
+        TableRowSorter sorter = new TableRowSorter(tableModel);
+        List<RowSorter.SortKey> sortKeys = new ArrayList();
+        sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
+        sorter.setSortKeys(sortKeys);
+        sorter.toggleSortOrder(0);
+        jTable1.setRowSorter(sorter);
+        tableModel.fireTableDataChanged();
+        revalidate();
+        
+        //Cargo desde array empleados a jTable
         ArrayList<Empleado> lista = GestionEmpleados.getEmpleados();
         Object[] fila = new Object[tableModel.getColumnCount()];
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -87,9 +104,16 @@ public class ListadoEmpleados extends javax.swing.JPanel {
                 "N° Legajo", "Nombre", "Apellido", "Cargo", "Ingreso"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -252,16 +276,21 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Volver a Menu Principal
         this.setVisible(false);
         ventana.setContentPane(panel);
-       panel.setVisible(true);
+        panel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Eliminar empleado seleccionado
+        //Comprobación de selección de fila
         if(jTable1.getSelectedRow()==-1){
             JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
             return;
         }
+        
+        //Comprobación para eliminar empleado definitivamente
         int seleccion = JOptionPane.showOptionDialog(
         this, // Componente padre
         "¿Desea eliminar el Empleado?", //Mensaje
@@ -278,10 +307,14 @@ public class ListadoEmpleados extends javax.swing.JPanel {
            {
               DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         
-        /* Obtener el empleado que se desea eliminar seleccionado en la tabla, obtenerlo desde el array empleados */
-        Empleado emp = GestionEmpleados.getEmpleado(jTable1.getSelectedRow());
+        /* Obtener desde el array empleados, el empleado seleccionado en la tabla recibo el indice del objeto en el array */
+        int nroLeg = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        Empleado emp = GestionEmpleados.getEmpleadoConEsteLegajo(nroLeg);
+        //Recibo el índice del objeto en el array
+        int indice = GestionEmpleados.getPosicionEmpleadoConEsteLegajo(nroLeg);
         
-        /* Si es operario o administrador */
+        
+        /* Compruebo Si es operario o administrador */
         if(emp instanceof Operario || emp instanceof Administrativo){
             /* Castear el empleado para acceder a los metodos de empleadoNominaJefe*/
             EmpleadoNominaJefe empleadoNominaJefe = (EmpleadoNominaJefe)emp;
@@ -293,7 +326,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             }
         }
         
-        /* Si es un jefe*/
+        /* Compruebo Si es un jefe*/
         if(emp instanceof Jefe){
             Jefe jefe =(Jefe)emp;
             ArrayList<Empleado> nominaEmpleados = jefe.getNominaEmpleados();
@@ -307,9 +340,11 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             }
         }
         
-        /* Borrar empleado del array empleados*/
-        GestionEmpleados.getEmpleados().remove(jTable1.getSelectedRow());
-        tableModel.removeRow(jTable1.getSelectedRow());
+                /* Borrar empleado del array empleados*/
+                GestionEmpleados.getEmpleados().remove(indice);
+                
+                /* Borrar empleado del jTable*/
+                tableModel.removeRow(indice);
            }
            else
            {
@@ -321,19 +356,24 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int indice = jTable1.getSelectedRow();
-        if(indice==-1){
+       //Ver Familia a Cargo del Empleado seleccionado
+        if(jTable1.getSelectedRow()==-1){
            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");       
         }
         else{
+            //Capturo Nro. de Legajo del empleado seleccionado
+            int nroLeg = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            int indice = GestionEmpleados.getPosicionEmpleadoConEsteLegajo(nroLeg);
+            
             this.setVisible(false);
             ListadoFamiliares panelSig = new ListadoFamiliares(this,ventana,indice);
             ventana.setContentPane(panelSig);
             panelSig.setVisible(true);
-        }   
+        } 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        //Buscar empleado ingresando NRo. de Legajo
         int indice=0;
         if(jTextField1.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
@@ -342,26 +382,35 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         
         if(GestionEmpleados.existeEmpleadoConEsteLegajo(legajo)){
             indice=GestionEmpleados.getPosicionEmpleadoConEsteLegajo(legajo);
+            
+            System.out.println(indice);
         }
         else{
             JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
             return;
         }
-    
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter sorter = new TableRowSorter(tableModel); 
+        //sorter.setRowFilter (RowFilter.numberFilter(RowFilter.ComparisonType.EQUAL, legajo)); 
+        sorter.setRowFilter (RowFilter.regexFilter(jTextField1.getText().trim(),0));
+        jTable1.setRowSorter (sorter);
+        
+        /*
         Rectangle r = jTable1.getCellRect (indice, 0, true);
         jTable1.scrollRectToVisible(r);
-        
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         tableModel.fireTableDataChanged();
-        jTable1.getSelectionModel().setSelectionInterval(indice, indice);
+        jTable1.getSelectionModel().setSelectionInterval(indice, indice);*/
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int indice = jTable1.getSelectedRow();
-        if(indice==-1){
+         if(jTable1.getSelectedRow()==-1){
            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
            return;
         }
+        //Capturo Nro. de Legajo del empleado seleccionado
+        int nroLeg = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        int indice = GestionEmpleados.getPosicionEmpleadoConEsteLegajo(nroLeg);
         
         this.setVisible(false);
         ModificarEmpleado panelSig = new ModificarEmpleado(indice,panel,ventana);
@@ -371,21 +420,16 @@ public class ListadoEmpleados extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       int indice = jTable1.getSelectedRow();
-        if(indice==-1){
+       
+        if(jTable1.getSelectedRow()==-1){
            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");
            return;
         }
-       
-       VentanaPrincipal vp = (VentanaPrincipal)ventana;
+        int nroLeg = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        int indice = GestionEmpleados.getPosicionEmpleadoConEsteLegajo(nroLeg);
+      //Verifico el tipo de cargo para saltar a la interfaz donde modifica datos laborales
        if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Vendedor")){
            ModificarVendedor panelSig = new ModificarVendedor(indice,panel,ventana);
-           this.setVisible(false);
-           ventana.setContentPane(panelSig);
-           panelSig.setVisible(true);
-       }
-       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Administrativo")||GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Operario")){
-           ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);
            panelSig.setVisible(true);
@@ -396,12 +440,18 @@ public class ListadoEmpleados extends javax.swing.JPanel {
            ventana.setContentPane(panelSig);
            panelSig.setVisible(true);
        }
-       
+       //Administrativo y Operario, poseen mismo datos laborales, opción de modificar solo fecha de ingreso
+       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Administrativo")||GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Operario")){
+           ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
+           this.setVisible(false);
+           ventana.setContentPane(panelSig);
+           panelSig.setVisible(true);
+       }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            jTable1.print(); // Imprime el jTable
+            jTable1.print(); // Abre Cuadro de impresión predeterminado
         } catch (PrinterException ex) { 
         System.out.println(ex);}
     }//GEN-LAST:event_jButton7ActionPerformed

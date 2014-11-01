@@ -40,12 +40,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.rootPane.setContentPane(jPanel1);
         this.setTitle("Empresa - Gestor de Empleados");
-        Empleado empleado1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),100,LocalDate.of(2010,6,20),"Producción");
-        Empleado empleado2 = new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),101,LocalDate.of(2006,10,4),2,3.4f);
-        Empleado empleado3 = new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),102,LocalDate.of(2012,3,2));
+        Empleado empleado1 = new Jefe("Juan","Perez",'M',new Domicilio("Belgrano",520),24503279,LocalDate.of(1990,10,4),110,LocalDate.of(2010,6,20),"Producción");
+        Empleado empleado2 = new Vendedor("José","Carlos",'M',new Domicilio("Maipu",120),24503291,LocalDate.of(1990,10,4),90,LocalDate.of(2006,10,4),2,3.4f);
+        Empleado empleado3 = new Operario("Cristobal","Lopez",'M',new Domicilio("Sarmiento",1077),2563492,LocalDate.of(1982,3,7),108,LocalDate.of(2012,3,2));
         Empleado empleado4 = new Administrativo("Marcelo","Fuentes",'M',new Domicilio("Rivadavia",44),24573293,LocalDate.of(1982,6,23),103,LocalDate.of(2012,4,15));
         Empleado empleado5 = new Operario("Sergio","Moreno",'M',new Domicilio("San Martín",454),24653293,LocalDate.of(1982,9,23),104,LocalDate.of(2013,3,12));
-        Empleado empleado6 = new Administrativo("Cristina","Fernandez",'F',new Domicilio("Junín",267),22578393,LocalDate.of(1982,10,23),105,LocalDate.of(2010,8,11));
+        Empleado empleado6 = new Administrativo("Cristina","Fernandez",'F',new Domicilio("Junín",267),22578393,LocalDate.of(1982,10,23),109,LocalDate.of(2010,8,11));
         Empleado empleado7 = new Jefe("Florencia","Sosa",'F',new Domicilio("Salta",570),30578393,LocalDate.of(1990,10,23),106,LocalDate.of(2012,3,14),"Dirección");
         Empleado empleado8 = new Jefe("Gonzalo","Ibañez",'M',new Domicilio("Caseros",1323),23578393,LocalDate.of(1987,10,23),107,LocalDate.of(2010,2,1),"Administración");
         try {
