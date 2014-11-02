@@ -33,14 +33,16 @@ public class ListadoFamiliares extends javax.swing.JPanel {
         this.ventana=ventana;
         this.indice=indice;
         
+        //Array de empleados
         ArrayList empleados= new ArrayList();
-        VentanaPrincipal vp=(VentanaPrincipal)ventana;
         empleados=GestionEmpleados.getEmpleados();
         Empleado emp=(Empleado)empleados.get(indice);
         
-                
+        //Array de Familiares
+        ArrayList<Familiar> lista = emp.getFamiliares();    
+        
+        //Cargo tabla y propiedades
      DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     ArrayList<Familiar> lista = emp.getFamiliares();
      jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
      Object[] fila = new Object[tableModel.getColumnCount()];
         for (int i = 0; i < lista.size(); i++) {
@@ -95,11 +97,11 @@ public class ListadoFamiliares extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nombre", "Apellido", "Parentesco", "Documento", "Fec. de Nacimiento"
+                "Nombre", "Apellido", "Parentesco", "Documento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -133,7 +135,7 @@ public class ListadoFamiliares extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +154,6 @@ public class ListadoFamiliares extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(156, 156, 156)
@@ -162,7 +161,10 @@ public class ListadoFamiliares extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 36, Short.MAX_VALUE)))
+                        .addGap(0, 117, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

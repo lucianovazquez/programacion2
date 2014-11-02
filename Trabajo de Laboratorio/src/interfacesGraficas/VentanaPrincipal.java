@@ -214,7 +214,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jPanel1.setVisible(false);
-        
         ListadoEmpleados panel = new ListadoEmpleados(this,jPanel1);
         this.rootPane.setContentPane(panel);
         panel.setVisible(true);
