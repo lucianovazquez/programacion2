@@ -389,6 +389,8 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
             return;
         }
+        
+        //Filtra la fila con el N° de legajo ingresado.
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         TableRowSorter sorter = new TableRowSorter(tableModel); 
         //sorter.setRowFilter (RowFilter.numberFilter(RowFilter.ComparisonType.EQUAL, legajo)); 
