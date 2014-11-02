@@ -16,6 +16,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import trabajodelaboratorio.Administrativo;
@@ -148,6 +150,11 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         jLabel2.setText("Buscar por N° de Legajo:");
 
         jTextField1.setToolTipText("Ingrese N° de legajo");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfacesGraficas/Icono_lupa.png"))); // NOI18N
         jButton4.setText("Buscar");
@@ -374,12 +381,17 @@ public class ListadoEmpleados extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Buscar empleado ingresando NRo. de Legajo
-        int indice=0;
+        int indice,legajo=0;
         if(jTextField1.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo.");
             return;}
-        int legajo=Integer.parseInt(jTextField1.getText().trim());
         
+        try{
+        legajo=Integer.parseInt(jTextField1.getText().trim());
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,ex +" Debe ingresar un valor numérico.");
+            return;
+        }
         if(GestionEmpleados.existeEmpleadoConEsteLegajo(legajo)){
             indice=GestionEmpleados.getPosicionEmpleadoConEsteLegajo(legajo);
             
@@ -396,7 +408,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         //sorter.setRowFilter (RowFilter.numberFilter(RowFilter.ComparisonType.EQUAL, legajo)); 
         sorter.setRowFilter (RowFilter.regexFilter(jTextField1.getText().trim(),0));
         jTable1.setRowSorter (sorter);
-        
+       
         /*
         Rectangle r = jTable1.getCellRect (indice, 0, true);
         jTable1.scrollRectToVisible(r);
@@ -457,6 +469,10 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         } catch (PrinterException ex) { 
         System.out.println(ex);}
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+       
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
