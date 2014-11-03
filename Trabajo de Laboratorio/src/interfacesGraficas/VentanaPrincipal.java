@@ -32,7 +32,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() throws UnsupportedLookAndFeelException {
         
-        UIManager.setLookAndFeel(new NimbusLookAndFeel());
+        UIManager.setLookAndFeel(new WindowsLookAndFeel());
         initComponents();
         jPanel1.setSize(450, 400);
         this.setSize(450, 400);

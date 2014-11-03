@@ -16,8 +16,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
+import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import trabajodelaboratorio.Administrativo;
@@ -49,6 +51,7 @@ public class ListadoEmpleados extends javax.swing.JPanel {
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         
        //Ordena la tabla en forma descendiente, según columna 0 (Nro de Legajo)
+        
         TableRowSorter sorter = new TableRowSorter(tableModel);
         List<RowSorter.SortKey> sortKeys = new ArrayList();
         sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
@@ -73,6 +76,11 @@ public class ListadoEmpleados extends javax.swing.JPanel {
             
          }
          jTable1.setModel(tableModel);
+         
+           //Centrar texto de columna 0 (N° Legajo)
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.CENTER);
+            jTable1.getColumnModel().getColumn(0).setCellRenderer(tcr);
     }
  public ListadoEmpleados(){}
     /**
