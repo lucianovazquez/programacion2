@@ -284,11 +284,12 @@ public class ListadoEmpleados extends javax.swing.JPanel {
                     .addComponent(jButton7)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -484,6 +485,12 @@ public class ListadoEmpleados extends javax.swing.JPanel {
        }
        //Administrativo y Operario, poseen mismo datos laborales, opción de modificar solo fecha de ingreso
        if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Administrativo")||GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Operario")){
+           ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
+           this.setVisible(false);
+           ventana.setContentPane(panelSig);
+           panelSig.setVisible(true);
+       }
+       if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Gerente")){
            ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);
