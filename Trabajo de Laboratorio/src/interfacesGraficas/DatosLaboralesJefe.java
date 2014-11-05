@@ -42,6 +42,20 @@ javax.swing.JPanel panelPrincipal;
         jLabel9.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel10.setText(Integer.toString(emp.getNroLegajo()));
         
+        
+        if(emp.getArea().equals("Dirección")){
+            jComboBox1.setSelectedItem("Dirección");
+            jComboBox1.setEnabled(false);}
+        if(emp.getArea().equals("Administración")){
+            jComboBox1.setSelectedItem("Administración");
+            jComboBox1.setEnabled(false);}
+        if(emp.getArea().equals("Producción")){
+            jComboBox1.setSelectedItem("Producción");
+            jComboBox1.setEnabled(false);}
+        if(emp.getArea().equals("Ventas")){
+            jComboBox1.setSelectedItem("Ventas");
+            jComboBox1.setEnabled(false);}
+        
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
      ArrayList<Empleado> lista = emp.getNominaEmpleados();
@@ -97,7 +111,7 @@ javax.swing.JPanel panelPrincipal;
         jLabel6.setText("Fecha de Ingreso:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Nuevo Empleado");
+        jLabel2.setText("Empleados a Cargo");
 
         jLabel14.setText("Datos Laborales - Jefe de Área");
 
