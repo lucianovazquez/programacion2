@@ -23,7 +23,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
     
     javax.swing.JPanel panelAnt;
     javax.swing.JFrame ventana;
-    
+    Empleado emp;
     
     public ModificarEmpleado(int indice,javax.swing.JPanel panelAnt, javax.swing.JFrame ventana) {
         initComponents();
@@ -31,7 +31,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         
         this.panelAnt=panelAnt;
         this.ventana=ventana;
-        Empleado emp;
+        
         emp = GestionEmpleados.getEmpleado(indice);
         
         jTextField2.setText(emp.getNombre());
@@ -90,6 +90,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -150,8 +151,6 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         jLabel10.setText("Piso:");
 
         jTextField8.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        jTextField5.setCaretPosition(0);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -271,6 +270,14 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton3.setText("Familia");
+        jButton3.setToolTipText("Modificar Familiares a cargo");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -293,9 +300,11 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(76, 76, 76)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton2)
-                        .addGap(86, 86, 86))))
+                        .addGap(72, 72, 72))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +320,8 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addGap(19, 19, 19))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -394,10 +404,18 @@ public class ModificarEmpleado extends javax.swing.JPanel {
              panelSig.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.setVisible(false);
+        IngresarFamilia panelSig = new IngresarFamilia(this,emp,this,ventana);
+        ventana.setContentPane(panelSig);
+        panelSig.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;

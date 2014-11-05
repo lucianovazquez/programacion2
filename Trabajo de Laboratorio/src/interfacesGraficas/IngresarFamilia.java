@@ -2,6 +2,7 @@ package interfacesGraficas;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Administrativo;
@@ -69,6 +70,7 @@ public class IngresarFamilia extends javax.swing.JPanel {
         }
         jTable1.setModel(tableModel);
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -199,7 +201,15 @@ public class IngresarFamilia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /* Mostrar siguiente panel segun el tipo de empleado tratado */
+        //Comprueba si esta cargando por primera vez o se esta modificando
+        
+        if(panel0 instanceof ModificarEmpleado){
+            this.setVisible(false);
+            ventana.setContentPane(panel0);
+            panel0.setVisible(true);
+        return;}
+            
+         /* Mostrar siguiente panel segun el tipo de empleado tratado */   
         if(emp instanceof Vendedor){    
             this.setVisible(false);
             DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor(panelPrincipal,(Vendedor) emp,this,ventana);
