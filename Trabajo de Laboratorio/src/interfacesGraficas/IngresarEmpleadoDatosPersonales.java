@@ -165,12 +165,8 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Domicilio"));
 
-        jTextField8.setText("                    ");
         jTextField8.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        jTextField4.setText("                 ");
-
-        jTextField5.setText("                    ");
         jTextField5.setCaretPosition(0);
 
         jLabel8.setText("Calle:");
@@ -180,8 +176,6 @@ public class IngresarEmpleadoDatosPersonales extends javax.swing.JPanel {
         jLabel12.setText("Depto:");
 
         jLabel10.setText("Piso:");
-
-        jTextField6.setText("                    ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

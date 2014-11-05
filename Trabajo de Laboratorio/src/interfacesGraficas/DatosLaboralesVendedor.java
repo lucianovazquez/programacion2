@@ -94,7 +94,6 @@ public class DatosLaboralesVendedor extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Fecha de Ingreso:");
 
-        jTextField1.setText("                 ");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

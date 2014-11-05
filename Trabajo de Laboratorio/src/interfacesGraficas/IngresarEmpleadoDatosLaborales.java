@@ -101,7 +101,6 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
 
         jLabel3.setText("Cargo:");
 
-        jTextField1.setText("                  ");
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

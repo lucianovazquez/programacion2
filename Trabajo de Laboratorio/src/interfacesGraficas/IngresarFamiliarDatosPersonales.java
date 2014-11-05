@@ -132,17 +132,9 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
 
         jLabel10.setText("Piso:");
 
-        jTextField4.setText("                 ");
-
-        jTextField8.setText("                    ");
-
         jLabel12.setText("Dpto:");
 
-        jTextField5.setText("                    ");
-
         jLabel9.setText("Nro:");
-
-        jTextField6.setText("                    ");
 
         jLabel8.setText("Calle:");
 

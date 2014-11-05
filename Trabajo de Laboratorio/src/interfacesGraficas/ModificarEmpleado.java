@@ -145,18 +145,12 @@ public class ModificarEmpleado extends javax.swing.JPanel {
 
         jLabel9.setText("Nro:");
 
-        jTextField6.setText("                    ");
-
         jLabel8.setText("Calle:");
-
-        jTextField4.setText("                 ");
 
         jLabel10.setText("Piso:");
 
-        jTextField8.setText("                    ");
         jTextField8.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        jTextField5.setText("                    ");
         jTextField5.setCaretPosition(0);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

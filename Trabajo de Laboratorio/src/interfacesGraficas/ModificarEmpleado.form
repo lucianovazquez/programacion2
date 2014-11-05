@@ -300,9 +300,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="                    "/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
@@ -310,9 +307,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="                 "/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -321,7 +315,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="                    "/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Texto"/>
                 </Property>
@@ -329,7 +322,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="                    "/>
                 <Property name="caretPosition" type="int" value="0"/>
               </Properties>
             </Component>
