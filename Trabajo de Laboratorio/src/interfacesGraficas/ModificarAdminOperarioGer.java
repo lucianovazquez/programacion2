@@ -11,7 +11,7 @@ import trabajodelaboratorio.GestionEmpleados;
  *
  * @author Luciano
  */
-public class ModificarAdminOperario extends javax.swing.JPanel {
+public class ModificarAdminOperarioGer extends javax.swing.JPanel {
 
     /**
      * Creates new form ModificarAdminOperario
@@ -20,7 +20,7 @@ public class ModificarAdminOperario extends javax.swing.JPanel {
     javax.swing.JPanel panelAnt;
     javax.swing.JFrame ventana;
     
-    public ModificarAdminOperario(int indice, javax.swing.JPanel panelAnt, javax.swing.JFrame ventana) {
+    public ModificarAdminOperarioGer(int indice, javax.swing.JPanel panelAnt, javax.swing.JFrame ventana) {
         initComponents();
     this.indice=indice;
     this.panelAnt=panelAnt;
@@ -139,10 +139,10 @@ public class ModificarAdminOperario extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(26, 26, 26)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()

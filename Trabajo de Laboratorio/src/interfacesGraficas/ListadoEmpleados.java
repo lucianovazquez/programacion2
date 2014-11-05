@@ -485,13 +485,13 @@ public class ListadoEmpleados extends javax.swing.JPanel {
        }
        //Administrativo y Operario, poseen mismo datos laborales, opción de modificar solo fecha de ingreso
        if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Administrativo")||GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Operario")){
-           ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
+           ModificarAdminOperarioGer panelSig = new ModificarAdminOperarioGer(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);
            panelSig.setVisible(true);
        }
        if(GestionEmpleados.getEmpleado(indice).getTipoCargo().equals("Gerente")){
-           ModificarAdminOperario panelSig = new ModificarAdminOperario(indice,panel,ventana);
+           ModificarAdminOperarioGer panelSig = new ModificarAdminOperarioGer(indice,panel,ventana);
            this.setVisible(false);
            ventana.setContentPane(panelSig);
            panelSig.setVisible(true);
