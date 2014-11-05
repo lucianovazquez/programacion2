@@ -56,7 +56,7 @@ public class DatosLaboralesEmpleado extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nuevo Empleado");
 
-        jLabel14.setText("Datos Laborales - Administrativo");
+        jLabel14.setText("Datos Laborales ");
 
         jButton1.setText("Volver");
         jButton1.setToolTipText("Regresar a Agregar Familiares");

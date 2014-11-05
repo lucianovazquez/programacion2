@@ -78,7 +78,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Datos Laborales - Administrativo"/>
+        <Property name="text" type="java.lang.String" value="Datos Laborales "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
