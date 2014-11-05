@@ -7,9 +7,13 @@ package interfacesGraficas;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
@@ -33,8 +37,19 @@ public class ListadoJefes extends javax.swing.JPanel {
         this.ventana=ventana;
         arrayJefes = GestionEmpleados.obtenerNuevoArrayJefes();
         
-        /* Creacion de la tabla con los jefes*/
+        //Ordena la tabla en forma descendiente, según columna 0 (Nro de Legajo)
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter sorter = new TableRowSorter(tableModel);
+        List<RowSorter.SortKey> sortKeys = new ArrayList();
+        sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
+        sorter.setSortKeys(sortKeys);
+        sorter.toggleSortOrder(0);
+        jTable1.setRowSorter(sorter);
+        tableModel.fireTableDataChanged();
+        revalidate();
+        
+        /* Creacion de la tabla con los jefes*/
+        
         Object[] fila = new Object[tableModel.getColumnCount()];
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
