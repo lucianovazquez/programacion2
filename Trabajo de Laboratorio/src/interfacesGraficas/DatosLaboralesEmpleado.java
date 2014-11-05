@@ -1,6 +1,7 @@
 package interfacesGraficas;
 
 import trabajodelaboratorio.Administrativo;
+import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.GestionEmpleados;
 
 /**
@@ -8,28 +9,28 @@ import trabajodelaboratorio.GestionEmpleados;
  * @author Luciano
  * @author RoqueG
  */
-public class DatosLaboralesAdmin extends javax.swing.JPanel {
+public class DatosLaboralesEmpleado extends javax.swing.JPanel {
 
     /**
-     * Creates new form DatosLaboralesAdmin
+     * Creates new form DatosLaboralesEmpleado
      */
-    Administrativo emp;
+    Empleado emp;
     javax.swing.JPanel panel;
     javax.swing.JPanel panelPrincipal;
     javax.swing.JFrame ventana;
     
-    public DatosLaboralesAdmin(javax.swing.JPanel panelPrincipal,Administrativo emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
+    public DatosLaboralesEmpleado(javax.swing.JPanel panelPrincipal,Empleado emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
         initComponents();
         this.emp=emp;
         this.panel=panel;
         this.ventana=ventana;
         this.panelPrincipal=panelPrincipal;
-        
+        jLabel14.setText("Tipo de cargo: "+emp.getTipoCargo());
         jLabel1.setText(emp.getNombre()+" "+emp.getApellido());
         jLabel3.setText(Integer.toString(emp.getNroLegajo()));
         jLabel7.setText(emp.getFechaNacimiento().toString());
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

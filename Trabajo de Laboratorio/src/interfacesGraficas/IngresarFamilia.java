@@ -8,6 +8,7 @@ import trabajodelaboratorio.Administrativo;
 import trabajodelaboratorio.Conyuge;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Familiar;
+import trabajodelaboratorio.Gerente;
 import trabajodelaboratorio.Hijo;
 import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
@@ -211,12 +212,17 @@ public class IngresarFamilia extends javax.swing.JPanel {
         }
         if(emp instanceof Administrativo){
             this.setVisible(false);
-            DatosLaboralesAdmin panelSig = new DatosLaboralesAdmin(panelPrincipal,(Administrativo) emp,this,ventana);
+            DatosLaboralesEmpleado panelSig = new DatosLaboralesEmpleado(panelPrincipal,(Administrativo) emp,this,ventana);
             ventana.setContentPane(panelSig);
         }
         if(emp instanceof Operario){
             this.setVisible(false);
-            DatosLaboralesOperario panelSig = new DatosLaboralesOperario(panelPrincipal,(Operario)emp,this,ventana);
+            DatosLaboralesEmpleado panelSig = new DatosLaboralesEmpleado(panelPrincipal,(Operario) emp,this,ventana);
+            ventana.setContentPane(panelSig);
+        }
+        if(emp instanceof Gerente){
+            this.setVisible(false);
+            DatosLaboralesEmpleado panelSig = new DatosLaboralesEmpleado(panelPrincipal,(Gerente) emp,this,ventana);
             ventana.setContentPane(panelSig);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

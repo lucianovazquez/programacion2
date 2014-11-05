@@ -109,7 +109,7 @@ public class IngresarEmpleadoDatosLaborales extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Administrativo", "Jefe de Área", "Operario", "Vendedor" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Administrativo", "Jefe de Área", "Operario", "Vendedor", "Gerente" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);

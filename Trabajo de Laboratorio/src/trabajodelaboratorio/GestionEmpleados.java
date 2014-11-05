@@ -122,6 +122,9 @@ public class GestionEmpleados {
             case "Operario":
                     emp = new Operario();
                 break;
+            case "Gerente":
+                    emp = new Gerente();
+                break;
             default:
                     throw new TipoEmpleadoNoValidoException("El tipo de empleado no exsite");
         }
