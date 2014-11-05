@@ -24,36 +24,36 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     /**
      * Creates new form ListadoEmpleadosJefe
      */
-    Jefe emp;
+    Jefe jefe;
     javax.swing.JPanel panel;
     javax.swing.JFrame ventana;
     javax.swing.JPanel panelAnt;
     javax.swing.JPanel panelPrincipal;
-    private ArrayList <Empleado> arrayRoque;
+    private ArrayList <Empleado> array;
     
     
-    public ListadoEmpleadosJefe(Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana,javax.swing.JPanel panelAnt,javax.swing.JPanel panelPrincipal) {
+    public ListadoEmpleadosJefe(Jefe jefe,javax.swing.JPanel panel,javax.swing.JFrame ventana,javax.swing.JPanel panelAnt,javax.swing.JPanel panelPrincipal) {
         initComponents();
-        this.emp=emp;
+        this.jefe=jefe;
         this.panel=panel;
         this.ventana=ventana;
         this.panelAnt=panelAnt;
         this.panelPrincipal=panelPrincipal;
-        jLabel2.setText(emp.getNombre()+" "+emp.getApellido());
+        jLabel2.setText(jefe.getNombre()+" "+jefe.getApellido());
         
-        arrayRoque = GestionEmpleados.obtenerNuevoArrayOperadoresAdministradores();
+        array = GestionEmpleados.obtenerNuevoArrayOperadoresAdministradores();
         
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         /* Crear tabla con el array que solo tienen operadores y administradores sin jefe */
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         Object[] fila = new Object[tableModel.getColumnCount()];
      
-        for (int i = 0; i < arrayRoque.size(); i++) {
-            fila[0] = arrayRoque.get(i).getNroLegajo();
-            fila[1] = arrayRoque.get(i).getNombre();
-            fila[2] = arrayRoque.get(i).getApellido();
-            fila[3] = arrayRoque.get(i).getTipoCargo();
-            fila[4] = arrayRoque.get(i).getFecIngreso();
+        for (int i = 0; i < array.size(); i++) {
+            fila[0] = array.get(i).getNroLegajo();
+            fila[1] = array.get(i).getNombre();
+            fila[2] = array.get(i).getApellido();
+            fila[3] = array.get(i).getTipoCargo();
+            fila[4] = array.get(i).getFecIngreso();
             tableModel.addRow(fila);
          }
          jTable1.setModel(tableModel);
@@ -174,28 +174,32 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-  
-  
-    int indice;
-    indice= jTable1.getSelectedRow();
-    if(indice==-1){
+
+    int nroLeg;
+    
+    if(jTable1.getSelectedRow()==-1){
         JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");       
         return;
     }
-     Empleado empleado = (Empleado)arrayRoque.get(indice);
-    for(int i=0;i<emp.getNominaEmpleados().size();i++){
-        if(emp.getNominaEmpleados().get(i).getNroLegajo()==empleado.getNroLegajo()){
+    //Capturo Nro. legajo empleado seleccionado en la table
+    nroLeg = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+    
+    //Guardo en emp1 el empleado seleccionado
+    Empleado emp1 = GestionEmpleados.getEmpleadoConEsteLegajo(nroLeg);
+    
+    /*
+        if(GestionEmpleados.existeEmpleadoConEsteLegajo(nroLeg)){
             JOptionPane.showMessageDialog(this, "El empleado seleccionado ya se encuentra en la lista.");
             this.setVisible(false);
-            DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
+            DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)jefe,panelAnt,ventana);
             ventana.setContentPane(panelSig);
             panelSig.setVisible(true);
             return;
-        }
-    }
+        }*/
     
+    //Agrego en la nomina del Jefe "jefe" al empleado "emp1"
     try {
-        emp.addEmpleadoANomina(empleado);
+        jefe.addEmpleadoANomina(emp1);
     } catch (TipoEmpleadoNoValidoException ex) {
         JOptionPane.showMessageDialog(this, ex);
     } catch (YaTieneUnJefeException ex) {
@@ -204,14 +208,14 @@ public class ListadoEmpleadosJefe extends javax.swing.JPanel {
      
      
      this.setVisible(false);
-     DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
+     DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)jefe,panelAnt,ventana);
      ventana.setContentPane(panelSig);
      panelSig.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.setVisible(false);
-     DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)emp,panelAnt,ventana);
+     DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panelPrincipal,(Jefe)jefe,panelAnt,ventana);
      ventana.setContentPane(panelSig);
      panelSig.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

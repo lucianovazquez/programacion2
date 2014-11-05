@@ -1,6 +1,9 @@
 package interfacesGraficas;
 
+import excepciones.TipoEmpleadoNoValidoException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
@@ -10,6 +13,7 @@ import trabajodelaboratorio.Conyuge;
 import trabajodelaboratorio.Empleado;
 import trabajodelaboratorio.Familiar;
 import trabajodelaboratorio.Gerente;
+import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Hijo;
 import trabajodelaboratorio.Jefe;
 import trabajodelaboratorio.Operario;
@@ -208,8 +212,8 @@ public class IngresarFamilia extends javax.swing.JPanel {
             ventana.setContentPane(panel0);
             panel0.setVisible(true);
         return;}
-            
-         /* Mostrar siguiente panel segun el tipo de empleado tratado */   
+        
+        /* Mostrar siguiente panel segun el tipo de empleado tratado */
         if(emp instanceof Vendedor){    
             this.setVisible(false);
             DatosLaboralesVendedor  panelSig = new DatosLaboralesVendedor(panelPrincipal,(Vendedor) emp,this,ventana);

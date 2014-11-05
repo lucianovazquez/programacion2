@@ -39,14 +39,7 @@ public class ListadoJefes extends javax.swing.JPanel {
         
         //Ordena la tabla en forma descendiente, según columna 0 (Nro de Legajo)
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-        TableRowSorter sorter = new TableRowSorter(tableModel);
-        List<RowSorter.SortKey> sortKeys = new ArrayList();
-        sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
-        sorter.setSortKeys(sortKeys);
-        sorter.toggleSortOrder(0);
-        jTable1.setRowSorter(sorter);
-        tableModel.fireTableDataChanged();
-        revalidate();
+       
         
         /* Creacion de la tabla con los jefes*/
         
@@ -184,7 +177,7 @@ public class ListadoJefes extends javax.swing.JPanel {
         
         
        this.setVisible(false);
-       DatosLaboralesJefe panelSig = new DatosLaboralesJefe(panel,emp,panel,ventana);
+       DatosLaboralesJefe panelSig = new DatosLaboralesJefe(this,emp,panel,ventana);
        ventana.setContentPane(panelSig);
        panelSig.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed

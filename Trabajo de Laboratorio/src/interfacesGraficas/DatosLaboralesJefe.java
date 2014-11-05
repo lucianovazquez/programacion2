@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import trabajodelaboratorio.Empleado;
+import trabajodelaboratorio.EmpleadoNominaJefe;
 import trabajodelaboratorio.GestionEmpleados;
 import trabajodelaboratorio.Jefe;
 
@@ -24,41 +25,41 @@ public class DatosLaboralesJefe extends javax.swing.JPanel {
     /**
      * Creates new form DatosLaboralesJefe
      */
-Jefe emp;
+Jefe jefe;
 javax.swing.JPanel panel;
 javax.swing.JFrame ventana;
 javax.swing.JPanel panelPrincipal;
 
 
-    public DatosLaboralesJefe(javax.swing.JPanel panelPrincipal,Jefe emp,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
+    public DatosLaboralesJefe(javax.swing.JPanel panelPrincipal,Jefe jefe,javax.swing.JPanel panel,javax.swing.JFrame ventana) {
         initComponents();
         
-        this.emp=emp;
+        this.jefe=jefe;
         this.panel=panel;
         this.ventana=ventana;
         this.panelPrincipal=panelPrincipal;
         
        
-        jLabel9.setText(emp.getNombre()+" "+emp.getApellido());
-        jLabel10.setText(Integer.toString(emp.getNroLegajo()));
+        jLabel9.setText(jefe.getNombre()+" "+jefe.getApellido());
+        jLabel10.setText(Integer.toString(jefe.getNroLegajo()));
         
         
-        if(emp.getArea().equals("Dirección")){
+        if(jefe.getArea().equals("Dirección")){
             jComboBox1.setSelectedItem("Dirección");
             jComboBox1.setEnabled(false);}
-        if(emp.getArea().equals("Administración")){
+        if(jefe.getArea().equals("Administración")){
             jComboBox1.setSelectedItem("Administración");
             jComboBox1.setEnabled(false);}
-        if(emp.getArea().equals("Producción")){
+        if(jefe.getArea().equals("Producción")){
             jComboBox1.setSelectedItem("Producción");
             jComboBox1.setEnabled(false);}
-        if(emp.getArea().equals("Ventas")){
+        if(jefe.getArea().equals("Ventas")){
             jComboBox1.setSelectedItem("Ventas");
             jComboBox1.setEnabled(false);}
         
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-     ArrayList<Empleado> lista = emp.getNominaEmpleados();
+     ArrayList<Empleado> lista = jefe.getNominaEmpleados();
      Object[] fila = new Object[tableModel.getColumnCount()];
      
      for (int i = 0; i < lista.size(); i++) {
@@ -303,21 +304,27 @@ javax.swing.JPanel panelPrincipal;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+       if(panelPrincipal instanceof ListadoJefes){
+       this.setVisible(false);
+       ventana.setContentPane(panelPrincipal);
+       panelPrincipal.setVisible(true);
+       return;
+       }
+           
         if(jComboBox1.getSelectedItem().equals("Ninguno")){
             JOptionPane.showMessageDialog(this, "Debe seleccionar el área de jefatura."); 
             return;
         }
         if(jComboBox1.getSelectedItem().equals("Administración")) //Ninguno, Dirección, Administración, Ventas, Producción
-           emp.setArea("Administración");
+           jefe.setArea("Administración");
        if(jComboBox1.getSelectedItem().equals("Dirección"))
-           emp.setArea("Dirección");
+           jefe.setArea("Dirección");
        if(jComboBox1.getSelectedItem().equals("Producción"))
-           emp.setArea("Producción");
+           jefe.setArea("Producción");
         if(jComboBox1.getSelectedItem().equals("Ventas"))
-           emp.setArea("Ventas");
+           jefe.setArea("Ventas");
         
-        GestionEmpleados.addEmpleado(emp);
+        GestionEmpleados.addEmpleado(jefe);
 
         
         this.setVisible(false);
@@ -327,23 +334,23 @@ javax.swing.JPanel panelPrincipal;
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        this.setVisible(false);
-        ListadoEmpleadosJefe panelSig = new ListadoEmpleadosJefe(emp,this,ventana,panel,panelPrincipal);
+        ListadoEmpleadosJefe panelSig = new ListadoEmpleadosJefe(jefe,this,ventana,panel,panelPrincipal);
        ventana.setContentPane(panelSig);
        panelSig.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int indice = jTable1.getSelectedRow();
-        if(indice==-1){
+        if(jTable1.getSelectedRow()==-1){
            JOptionPane.showMessageDialog(this, "Debe seleccionar un empleado.");       
            return;
         }
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Empleado> lista = jefe.getNominaEmpleados();
+        EmpleadoNominaJefe emp = (EmpleadoNominaJefe)lista.get(jTable1.getSelectedRow());
         
-        //VentanaPrincipal vp =(VentanaPrincipal)ventana;
-        ArrayList<Empleado> lista = emp.getNominaEmpleados();
-        
-        lista.remove(indice);
+        jefe.eliminarEmpleadoDeNomina((Empleado) emp);
+        emp.deleteJefe();
         tableModel.removeRow(indice);
     }//GEN-LAST:event_jButton4ActionPerformed
 
