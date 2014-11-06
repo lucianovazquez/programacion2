@@ -32,7 +32,9 @@ public class GestionEmpleados {
      * @param empleado empleado a agregar
      */
     public static void addEmpleado(Empleado empleado){
+        //if(!existeEmpleadoConEsteLegajo(empleado.getNroLegajo()))
         empleados.add(empleado);
+
     }
 
     /**

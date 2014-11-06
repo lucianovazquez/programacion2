@@ -431,6 +431,12 @@ public class IngresarFamiliarDatosPersonales extends javax.swing.JPanel {
             Logger.getLogger(IngresarFamiliarDatosPersonales.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        if(panel instanceof ModificarEmpleado){
+            this.setVisible(false);
+            ventana.setContentPane(panelPrincipal);
+            panelPrincipal.setVisible(true);
+            return;
+        }
         // Carga el familiar y regresa a la tabla de familiares a cargo.
         this.setVisible(false);
         panel = new IngresarFamilia(panelPrincipal,emp,panel,ventana);

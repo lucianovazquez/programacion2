@@ -381,7 +381,6 @@ public class ModificarEmpleado extends javax.swing.JPanel {
             return;
         }
         
-        Empleado emp = GestionEmpleados.getEmpleado(indice);
         
         try{
             /* Agregar al objeto emp los datos ingresados  */
