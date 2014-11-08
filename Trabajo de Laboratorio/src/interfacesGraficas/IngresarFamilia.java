@@ -211,7 +211,6 @@ public class IngresarFamilia extends javax.swing.JPanel {
             this.setVisible(false);
             ventana.setContentPane(panel0);
             panel0.setVisible(true);
-             JOptionPane.showMessageDialog(this, "PASOOOOOO","Error",JOptionPane.ERROR_MESSAGE);
         return;}
        
             
@@ -249,8 +248,7 @@ public class IngresarFamilia extends javax.swing.JPanel {
         if(panel0 instanceof ModificarEmpleado){
             this.setVisible(false);
             IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(this,emp,panel0,ventana);
-             ventana.setContentPane(panel); 
-             JOptionPane.showMessageDialog(this, "PASOOOOOO","Error",JOptionPane.ERROR_MESSAGE);
+             ventana.setContentPane(panel);
         return;}
        this.setVisible(false);
        IngresarFamiliarDatosPersonales panel = new IngresarFamiliarDatosPersonales(panelPrincipal,emp,this,ventana);
